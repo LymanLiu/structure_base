@@ -1,0 +1,6 @@
+{
+    "-t": "type",
+    "-c": "create",
+    "-d": "delete",
+    "-a": "action"
+}

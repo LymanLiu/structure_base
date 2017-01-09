@@ -1,0 +1,14 @@
+{
+
+    "singleTplDir": "/build/tpl/single",
+    "multiTplDir": "/build/tpl/multi",
+    "singleComponentDir": "/src/single",
+    "multiComponentDir": "/src/multi",
+    "singleShareComponentDir": "/src/single/widgets",
+    "singleBusinessComponentDir": "/src/single/pages",
+    "multiShareComponentDir": "/src/multi/widgets",
+    "multiBusinessComponentDir": "/src/multi/pages",
+    "appLessDir": "/src/bin/app.less",
+    "coreLessDir": "/src/core/index.less",
+    "singleDebugRouterDir": "/src/core/SDRouter.js",
+}

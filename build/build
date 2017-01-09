@@ -1,0 +1,16 @@
+var Build = require('./class/Build');
+var Command = require('./class/Command');
+var fs = require('fs');
+//import Build from "./class/Build";
+//import Command from "./class/Command";
+
+var config = fs.readFileSync('./etc/config.json', 'utf8');
+config = eval('('+config+')');
+
+var builder = new Build();
+var commander = new Command();
+
+
+var params = commander.getParams();
+builder.initConfig(config)
+    .run(params);

@@ -1,0 +1,8 @@
+# For frontend
+node_modules
+target
+
+# For log
+log
+*.log
+/log
