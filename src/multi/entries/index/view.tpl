@@ -2,6 +2,6 @@
 <html lang="en">
 <?- head ?>
 <body>
-	<div>hello multi ss</div>
+	<div>hello multi adaf</div>
 </body>
 </html>
