@@ -1,12 +1,15 @@
 import model from './model';
-class View {
+import MultiView from '../../../core/MultiView';
+class View extends MultiView {
     constructor() {
-
+        super();
         this.comModel = model;
         this.initModel();
     }
 
     initModel() {
+
+        $('h1').click(this.sayTest);
 
         this.model = {...this.comModel,
             ... {

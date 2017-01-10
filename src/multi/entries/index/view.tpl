@@ -2,6 +2,8 @@
 <html lang="en">
 <?- head ?>
 <body>
-	<div>hello multi ss</div>
+	<h1>hello multi ss</h1>
+
+	<script src="/static/js/multi/index.js"></script>
 </body>
 </html>
