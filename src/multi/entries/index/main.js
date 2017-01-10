@@ -9,6 +9,7 @@ const MultiMain = require('../../../core/MultiMain.js');
 
 //component
 const Head = require('../../logics/Head');
+const Header = require('../../logics/Header');
 
 
 class Main extends MultiMain {
@@ -25,9 +26,11 @@ class Main extends MultiMain {
     initModel() {
 
         let head = new Head();
+        let header = new Header();
 
         this.model = _.extend(this.model, {
             head: head.render({ less: 'index', title: '<$- INDEX_TITLE $>' }).html,
+            header: header.render().html,
         });
         return this;
     }

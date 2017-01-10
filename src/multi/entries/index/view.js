@@ -1,5 +1,6 @@
 import model from './model';
 import MultiView from '../../../core/MultiView';
+import Header from '../../logics/header/view.js';
 class View extends MultiView {
     constructor() {
         super();
@@ -9,7 +10,10 @@ class View extends MultiView {
 
     initModel() {
 
-        $('h1').click(this.sayTest);
+        // $('h1').click(this.sayTest);
+        
+        let header = new Header();
+
 
         this.model = {...this.comModel,
             ... {
