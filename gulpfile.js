@@ -134,7 +134,7 @@ function doBundle(target, name, dest, pipePlugins) {
         var br = '\n           ';
         var msg = parts.length === 2 ? chalk.red('Browserify Error in ') + chalk.red.underline(parts[0] + '.js') + br + parts[1] : chalk.red('Browserify Error:') + br + err.message;
         gutil.log(msg);
-    }).pipe(gulp.dest(dest));
+    }).pipe(gulp.dest(dest)).pipe(connect.reload());
 }
 
 
@@ -167,7 +167,8 @@ function other() {
         .pipe(gulp.dest(targetDir + '/libs'));
 
     gulp.src('src/*.ico')
-        .pipe(gulp.dest(targetDir + '/'));
+        .pipe(gulp.dest(targetDir + '/'))
+        .pipe(connect.reload());
 
 }
 
@@ -193,6 +194,7 @@ gulp.task('other', other.bind(null));
 gulp.task('lang', function(done) {
     gulp.src('./src/etc/**/*.lang')
         .pipe(gulp.dest(targetDir + '/'))
+        .pipe(connect.reload())
         .on('end', done);
 });
 
@@ -269,7 +271,8 @@ gulp.task('html', function() {
                 pth.dirname += '/../';
                 pth.extname = '.html';
             }))
-            .pipe(gulp.dest(targetDir + '../templates/' + lang.toLowerCase()));
+            .pipe(gulp.dest(targetDir + '../templates/' + lang.toLowerCase()))
+            .pipe(connect.reload());
     }
 
     /* _.chain(fs.readdirSync('./src/multi/entries')).map(function(dir) {
@@ -303,6 +306,7 @@ gulp.task('multi:less', function(done) {
     }
 
     pipe.pipe(gulp.dest(targetDir + 'css/multi/'))
+        .pipe(connect.reload())
         .on('end', done);
 });
 
