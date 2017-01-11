@@ -6,3 +6,8 @@ target
 log
 *.log
 /log
+
+# For OS generated
+.DS_Store
+.DS_Store?
+._*
