@@ -164,7 +164,8 @@ function plumb(src, transforms, dest, newname) {
 
 function other() {
     gulp.src('src/libs/**')
-        .pipe(gulp.dest(targetDir + '/libs'));
+        .pipe(gulp.dest(targetDir + '/libs'))
+        .pipe(connect.reload());
 
     gulp.src('src/*.ico')
         .pipe(gulp.dest(targetDir + '/'))
@@ -436,7 +437,11 @@ gulp.task('common:less', plumb.bind(null, 'src/core/less/index.less', [less, aut
 })], targetDir + '/css', 'common'));
 
 
-gulp.task('images', plumb.bind(null, 'src/**/images/**', [], targetDir + '/images'));
+gulp.task('images', function() {
+     gulp.src('src/**/images/**')
+        .pipe(gulp.dest(targetDir + '/images'))
+        .pipe(connect.reload());
+});
 
 
 // Development
