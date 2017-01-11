@@ -9,6 +9,7 @@
 			<button>单号查询</button>
 		</div>
 	</div>
+	<?- indexContainer ?>
 	<script src="/static/js/multi/index.js"></script>
 </body>
 </html>

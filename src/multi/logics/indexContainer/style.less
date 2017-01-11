@@ -1,0 +1,46 @@
+.index-container {
+	padding: 45px 0;
+	.title-box {
+		text-align: center;
+		background: url(/static/images/multi/entries/index/images/title-car.png) no-repeat center 37px;
+		h3 {
+			font-size: 36px;
+		}
+		p{
+			font-size: 14px;
+			color: @lightgreyColor;
+			text-indent: 26px;
+		}
+	}
+	.content-box {
+		.first-page {
+			overflow: hidden; 
+			padding-top: 30px;
+			&>li {
+				float: left;
+				width: 384px;
+				margin-right: 24px;
+				h4 {
+					line-height: 60px;
+					height: 60px;
+					text-align: center;
+					color: #fff;
+					font-size: 24px;
+					background: @mainColor url(/static/images/multi/entries/index/images/icon-feiji.png) no-repeat 10px center;
+
+				}
+			}
+			&>li.two{
+				h4 {
+					background-image: url(/static/images/multi/entries/index/images/icon-huoche.png);
+				}
+			}
+			&>li.three{
+				margin-right: 0;
+				h4 {
+					background-image: url(/static/images/multi/entries/index/images/icon-kuaidi.png);
+				}
+			}
+		}
+	}
+}
