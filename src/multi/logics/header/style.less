@@ -18,9 +18,14 @@
 				width: 139px;
 				text-align: center;
 				cursor: pointer;
+				&>a {
+					display: block;
+				}
 				&.cur, &:hover{
-					background: @mainColor;
-					color: #fff;
+					&>a{
+						background: @mainColor;
+						color: #fff;
+					}
 				}
 			}
 		}
