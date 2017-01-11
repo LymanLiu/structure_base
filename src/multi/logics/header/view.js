@@ -32,11 +32,13 @@ class View extends MultiView {
                     break;
             }
         })
-
         return this;
     }
 
     initModel() {
+        this.model = {...this.model, ...{
+            title: '<$- HOME $>'
+        }};
         this.model = {...this.model,
             ... {
                 title: '<$- HOME $>'

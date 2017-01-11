@@ -7,17 +7,19 @@
 	background: #fff;
 	height: 80px;
 	box-shadow: 0 0 3px 0 rgba(0,0,0,.3);
+	z-index: 999;
 	.wrapper{
 		&>ul {
 			height: 80px;
 			float: left;
-			&>li{
+			&>li {
 				line-height: 80px;
 				height: 80px;
 				float: left;
 				width: 139px;
 				text-align: center;
 				cursor: pointer;
+				position: relative;
 				&>a {
 					display: block;
 				}
@@ -25,6 +27,38 @@
 					&>a{
 						background: @mainColor;
 						color: #fff;
+					}
+				}
+
+				&>ul.nav-slider{
+					position: absolute;
+					background: #fff;
+					left: 0;
+					top: 80px;
+					box-shadow: 0 0 1px 0 rgba(0,0,0,.3);
+					padding: 10px 0;
+					width: 100%;
+					display: none;
+					li {
+						line-height: 44px;
+						
+						a {
+							display: block;
+							color: @mainColor;
+						}
+						&:hover {
+							a {
+								background: @mainColor;
+								color: #fff;
+							}
+
+						}
+					}
+				}
+
+				&:hover {
+					&>ul.nav-slider{
+						display: block;
 					}
 				}
 			}
