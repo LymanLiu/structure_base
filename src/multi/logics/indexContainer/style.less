@@ -1,5 +1,11 @@
 .index-container {
 	padding: 45px 0;
+	&.index-container-1 {
+		background: @greyBgColor;
+		.title-box {
+			margin-bottom: 40px;
+		}
+	}
 	.title-box {
 		text-align: center;
 		background: url(/static/images/multi/entries/index/images/title-car.png) no-repeat center 37px;
@@ -40,6 +46,55 @@
 				h4 {
 					background-image: url(/static/images/multi/entries/index/images/icon-kuaidi.png);
 				}
+			}
+		}
+		
+		
+		.second-page {
+			overflow: hidden;
+			&>li {
+				float: left;
+				width: 399px;
+				height: 120px;
+				border-right: 1px solid @borderColor;
+				padding-top: 180px;
+				text-align: center;
+				background: url(/static/images/multi/entries/index/images/icon-ditu.png) no-repeat center 20px;
+				h4 {
+					font-size: 24px;
+				}
+				&.three, &.six {
+					border-right: 0;
+				}
+				&.one,&.two,&.three {
+					border-bottom: 1px solid @borderColor;
+				}
+				&.two {
+					background-image: url(/static/images/multi/entries/index/images/icon-shixiao.png);
+					background-position: center 30px;
+				}
+				&.three {
+					background-image: url(/static/images/multi/entries/index/images/icon-fuwu.png);
+					background-position: center 10px;
+				}
+				&.four {
+					background-image: url(/static/images/multi/entries/index/images/icon-kefu.png);
+				}
+				&.five {
+					background-image: url(/static/images/multi/entries/index/images/icon-shouhou.png);
+					background-position: center 40px;
+				}
+			}
+		}
+
+		.third-page {
+			padding-top: 20px;
+			.up-box {
+				img{
+					width: 100%;
+				}
+				background: @greyBgColor;
+				padding: 10px 20px;
 			}
 		}
 	}

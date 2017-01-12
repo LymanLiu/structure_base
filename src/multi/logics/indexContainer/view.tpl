@@ -1,5 +1,5 @@
 <? containerList.forEach((item, i) => { ?>
-	<div class="index-container">
+	<div <?- `class="index-container index-container-${i}"` ?> >
 		<div class="wrapper">
 			<div class="title-box">
 				<h3><?- item.title ?></h3>

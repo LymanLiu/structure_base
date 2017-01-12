@@ -2,7 +2,7 @@
 module.exports = {
     containerList: [
     	{
-    		title: '三大业务',
+    		title: '',
     		subTitle: '981托运，让您高枕无忧的好物流！',
     		content: `
     			<ul class="first-page">
@@ -47,6 +47,25 @@ module.exports = {
 						
 					</li>
     			</ul>
+    		`
+    	},
+    	{
+    		title: '公司简介',
+    		subTitle: '信誉981，他们都在选择我们！',
+    		content: `
+    			<div class="third-page">
+    				<div class="up-box">
+    				<img src="/static/images/multi/entries/index/images/index-bg-2.png" alt="">
+    					亿宁国际货运代理有限公司（981Карго），是一家专注于俄罗斯，白俄罗斯，哈萨克斯坦，乌克兰，立陶宛的货物运输。公司从事对俄货物运输多年，积攒了丰富的物流经验和人脉，真正解决了货物运输道路上的“最后一公里”，不管货物的数量和种类，我们可以提供安全保证和保障，快速及时的交付客户手中。公司根据客户需求，我们提供了最恰当的运输方式，空运，铁路，公路，海运，以满足客户的需要。
+    				</div>
+    				<div class="sub-banner-box">
+    					<ul>
+    						<li>
+    							<img src="/static/images/multi/entries/index/images/index-sub--banner-1.jpg" alt="">
+    						</li>
+    					</ul>
+    				</div>
+    			</div>
     		`
     	}
 
