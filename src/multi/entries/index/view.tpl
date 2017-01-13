@@ -10,12 +10,12 @@
 		</div>
 	</div>
 	<?- indexContainer ?>
-	<div class="sub-box">
+	<div class="sub-box"> 
 		<div class="wrapper">
 			<img src="/static/images/multi/entries/index/images/index-sub-title-1.png" alt="">
 		</div>
 	</div>
-	<div class="index-container" >
+	<div class="index-container index-container-2" >
 		<div class="wrapper">
 			<div class="title-box">
 				<h3>合作伙伴</h3>

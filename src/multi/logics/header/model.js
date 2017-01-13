@@ -1,29 +1,39 @@
+const host = '/981/<$- LNAG $>/';
 module.exports = {
    navlist: [
    		{
-   			name: '<$- NAV_HOME $>'
+   			name: '<$- NAV_HOME $>',
+            url: `${host}`
    		},
    		{
-   			name: '<$- NAV_ABOUT $>'
+   			name: '<$- NAV_ABOUT $>',
+             url: `${host}about.html`
+
    		},
    		{
-   			name: '<$- NAV_RUSSIA $>'
+   			name: '<$- NAV_RUSSIA $>',
+             url: `${host}russia.html`
    		},
    		{
-   			name: '<$- NAV_UA $>'
+   			name: '<$- NAV_UA $>',
+            url: `${host}ua.html`,
    		},
    		{
-   			name: '<$- NAV_WHITE_RUSSIA $>'
+   			name: '<$- NAV_WHITE_RUSSIA $>',
+            url: `${host}whiteRussia.html`
    		},
    		{
-   			name: '<$- NAV_WULIU $>'
+   			name: '<$- NAV_WULIU $>',
+            url: `${host}search.html`
    		},
    		{
    			name: '<$- NAV_NEWS $>',
+            url: `${host}news.html`,
             child: ['new1', 'new2']
    		},
    		{
-   			name: '<$- NAV_CONTACT $>'
+   			name: '<$- NAV_CONTACT $>',
+            url: `${host}contact.html`
    		}
    ]
 };

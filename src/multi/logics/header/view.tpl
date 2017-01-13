@@ -1,13 +1,13 @@
-<div class="header">
+<div class="header" id="header">
 	<div class="wrapper">
 		<ul>
 			<? navlist.forEach((item, i) => { ?>
 				<? if(i === 0) { ?>
-					<li class="cur"><a href="#"><?- item.name ?></a></li>
+					<li class="level_1 cur"><a href="<?- item.url ?>" ><?- item.name ?></a></li>
 				<? } else { ?>
 					<? if(item.child) { ?>
-						<li>
-							<a href="#"><?- item.name ?></a>
+						<li class="level_1">
+							<a href="<?- item.url ?>" ><?- item.name ?></a>
 							<ul class="nav-slider">
 								<? item.child.forEach((itemChild, j) => { ?>
 									<li><a href="#"><?- itemChild ?></a></li>
@@ -15,7 +15,7 @@
 							</ul>
 						</li>
 					<? } else { ?>
-						<li><a href="#"><?- item.name ?></a></li>
+						<li class="level_1"><a href="<?- item.url ?>" ><?- item.name ?></a></li>
 					<? } ?>
 				<? } ?>
 			<? }) ?>

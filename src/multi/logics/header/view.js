@@ -11,8 +11,9 @@ class View extends MultiView {
     }
 
     initEvent() {
-        this.$navLis = $('.header .wrapper ul li');
+        this.$navLis = $('.header .wrapper ul .level_1');
         this.$chooseLang = $('#chooseLang');
+        this.$aDom = $('#header a');
 
         let lang = ~location.href.indexOf('cn') ? 'china' : 'russia';
         this.$chooseLang.val(lang);
@@ -31,19 +32,28 @@ class View extends MultiView {
                     window.location.href = location.origin + location.pathname.replace('cn', 'en');
                     break;
             }
-        })
+        });
+
+        this.initTab();
         return this;
+    }
+
+    initTab() {
+
+        this.pageList = ['index', 'about', 'russia', 'ua', 'whiteRussia', 'serach', 'news', 'contact'];
+
+        for (let i = 0; i < this.pageList.length; i++) {
+            if( location.href.indexOf( this.pageList[i]) > -1 ) {
+                console.log( this.$navLis)
+                this.$navLis.eq(i).addClass('cur').siblings().removeClass('cur');
+            }
+        };
     }
 
     initModel() {
         this.model = {...this.model, ...{
             title: '<$- HOME $>'
         }};
-        this.model = {...this.model,
-            ... {
-                title: '<$- HOME $>'
-            }
-        };
         return this;
     }
 

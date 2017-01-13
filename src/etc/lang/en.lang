@@ -1,5 +1,8 @@
 {
+	"LNAG":"en",
 	"INDEX_TITLE":"主页",
+	"RUSSIA_TITLE":"俄罗斯专线",
+
 
 	"NAV_HOME":"首页",
 	"NAV_ABOUT":"公司介绍",
@@ -9,4 +12,6 @@
 	"NAV_WULIU":"物流信息查询",
 	"NAV_NEWS":"新闻中心",
 	"NAV_CONTACT":"联系我们",
+	
+
 }

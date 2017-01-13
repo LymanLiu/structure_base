@@ -178,7 +178,7 @@ function other() {
 gulp.task('clean-dev', function() {
     gulp.src([
             targetDir,
-            targetDir + '../templates'
+            targetDir + '../981'
         ], {
             read: false
         })
@@ -272,7 +272,7 @@ gulp.task('html', function() {
                 pth.dirname += '/../';
                 pth.extname = '.html';
             }))
-            .pipe(gulp.dest(targetDir + '../templates/' + lang.toLowerCase()))
+            .pipe(gulp.dest(targetDir + '../981/' + lang.toLowerCase()))
             .pipe(connect.reload());
     }
 
