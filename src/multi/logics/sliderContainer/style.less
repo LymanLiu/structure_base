@@ -1,0 +1,98 @@
+@import '../../../core/less/variables.less';
+@navHeight: 60px;
+.slider-container {
+	padding-top: 30px;
+	dt {
+		float: left;
+		width: 280px;
+		text-align: center;
+		background: #fff;
+		.title {
+			background: @mainColor;
+			font-size: 18px;
+			color: #fff;
+			line-height: @navHeight;
+			height: @navHeight;
+		}
+		.slider {
+			&>li {
+				line-height: @navHeight;
+				height: @navHeight;
+				border-bottom: 1px solid @borderColor;
+				border-left: 2px solid transparent;
+				cursor: pointer;
+				&.cur, &:hover {
+					background: #ecf7ff;
+					border-left: 2px solid @mainColor;
+					color: @mainColor;
+				}
+			}
+		}
+	}
+
+	dd {
+		float: left;
+		width: 890px;
+		margin-left: 30px;
+		color: @greyColor;
+		font-size: 14px;
+		padding-bottom: 30px;
+		.content {
+			.russia-title {
+				font-size: 18px;
+				margin-bottom: 15px;
+				margin-top: 30px;
+				font-weight: 700;
+				span {
+					color: @lightgreyColor;
+					font-size: 14px;
+				}
+			}
+			&>li {
+				display: none;
+				&.cur {
+					display: block;
+				}
+				.russia-table {
+					width: 100%;
+					td {
+						text-align: center;
+						border: 1px solid @borderColor;
+						height: 100px;
+					}
+				}
+				.content-page-1 {
+					background: #fff;
+					padding-bottom: 20px;
+					p {
+						text-indent: 2em;
+						padding: 0 20px;
+						margin-top: 15px;
+						font-size: 12px;
+						&.teshu {
+							color: @orangeColor;
+							font-size: 16px;
+						}
+					}
+				}
+				.content-page-2 {
+					.inner {
+						border-bottom: 1px solid @borderColor;
+						padding-bottom: 15px;
+						ol {
+							li {
+								margin-bottom: 15px;
+							}
+						}
+					}
+				}
+				.content-page-3 {
+					table {
+						background: #fff;	
+					}
+				}
+
+			}
+		}
+	}
+}

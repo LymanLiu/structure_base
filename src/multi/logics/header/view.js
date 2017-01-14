@@ -44,7 +44,6 @@ class View extends MultiView {
 
         for (let i = 0; i < this.pageList.length; i++) {
             if( location.href.indexOf( this.pageList[i]) > -1 ) {
-                console.log( this.$navLis)
                 this.$navLis.eq(i).addClass('cur').siblings().removeClass('cur');
             }
         };
