@@ -10,7 +10,7 @@
 							<a href="<?- item.url ?>" ><?- item.name ?></a>
 							<ul class="nav-slider">
 								<? item.child.forEach((itemChild, j) => { ?>
-									<li><a href="#"><?- itemChild ?></a></li>
+									<li><a href="<?- item.url ?>"><?- itemChild ?></a></li>
 								<? }) ?>
 							</ul>
 						</li>

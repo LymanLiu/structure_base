@@ -20,7 +20,7 @@ module.exports = {
    		},
    		{
    			name: '<$- NAV_WHITE_RUSSIA $>',
-            url: `${host}whiteRussia.html`
+            url: `${host}whiterussia.html`
    		},
    		{
    			name: '<$- NAV_WULIU $>',
@@ -29,7 +29,7 @@ module.exports = {
    		{
    			name: '<$- NAV_NEWS $>',
             url: `${host}news.html`,
-            child: ['new1', 'new2']
+            child: ['行业资讯', '公司新闻']
    		},
    		{
    			name: '<$- NAV_CONTACT $>',

@@ -1,1 +1,46 @@
 @import '../../../core/less/variables.less';
+.s-main-banner {
+	height: 380px - 125px;
+	background: url(/static/images/multi/entries/search/images/s-main-banner.jpg) no-repeat center;
+	text-align: center;
+	vertical-align: middle;
+	padding-top: 125px;
+	.search-box {
+		display: inline-block;
+		width: 800px;
+		input {
+			width: 800px - 194px;
+			height: 74px;
+			line-height: 74px;
+			font-size: 24px;
+			padding-left: 10px;
+			background: #eeecec;
+			float: left;
+			border: 2px solid @mainColor;
+			border-right: 0;
+		}
+		button {
+			float: left;
+			width: 180px;
+			font-size: 24px;
+			height: 80px;
+			background: @mainColor;
+			cursor: pointer;
+			color: #fff;
+		}
+	}
+}
+.search-result {
+	h2 {
+		font-size: 20px;
+		text-align: center;
+		margin: 20px 0;
+	}
+	.search-detail {
+		text-align: center;
+		line-height: 180px;
+		height: 180px;
+		background: #fff;
+		margin-bottom: 30px;
+	}
+}

@@ -1,1 +1,25 @@
 @import '../../../core/less/variables.less';
+.c-main-banner {
+	background-image: url(/static/images/multi/entries/contact/images/c-main-banner.jpg);
+}
+.contact-box {
+	padding-top: 20px;
+	overflow: hidden;
+	&>li {
+		float: left;
+		width: 33%;
+		h4 {
+		 	font-size: 14px;
+			margin-bottom: 10px;
+		}
+		p {
+		 	font-size: 12px;
+		 	color: @greyColor;
+		 }
+	}
+}
+.address {
+	font-size: 12px;
+	color: @greyColor;
+	margin: 15px 0 30px;
+}

@@ -3,8 +3,7 @@
 	<?- head ?>
 <body class="bg-body">
 	<?- header ?>
-	<div class="r-main-banner main-banner"></div>
-	
+	<?- specialLineBanner ?>
 	<?- sliderContainer ?>
 	<?- footer ?>
 	<script type="text/javascript" src="/static/js/multi/russia.js"></script>

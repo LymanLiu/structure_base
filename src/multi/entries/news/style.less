@@ -1,1 +1,61 @@
 @import '../../../core/less/variables.less';
+.n-main-banner {
+	background-image: url(/static/images/multi/entries/news/images/n-main-banner.jpg);
+}
+
+.new-list {
+	overflow: hidden;
+	padding: 30px 0;
+	font-size: 14px;
+	.level_1 {
+		float: left;
+		width: 590px;
+		margin-right: 20px;
+		.title-box {
+			height: 200px;
+			line-height: 200px;
+			font-size: 36px;
+			text-align: center;
+			color: #fff;
+			background: url(/static/images/multi/entries/news/images/n-title-1.jpg) no-repeat center;
+		}
+		&.right-box {
+			margin-right: 0;
+			.title-box {
+				background-image: url(/static/images/multi/entries/news/images/n-title-2.jpg);
+			}
+		} 
+		.more-btn {
+			width: 100px;
+			height: 38px;
+			line-height: 38px;
+			text-align: center;
+			border: 1px solid @mainColor;
+			color: @mainColor;
+			display: block;
+			margin-top: 20px;
+			&:hover {
+				background: @mainColor;
+				color: #fff;
+			}
+		}
+		.list-box {
+			.item {
+				padding: 20px 0;
+				border-bottom: 1px solid @borderColor;
+				.title {
+					font-size: 16px;
+					font-weight: 700px;
+				}
+				.time-box {
+					font-size: 12px;
+					color: @lightgreyColor;
+					margin-bottom: 15px;
+				}
+				.content-box {
+					color: @greyColor;
+				}
+			}
+		}
+	}
+}

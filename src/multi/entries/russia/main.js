@@ -9,6 +9,7 @@ const MultiMain = require('../../../core/MultiMain.js');
 const Head = require('../../logics/head');
 const Header = require('../../logics/header');
 const Footer = require('../../logics/footer');
+const SpecialLineBanner = require('../../logics/specialLineBanner');
 const SliderContainer = require('../../logics/sliderContainer');
 
 class Frame extends MultiMain {
@@ -112,7 +113,22 @@ class Frame extends MultiMain {
                 }
                
             ]
-        }
+        };
+
+        this.bannerList = [
+            {
+                url: '/static/images/multi/entries/russia/images/main-banner-1.jpg',
+                text: '俄罗斯空运'
+            },
+            {
+                url: '/static/images/multi/entries/russia/images/main-banner-2.jpg',
+                text: '俄罗斯陆运'
+            },
+            {
+                url: '/static/images/multi/entries/russia/images/main-banner-3.jpg',
+                text: '俄罗斯快递'
+            }
+        ];
         return this;
     }
 
@@ -120,12 +136,14 @@ class Frame extends MultiMain {
         let head = new Head();
         let header = new Header();
         let footer = new Footer();
+        let specialLineBanner = new SpecialLineBanner();
         let sliderContainer = new SliderContainer();
 
         this.model = _.extend(this.model, {
             head: head.render({ less: 'russia', title: '<$- RUSSIA_TITLE $>' }).html,
             header: header.render().html,
             footer: footer.render().html,
+            specialLineBanner: specialLineBanner.render({bannerList: this.bannerList}).html,
             sliderContainer: sliderContainer.render({sliderData: this.sliderData}).html
         });
 
