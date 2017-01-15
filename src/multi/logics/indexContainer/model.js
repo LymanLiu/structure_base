@@ -8,15 +8,15 @@ module.exports = {
     			<ul class="first-page">
     				<li class="one">
 						<h4>俄罗斯空运</h4>
-						<img src="/static/images/multi/entries/index/images/index-Product-1.jpg" alt="">
+						<img src="/static/images/multi/entries/index/images/index-product-1.jpg" alt="">
 					</li>
 					<li class="two">
 						<h4>俄罗斯陆运</h4>
-						<img src="/static/images/multi/entries/index/images/index-Product-2.jpg" alt="">
+						<img src="/static/images/multi/entries/index/images/index-product-2.jpg" alt="">
 					</li>
 					<li class="three">
 						<h4>俄罗斯快递</h4>
-						<img src="/static/images/multi/entries/index/images/index-Product-3.jpg" alt="">
+						<img src="/static/images/multi/entries/index/images/index-product-3.jpg" alt="">
 					</li>
     			</ul>
     		`
