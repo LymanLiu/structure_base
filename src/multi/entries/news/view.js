@@ -6,7 +6,17 @@ class View extends MultiView {
     constructor() {
         super();
         this.comModel = model;
-        this.initModel();
+        this.initEvent()
+            .initModel();
+    }
+
+    initEvent() {
+
+        $.get(this.getApi('getBusinessNews'), {page: 1}, (res) => {
+            console.log(res, 1)
+        })
+
+        return this;
     }
 
     initModel() {

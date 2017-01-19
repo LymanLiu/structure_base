@@ -1,3 +1,4 @@
 export default {
-    apiHost: window.location.protocol + '//' + window.location.hostname,
+    apiHost: () => 'http://www.981cargo.com/static/libs/php/',
+
 }

@@ -489,7 +489,7 @@ gulp.task('serve', function() {
     connect.server({
         root: targetDir + '../',
         port: 3000,
-        livereload: true
+        livereload: false
     });
 });
 

@@ -10,4 +10,6 @@
     <link rel="stylesheet" href="/static/css/common.css">
     <link rel="stylesheet" href="/static/css/multi/<?- less ?>/style.css">
     <script type="text/javascript"  src="/static/libs/jquery/jquery-1.12.3.min.js" ></script>
+    <!-- <script src="/static/libs/plugins/polyfill-6.9.6-min.js"></script> -->
+    <script src="//cdn.bootcss.com/babel-polyfill/6.9.1/polyfill.min.js"></script>
 </head>
