@@ -1,5 +1,5 @@
 // import model from './model';
-// import MultiView from '../../../core/MultiView';
+import MultiView from '../../../core/MultiView';
 // import Header from '../../logics/header/view.js';
 // import Footer from '../../logics/footer/view.js';
 class View {
@@ -16,7 +16,7 @@ class View {
     initModel() {
 
         // $('h1').click(this.sayTest);
-        
+
         // let header = new Header();
         // let footer = new Footer();
 
@@ -36,7 +36,7 @@ class View {
 new View();
 // require('../../../core/MultiView')
 class Haha extends View {
-     constructor() {
+    constructor() {
         super();
         // this.comModel = model;
         // this.initModel();
