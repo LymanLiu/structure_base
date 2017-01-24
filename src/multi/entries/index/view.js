@@ -1,16 +1,12 @@
 // import model from './model';
-import MultiView from '../../../core/MultiView';
+// import MultiView from '../../../core/MultiView';
 // import Header from '../../logics/header/view.js';
 // import Footer from '../../logics/footer/view.js';
-class View {
+class View extends MultiView {
     constructor() {
-        // super();
+        super();
         // this.comModel = model;
         this.initModel();
-    }
-
-    say() {
-        alert('say')
     }
 
     initModel() {
@@ -34,12 +30,3 @@ class View {
 }
 
 new View();
-// require('../../../core/MultiView')
-class Haha extends View {
-    constructor() {
-        super();
-        // this.comModel = model;
-        // this.initModel();
-    }
-}
-new Haha().say()
