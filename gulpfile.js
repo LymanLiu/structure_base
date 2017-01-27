@@ -66,7 +66,12 @@ function buildApp(entries, transforms, dest, watch, { presets, appName, pipePlug
     folderName = folderName || 'haode';
     pipePlugins = pipePlugins || [() => replace(regexp, '$1R\$R$2'), () => buffer(), () => uglify()];
     //process.env.NODE_ENV !== 'production'
-
+    var plugins = [
+        "transform-es5-property-mutators",
+        "transform-es3-member-expression-literals",
+        "transform-es3-member-expression-literals",
+        "transform-es2015-modules-amd"
+    ];
     var app = browserify(opts);
     //console.log(_.pluck(externals, 'require'));
     app.external(_.pluck(externals, 'expose'));
@@ -438,7 +443,7 @@ gulp.task('common:less', plumb.bind(null, 'src/core/less/index.less', [less, aut
 
 
 gulp.task('images', function() {
-     gulp.src('src/**/images/**')
+    gulp.src('src/**/images/**')
         .pipe(gulp.dest(targetDir + '/images'))
         .pipe(connect.reload());
 });
