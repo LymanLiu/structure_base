@@ -1,6 +1,6 @@
 @import '../../../core/less/variables.less';
 @import '../../logics/indexContainer/style.less';
-
+@searchHeight: 65px;
 body {
 	padding-top: 80px;
 }
@@ -13,21 +13,21 @@ body {
 		left: 50%;
 		bottom: 0;
 		margin-left: -400px;
-		width: 800px;
+		width: 700px;
 		input {
-			width: 800px - 192px;
-			height: 78px;
-			line-height: 78px;
-			font-size: 24px;
+			width: 528px;
+			height: @searchHeight;
+			line-height: @searchHeight;
+			font-size: 20px;
 			padding-left: 10px;
 			background: #eeecec;
 			float: left;
 		}
 		button {
 			float: left;
-			width: 180px;
+			width: 160px;
 			font-size: 24px;
-			height: 80px;
+			height: @searchHeight + 2px;
 			background: @mainColor;
 			cursor: pointer;
 			color: #fff;

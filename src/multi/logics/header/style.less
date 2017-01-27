@@ -1,20 +1,21 @@
 @chooseHeight: 24px;
+@HeaderHeight: 70px;
 .header{
 	position: fixed;
 	left: 0;
 	right: 0;
 	top:0;
 	background: #fff;
-	height: 80px;
+	height: @HeaderHeight;
 	box-shadow: 0 0 3px 0 rgba(0,0,0,.3);
 	z-index: 999;
 	.wrapper{
 		&>ul {
-			height: 80px;
+			height: @HeaderHeight;
 			float: left;
 			&>li {
-				line-height: 80px;
-				height: 80px;
+				line-height: @HeaderHeight;
+				height: @HeaderHeight;
 				float: left;
 				width: 139px;
 				text-align: center;
@@ -34,13 +35,13 @@
 					position: absolute;
 					background: #fff;
 					left: 0;
-					top: 80px;
+					top: @HeaderHeight;
 					box-shadow: 0 0 1px 0 rgba(0,0,0,.3);
 					padding: 10px 0;
 					width: 100%;
 					display: none;
 					li {
-						line-height: 44px;
+						line-height: 40px;
 						
 						a {
 							display: block;
@@ -65,7 +66,7 @@
 		}
 		.choose-lang{
 		  	margin-left: 10px;
-		    padding-top: 28px;
+		    padding-top: 23px;
 		    float: left;
 		    cursor: pointer;
 		    .choose-lang-inner{

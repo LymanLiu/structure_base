@@ -8,9 +8,9 @@
 	}
 	.title-box {
 		text-align: center;
-		background: url(/static/images/multi/entries/index/images/title-car.png) no-repeat center 37px;
+		background: url(/static/images/multi/entries/index/images/title-car.png) no-repeat center 29px;
 		h3 {
-			font-size: 36px;
+			font-size: 30px;
 		}
 		p{
 			font-size: 14px;
@@ -22,18 +22,24 @@
 		.first-page {
 			overflow: hidden; 
 			padding-top: 30px;
+			width: 1055px;
+			margin: 0 auto;
 			&>li {
 				float: left;
-				width: 384px;
+				width: 335px;
 				margin-right: 24px;
 				h4 {
 					line-height: 60px;
 					height: 60px;
 					text-align: center;
 					color: #fff;
-					font-size: 24px;
+					font-size: 20px;
 					background: @mainColor url(/static/images/multi/entries/index/images/icon-feiji.png) no-repeat 10px center;
 
+				}
+				img {
+					width: 100%;
+					vertical-align: middle;
 				}
 			}
 			&>li.two{
@@ -54,35 +60,46 @@
 			overflow: hidden;
 			&>li {
 				float: left;
-				width: 399px;
-				height: 120px;
+				width: 238px;
 				border-right: 1px solid @borderColor;
-				padding-top: 180px;
 				text-align: center;
-				background: url(/static/images/multi/entries/index/images/icon-ditu.png) no-repeat center 20px;
+				padding: 20px 0;
+				// background: url(/static/images/multi/entries/index/images/icon-ditu.png) no-repeat center 20px;
+				.img-box {
+					height: 90px;
+				}
+				img {
+					width: 80px;
+					vertical-align: middle;
+				}
 				h4 {
-					font-size: 24px;
+					font-size: 18px;
 				}
 				&.three, &.six {
-					border-right: 0;
+					// border-right: 0;
 				}
-				&.one,&.two,&.three {
-					border-bottom: 1px solid @borderColor;
+				&.five,&.two,&.three {
+					// border-bottom: 1px solid @borderColor;
+					.img-box {
+						padding-top: 10px;
+						height: 80px;
+					}
 				}
 				&.two {
-					background-image: url(/static/images/multi/entries/index/images/icon-shixiao.png);
+					// background-image: url(/static/images/multi/entries/index/images/icon-shixiao.png);
 					background-position: center 30px;
 				}
 				&.three {
-					background-image: url(/static/images/multi/entries/index/images/icon-fuwu.png);
+					// background-image: url(/static/images/multi/entries/index/images/icon-fuwu.png);
 					background-position: center 10px;
 				}
 				&.four {
-					background-image: url(/static/images/multi/entries/index/images/icon-kefu.png);
+					// background-image: url(/static/images/multi/entries/index/images/icon-kefu.png);
 				}
 				&.five {
-					background-image: url(/static/images/multi/entries/index/images/icon-shouhou.png);
-					background-position: center 40px;
+					// background-image: url(/static/images/multi/entries/index/images/icon-shouhou.png);
+					// background-position: center 40px;
+					border-right: 0;
 				}
 			}
 		}
@@ -95,6 +112,38 @@
 				}
 				background: @greyBgColor;
 				padding: 10px 20px;
+			}
+			.sub-banner-box {
+				position: relative;
+				height: 700px;
+				ul {
+					li {
+						position: absolute;
+						left: 0;
+						top: 0;
+						display: none;
+					}
+				}
+				.banner-btn {
+					width: 40px;
+					height: 60px;
+					position: absolute;
+					cursor: pointer;
+					top: 50%;
+					margin-top: -60 / 2px;
+					background: rgba(0,0,0,.3) url(/static/images/multi/entries/index/images/icon-left-arrow.png) no-repeat center;
+					&:hover {
+						background-color: rgba(0,0,0,.8);
+					}
+				}
+				#leftBtn {
+					left: 0;
+
+				}
+				#rightBtn {
+					right: 0;
+					background-image: url(/static/images/multi/entries/index/images/icon-right-arrow.png);
+				}
 			}
 		}
 	}
