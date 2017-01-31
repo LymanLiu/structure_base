@@ -1,5 +1,4 @@
 import React from 'react';
-import Reflux from 'reflux';
 
 //react-router;
 import { Link } from 'react-router';
@@ -11,15 +10,6 @@ import styles from './style.js';
 export default class view extends React.Component {
     constructor(props, context) {
         super(props, context);
-
-        //connect to reflux;
-        this.styles = styles;
-        this.actions = new Actions();
-        this.store = new Store(this.actions);
-        this.store.listen((data) => {
-            if (this._isMounted) this.setState(data);
-        });
-
         //init state
         this.state = {
 
@@ -35,9 +25,10 @@ export default class view extends React.Component {
 
     render() {
         return (
-            <div className="root">
-    			{this.props.children}
-    			success two33
+            <div className="header-root header">
+    			<div className="choose-lang">
+                    <p id="signOut">退出</p>
+                </div>
     		</div>
         )
     }

@@ -1,21 +1,21 @@
+@import '../../../core/less/variables.less';
 @chooseHeight: 24px;
-@HeaderHeight: 70px;
 .header{
 	position: fixed;
 	left: 0;
 	right: 0;
 	top:0;
 	background: #fff;
-	height: @HeaderHeight;
+	height: @headerHeight;
 	box-shadow: 0 0 3px 0 rgba(0,0,0,.3);
 	z-index: 999;
 	.wrapper{
 		&>ul {
-			height: @HeaderHeight;
+			height: @headerHeight;
 			float: left;
 			&>li {
-				line-height: @HeaderHeight;
-				height: @HeaderHeight;
+				line-height: @headerHeight;
+				height: @headerHeight;
 				float: left;
 				width: 139px;
 				text-align: center;
@@ -35,7 +35,7 @@
 					position: absolute;
 					background: #fff;
 					left: 0;
-					top: @HeaderHeight;
+					top: @headerHeight;
 					box-shadow: 0 0 1px 0 rgba(0,0,0,.3);
 					padding: 10px 0;
 					width: 100%;

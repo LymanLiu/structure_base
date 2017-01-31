@@ -410,12 +410,19 @@ gulp.task('multi:scripts', function(done) {
     })).then((res) => {
         done();
     });
-
-
-
 });
 
-gulp.task('script:vender', (done) => {
+// gulp.task('script:common', buildApp.bind(null, ['./src/multi/common/**/*.js'], [brfs, lessPicker()], targetDir + '/js/multi', true));
+// gulp.task('script:common', (done) => {
+//     gulp.src('./src/multi/common/**/*.js')
+//         .pipe(gulp.dest(targetDir + '/js'))
+//         .on('end', done);
+// })
+
+gulp.task('scripts:common', buildApp.bind(null, ['./src/bin/multiMain.js'], [brfs], targetDir + '/js', true, {appName: 'main.js'}));
+// gulp.task, buildApp.bind(null, ['./src/bin/app.js'], [brfs], targetDir + '/js', true, {appName: 'app.js'}));
+
+gulp.task('scripts:vender', (done) => {
 
     var vender = browserify();
     externals.forEach((ext) => {
@@ -429,6 +436,7 @@ gulp.task('script:vender', (done) => {
         .on('end', done);
 
 });
+
 
 
 gulp.task('less', plumb.bind(null, 'src/bin/app.less', [less, autoprefixer.bind(null, {
@@ -503,57 +511,10 @@ gulp.task('serve', function() {
 // gulp.task('default', ['serve', 'watch']);
 // gulp.task('default', ['lang', 'html']);
 gulp.task('local', function(done) {
-    runSequence(['lang', 'html', 'images', 'other', 'less', 'common:less'], ['multi:scripts'], ['multi:less', 'images'], ['serve'], done);
+    runSequence(['lang', 'html', 'images', 'other', 'less', 'common:less'], ['scripts:common','multi:scripts','scripts:vender'], ['multi:less', 'images'], ['serve'], done);
 });
 
 gulp.task('dev', function() {
     runSequence(['local'], ['watch']);
 });
 
-
-
-
-
-
-
-
-// function doBundleOnline(target, name, dest) {
-//     return target.bundle()
-//         .on('error', function(err) {
-//             var parts = err.message.split('.js: ');
-//             var br = '\n           ';
-//             var msg = parts.length === 2 ? chalk.red('Browserify Error in ') + chalk.red.underline(parts[0] + '.js') + br + parts[1] : chalk.red('Browserify Error:') + br + err.message;
-//             gutil.log(msg);
-//             //throw new error(msg);
-//         })
-//         .pipe(source(name))
-//         .pipe(replace(/([^\w])pc([^\w])/g, '$1R\$R$2'))
-//         .pipe(buffer())
-//         .pipe(uglify())
-//         .on('error', (err) => {
-//             var parts = err.message.split('.js: ');
-//             var br = '\n           ';
-//             var msg = parts.length === 2 ? chalk.red('Browserify Error in ') + chalk.red.underline(parts[0] + '.js') + br + parts[1] : chalk.red('Browserify Error:') + br + err.message;
-//             gutil.log(msg);
-//         })
-//         .pipe(gulp.dest(dest))
-
-// }
-
-// function plumb(src, transforms, dest) {
-//     var stream = gulp.src(src);
-
-//     transforms.forEach(function(transform) {
-//         stream = stream.pipe(transform()).on('error', function(err) {
-//             //console.log(err);
-//             gutil.log(err.message);
-//             //throw new error(msg);
-//         });
-//     });
-
-//     if (dest) {
-//         stream = stream.pipe(gulp.dest(dest));
-//     }
-
-//     return stream.pipe(connect.reload());
-// }

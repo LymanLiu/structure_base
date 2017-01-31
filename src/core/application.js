@@ -23,7 +23,8 @@ class Application {
         this.utils = utils;
 
 
-        this.render();
+        this.init()
+            .render();
     }
 
     define() {
@@ -60,10 +61,11 @@ class Application {
 
     render() {
         injectTapEventPlugin();
-
-        if (!this._appDom.innerHTML) {
+            // console.log(!this._appDom.innerHTML, 33)
+        // if (!this._appDom.innerHTML) {
+            // console.log(Router, 11)
             render(<Router />, this._appDom);
-        }
+        // }
 
         return this;
     }

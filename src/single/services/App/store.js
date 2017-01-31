@@ -1,5 +1,6 @@
 import Reflux from 'reflux';
 import _ from 'underscore';
+import { browserHistory } from 'react-router';
 
 const self = class store {
     constructor(actions, type) {
@@ -29,11 +30,13 @@ const self = class store {
                 .value();
         }
     }
-    onTest(text) {
-        alert(text);
+    onSlider(type,num) {
+        console.log(type,num)
     }
 
-    init() {}
+    init() {
+        // console.log(browserHistory)
+    }
 
 
 
