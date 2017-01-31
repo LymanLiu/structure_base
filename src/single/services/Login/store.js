@@ -33,7 +33,7 @@ const self = class store {
     }
     onSignIn() {
         console.log($$.getApi('signIn'))
-        // browserHistory($$.getUrl(''))
+        browserHistory.push('/981/cn/manager.html/admin')
         // axios.post($$.getApi('signIn'), {username: 'admin', passcode: 'admin123'})
         //     .then((res) => {
         //         console.log(res)
