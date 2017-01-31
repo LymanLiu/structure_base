@@ -1,4 +1,5 @@
 import Reflux from 'reflux';
+import axios from 'axios';
 import _ from 'underscore';
 import { browserHistory } from 'react-router';
 
@@ -30,8 +31,14 @@ const self = class store {
                 .value();
         }
     }
-    onSlider(type,num) {
-        console.log(type,num)
+    onSignIn() {
+        console.log($$.getApi('signIn'))
+        // browserHistory($$.getUrl(''))
+        // axios.post($$.getApi('signIn'), {username: 'admin', passcode: 'admin123'})
+        //     .then((res) => {
+        //         console.log(res)
+        //     })
+        //     .catch((err) => console.log(err))
     }
 
     init() {

@@ -22,4 +22,4 @@ class View extends App {
 
 }
 
-new View();
+window.$$ = new View();

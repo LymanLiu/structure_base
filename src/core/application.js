@@ -59,6 +59,11 @@ class Application {
         return this;
     }
 
+    getApi(name) {
+        return this._config.apiHost() + this.rawAPI[name]();
+    }
+
+
     render() {
         injectTapEventPlugin();
             // console.log(!this._appDom.innerHTML, 33)

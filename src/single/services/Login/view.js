@@ -30,6 +30,9 @@ export default class view extends React.Component {
 
     componentDidMount() {
         this._isMounted = true;
+        document.onkeyup = (e) => {
+            if(e.keyCode === 13) this.actions.signIn();
+        }
     }
     componentWillUnmount() {
         this._isMounted = false;
@@ -39,7 +42,10 @@ export default class view extends React.Component {
     render() {
         return (
             <div className="login-root">
-    			login
+    			<button 
+                    onClick={() => this.actions.signIn()}>
+                    登录
+                </button>
     		</div>
         )
     }
