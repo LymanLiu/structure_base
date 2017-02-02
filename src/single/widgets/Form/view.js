@@ -1,19 +1,23 @@
 import React from 'react';
 
-//react-router;
-import { Link } from 'react-router';
-
-import Store from './store.js';
-import Actions from './actions.js';
-import styles from './style.js';
-
 export default class view extends React.Component {
     constructor(props, context) {
+
+        // static propTypes = {
+        //     onChange: React.propTypes.func,
+        //     inputInitDate: React.propTypes.array,
+        //     textareaInitDate: React.propTypes.array,
+        //     imgInitDate: React.propTypes.array,
+        // }
+        // 
+
         super(props, context);
+
         //init state
         this.state = {
-
+           
         }
+
     }
 
     componentDidMount() {
@@ -25,15 +29,13 @@ export default class view extends React.Component {
 
     render() {
         return (
-            <div className="header-root header">
-    			<div className="choose-lang">
-                    <p id="signOut">退出</p>
-                </div>
+            <div className="Form-root">
+    			
     		</div>
         )
     }
 }
 
 // view.propTypes = {
-//     name: React.propTypes.string
+//     onChange: React.propTypes.func
 // }

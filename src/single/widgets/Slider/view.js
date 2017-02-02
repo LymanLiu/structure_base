@@ -1,12 +1,5 @@
 import React from 'react';
 
-//react-router;
-import { Link } from 'react-router';
-
-import Store from './store.js';
-import Actions from './actions.js';
-import styles from './style.js';
-
 export default class view extends React.Component {
     constructor(props, context) {
 

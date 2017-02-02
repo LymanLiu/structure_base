@@ -1,3 +1,4 @@
+@import '../../../core/less/variables.less';
 body {
 	padding: 0;
 }
@@ -5,4 +6,17 @@ body {
 	box-sizing: border-box;
 	height: 100vh;
 	padding-top: @headerHeight;
+	display: flex;
+}
+.content-box {
+	float: left;
+	// width: e("calc(100% - 230px");
+	flex: 1;
+	margin-left: 1px;
+	box-sizing: border-box;
+	padding: 30px;
+	height: 100%;
+	overflow: auto;
+	background: #fff;
+	box-shadow: 0 0 1px 1px rgba(0,0,0,0.05);
 }

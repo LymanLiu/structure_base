@@ -9,9 +9,6 @@ import Actions from './actions.js';
 import styles from './style.js';
 
 //component
-import Header from '../Header';
-import PostForm from '../PostForm';
-import Slider from '../../widgets/Slider';
 
 export default class view extends React.Component {
     constructor(props, context) {
@@ -41,17 +38,11 @@ export default class view extends React.Component {
 
     render() {
         return (
-            <div className="root">
-    			<Header />
-                <div className="container-body">
-                    <Slider 
-                        onChange={(type, num) => this.actions.slider(type, num)}
-                    />
-                    <div className="content-box">
-                        <PostForm></PostForm>
-                    </div>
+            <div className="header-root header">
+                <div className="choose-lang">
+                    <p className="sign-out" onClick={() => this.actions.signOut()}>退出</p>
                 </div>
-    		</div>
+            </div>
         )
     }
 }

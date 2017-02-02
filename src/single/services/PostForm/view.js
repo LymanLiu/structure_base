@@ -9,9 +9,7 @@ import Actions from './actions.js';
 import styles from './style.js';
 
 //component
-import Header from '../Header';
-import PostForm from '../PostForm';
-import Slider from '../../widgets/Slider';
+import Form from '../../widgets/Form';
 
 export default class view extends React.Component {
     constructor(props, context) {
@@ -27,7 +25,10 @@ export default class view extends React.Component {
 
         //init state
         this.state = {
-
+            title: 'cargo',
+            inputInitDate: [],
+            textareaInitData: [],
+            imgInitData: []
         }
     }
 
@@ -41,17 +42,16 @@ export default class view extends React.Component {
 
     render() {
         return (
-            <div className="root">
-    			<Header />
-                <div className="container-body">
-                    <Slider 
-                        onChange={(type, num) => this.actions.slider(type, num)}
-                    />
-                    <div className="content-box">
-                        <PostForm></PostForm>
-                    </div>
-                </div>
-    		</div>
+            <div className="post-form-root">
+                <Form 
+                    title={this.state.title}
+                    inputInitDate={this.state.inputInitDate}
+                    textareaInitData={this.state.textareaInitData}
+                    imgInitData={this.state.imgInitData}
+                    onchange={(res) => this.actions.result(res)}
+                />
+                <button onClick={(res) => this.actions.result(res)}> 提交 </button>
+            </div>
         )
     }
 }
