@@ -10,7 +10,7 @@ import styles from './style.js';
 
 //component
 import Header from '../Header';
-import newsForm from '../newsForm';
+import NewsForm from '../NewsForm';
 import Slider from '../../widgets/Slider';
 
 export default class view extends React.Component {
@@ -41,14 +41,14 @@ export default class view extends React.Component {
 
     render() {
         return (
-            <div className="root">
+            <div className="app-root">
     			<Header />
                 <div className="container-body">
                     <Slider 
                         onChange={(type, num) => this.actions.slider(type, num)}
                     />
                     <div className="content-box">
-                       <newsForm />
+                       <NewsForm />
                     </div>
                 </div>
     		</div>

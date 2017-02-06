@@ -47,7 +47,6 @@ export default class view extends React.Component {
                 <MyEditor 
                     onChange={(editorState) => {console.log(editorState)}}
                 />
-                <button onClick={(res) => this.actions.result(res)}> 提交 </button>
                 <ReButton
                     label='提交'
                     onClick={(res) => this.actions.result(res)}
