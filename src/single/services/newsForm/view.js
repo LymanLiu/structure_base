@@ -8,8 +8,12 @@ import Store from './store.js';
 import Actions from './actions.js';
 import styles from './style.js';
 
+
+
 //component
-import Form from '../../widgets/Form';
+import ReButton from '../../widgets/ReButton';
+import ReTextField from '../../widgets/ReTextField';
+import MyEditor from '../../widgets/MyEditor';
 
 export default class view extends React.Component {
     constructor(props, context) {
@@ -25,10 +29,7 @@ export default class view extends React.Component {
 
         //init state
         this.state = {
-            title: 'cargo',
-            inputInitDate: [],
-            textareaInitData: [],
-            imgInitData: []
+
         }
     }
 
@@ -40,15 +41,15 @@ export default class view extends React.Component {
         this.removeEvents();
     }
 
+    renderTextInput() {
+
+    }
+
     render() {
         return (
             <div className="post-form-root">
-                <Form 
-                    title={this.state.title}
-                    inputInitDate={this.state.inputInitDate}
-                    textareaInitData={this.state.textareaInitData}
-                    imgInitData={this.state.imgInitData}
-                    onchange={(res) => this.actions.result(res)}
+                <MyEditor 
+                    onChange={(editorState) => {console.log(editorState)}}
                 />
                 <button onClick={(res) => this.actions.result(res)}> 提交 </button>
             </div>

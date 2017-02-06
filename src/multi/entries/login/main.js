@@ -7,8 +7,7 @@ const MultiMain = require('../../../core/MultiMain.js');
 
 //inner
 const Head = require('../../logics/head');
-const Header = require('../../logics/header');
-const Footer = require('../../logics/footer');
+const SignForm = require('../../logics/SignForm');
 
 class Frame extends MultiMain {
 
@@ -22,13 +21,11 @@ class Frame extends MultiMain {
 
     initModel() {
         let head = new Head();
-        let header = new Header();
-        let footer = new Footer();
+        let signForm = new SignForm();
 
         this.model = _.extend(this.model, {
-            head: head.render({ less: 'manager', title: '<$- RUSSIA_TITLE $>' }).html,
-            header: header.render().html,
-            footer: footer.render().html
+            head: head.render({ less: 'login', title: '<$- RUSSIA_TITLE $>' }).html,
+            signForm: signForm.render().html
         });
 
         return this;

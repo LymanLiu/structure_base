@@ -1,0 +1,302 @@
+@import '../../../core/less/variables.less';
+@import '../../logics/SignForm/style.less';
+@font-face {
+    font-family: 'webfont';
+    src: url('//at.alicdn.com/t/clbbpxqlvfclq5mi.eot');
+    /* IE9*/
+    src: url('//at.alicdn.com/t/clbbpxqlvfclq5mi.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('//at.alicdn.com/t/clbbpxqlvfclq5mi.woff') format('woff'), /* chrome、firefox */
+    url('//at.alicdn.com/t/clbbpxqlvfclq5mi.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('//at.alicdn.com/t/clbbpxqlvfclq5mi.svg#思源黑体-极细') format('svg');
+    /* iOS 4.1- */
+}
+
+.web-font {
+    font-family: "webfont" !important;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+.index-body {
+    background: url(/images/multi/entries/index/images/index_bg.jpg) no-repeat center;
+    background-size: cover;
+    .header {
+        padding-right: .8rem;
+        box-sizing: border-box;
+    }
+    .index-container-out {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        overflow: auto;
+        .index-banner {
+            width: 100%;
+            height: 37.5rem;
+            background: -webkit-linear-gradient(69deg, #1392bd 5%, #31a8d0 61%, #50c8c6 100%);
+            position: relative;
+            .banner-container {
+                overflow: hidden;
+                padding-top: 10rem;
+                dt,
+                dd {
+                    float: left;
+                    width: 50%;
+                    p {
+                        padding-right: 17%;
+                    }
+                }
+                dt {
+                    font-size: 2.5rem;
+                    line-height: 4rem;
+                    color: #fff;
+                    button {
+                        width: 9rem;
+                        height: 2.3rem;
+                        text-align: center;
+                        color: #fff;
+                        font-size: .9rem;
+                        border: 1px solid #fff;
+                        &:hover {
+                            color: @mainColor;
+                            background: #fff;
+                        }
+                    }
+                }
+                dd {
+                    height: 26rem;
+                }
+            }
+            #indexCanvas {
+                position: absolute;
+                left: 0;
+                bottom: 0;
+            }
+        }
+        .index-container {
+            padding: 3.75rem 0 5rem;
+            background: #fff;
+            .icon-show-list {
+                overflow: hidden;
+                &>li {
+                    margin-top: 3.5rem;
+                    float: left;
+                    width: 25%;
+                    text-align: center;
+                    font-size: .9rem;
+                    color: @blackColor;
+                    svg {
+                        width: 27%;
+                        height: 80px;
+                    }
+                    img {
+                        display: inline-block;
+                        width: 4rem;
+                        margin-bottom: 1.1rem;
+                    }
+                }
+            }
+            .icon-show-btn {
+                padding-top: 5rem;
+                button {
+                    border: 1px solid @mainColor;
+                    color: @mainColor;
+                    width: 11.5rem;
+                    height: 2.3rem;
+                    font-size: .9rem;
+                    a {
+                        display: block;
+                        line-height: 2.2rem;
+                    }
+                    &:hover {
+                        a {
+                            color: #fff;
+                        }
+                        color: #fff;
+                        background: @mainColor;
+                    }
+                }
+            }
+            &.text-show-container {
+                background: transparent;
+                .two-box {
+                    overflow: hidden;
+                    li {
+                        float: left;
+                        width: 44%;
+                        color: #fff;
+                        line-height: 1.5rem;
+                        .content-title {
+                            color: #fff;
+                            margin-bottom: 1rem;
+                        }
+                        &:last-child {
+                            float: right;
+                        }
+                    }
+                }
+                .text-show-btn {
+                    padding-top: 3.25rem;
+                    button {
+                        width: 7.5rem;
+                        height: 2.3rem;
+                        text-align: center;
+                        color: #fff;
+                        background: @mainColor;
+                        font-size: .9rem;
+                        a {
+                            display: block;
+                            line-height: 2.2rem;
+                            color: #fff;
+                        }
+                        &:hover {
+                            background: @mainColorHover;
+                        }
+                    }
+                }
+            }
+            &.case-show-container {
+                .content-title {
+                    margin-bottom: 1.5rem;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 960px) {
+    .index-body {
+        .index-container-out {
+            .index-banner {
+                .wrapper {
+                    .banner-container {
+                        padding-top: 5rem;
+                        dt {
+                            font-size: 1.3rem;
+                            line-height: 2.5rem;
+                            float: none;
+                            width: 100%;
+                            text-align: center;
+                            p {
+                                padding-right: 0;
+                            }
+                        }
+                        dd {
+                            float: none;
+                            width: 80%;
+                            margin: 0 auto;
+                            margin-top: 1rem;
+                        }
+                    }
+                }
+            }
+            .index-container {
+                .icon-show-list {
+                    &>li {
+                        width: 33.333%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .index-body {
+        .index-container-out {
+            .index-container {
+                &.text-show-container {
+                    .wrapper {
+                        .two-box {
+                            li {
+                                float: none;
+                                width: 100%;
+                                text-align: center;
+                                .content-title {
+                                    margin-bottom: .5rem;
+                                    margin-top: 1rem;
+                                    font-size: 1.2rem;
+                                    line-height: 2.5rem;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .index-body {
+        .index-container-out {
+            .index-container {
+                .icon-show-list {
+                    &>li {
+                        width: 50%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .content-title {
+        font-size: 1.1rem;
+    }
+    .index-body {
+        .index-container-out {
+            .index-banner {
+                .wrapper {
+                    .banner-container {
+                        padding-top: 4rem;
+                        dt {
+                            p {
+                                font-size: 1.1rem;
+                            }
+                            button {
+                                height: 2rem;
+                            }
+                        }
+                        dd {
+                            float: none;
+                            width: 80%;
+                            margin: 0 auto;
+                            margin-top: 1rem;
+                        }
+                    }
+                }
+            }
+            .index-container {
+                .icon-show-list {
+                    &>li {
+                        img {
+                            width: 3rem;
+                        }
+                    }
+                }
+                &.text-show-container {
+                    .wrapper {
+                        .two-box {
+                            li {
+                                .content-title {
+                                    font-size: .9rem;
+                                    line-height: 1.5rem;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

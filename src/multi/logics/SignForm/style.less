@@ -1,0 +1,224 @@
+@import '../../../core/less/variables.less';
+.sign-container {
+    position: fixed;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    border-radius: .2rem;
+    padding: 2rem 4rem;
+    text-align: center;
+    .logo {
+        display: inline-block;
+        width: 8rem;
+    }
+    .tips-success {
+        padding: 1.5rem 0;
+        line-height: 1.5rem;
+        font-size: .8rem;
+    }
+    #activeBtn {
+        color: @mainColor;
+        cursor: pointer;
+        &:hover {
+            color: @mainColorHover;
+        }
+    }
+    .title-box {
+        border-bottom: 1px solid #ddd;
+        margin: .5rem 0 1.8rem;
+        p {
+            width: 11rem;
+            background: #fff;
+            line-height: 1.5rem;
+            position: relative;
+            left: 50%;
+            margin-left: -5.5rem;
+            top: 0.68rem;
+            font-size: .8rem;
+            color: @greyColor;
+            &.seek-back {
+                width: 11rem;
+                margin-left: -5.5rem;
+            }
+        }
+    }
+    input {
+        width: 17rem;
+        height: 2.1rem;
+        line-height: 2.1rem;
+        border: 1px solid #ddd;
+        border-radius: .2rem;
+        display: block;
+        margin-bottom: 1rem;
+        box-sizing: border-box;
+        padding-left: .5rem;
+    }
+    #popupCaptcha {
+        margin-bottom: 1rem;
+    }
+    button {
+        width: 17rem;
+        height: 2.1rem;
+        line-height: 2rem;
+        background: @mainColor;
+        color: #fff;
+        font-size: .8rem;
+        cursor: pointer;
+        &:hover {
+            background: @mainColorHover;
+        }
+        &.disabledStyle {
+            background: @mainColorHover;
+            cursor: wait;
+            &:hover {
+                background: @mainColorHover;
+            }
+            span {
+                display: inline-block;
+                vertical-align: middle;
+                i {
+                    display: inline-block;
+                    font-size: 24px;
+                }
+                i:first-child {
+                    animation: loading 1s 0s linear infinite;
+                }
+                i:nth-child(2) {
+                    animation: loading 1s 0.3s linear infinite;
+                }
+                i:last-child {
+                    animation: loading 1s 0.6s linear infinite;
+                }
+            }
+        }
+    }
+    .password-box {
+        margin-bottom: 1rem;
+        font-size: .7rem;
+        text-align: left;
+        span {
+            &:first-child {
+                position: relative;
+                &:before {
+                    display: inline-block;
+                    content: '';
+                    width: .7rem;
+                    height: .7rem;
+                    border: 1px solid #ccc;
+                    border-radius: 1px;
+                    vertical-align: -.15rem;
+                    margin-right: .3rem;
+                    background: url(/images/multi/logics/SignForm/images/remember_password.png) no-repeat center;
+                    background-size: 0;
+                    transition: background .3s;
+                }
+                // &:after {
+                //     content: '';
+                //     display: inline-block;
+                //     position: absolute;
+                //     background: @mainColor;
+                //     left: .2rem;
+                //     top: 0.19rem;
+                //     border-radius: 50%;
+                //     width: .7rem;
+                //     height: .7rem;
+                //     opacity: 0;
+                //     transform: scale(0);
+                //     transition: transform 0.3s cubic-bezier(0, 0, 0.2, 1), opacity 0.6s cubic-bezier(0, 0, 0.2, 1);
+                // }
+                &.active {
+                    // &:after {
+                    //     opacity: 1;
+                    //     transform: scale(1);
+                    // }
+                    &:before {
+                        background-size: .6rem;
+                    }
+                }
+            }
+            &:last-child {
+                &:hover {
+                    color: @mainColorHover;
+                }
+            }
+        }
+    }
+    .error-box {
+        color: #f81e3d;
+        background: #fff4f4;
+        line-height: 1.5rem;
+        border-radius: .2rem;
+        padding-left: .5rem;
+        box-sizing: border-box;
+        display: none;
+        text-align: left;
+        margin-bottom: 1rem;
+    }
+    .tips-box {
+        margin-top: 1rem;
+        span {
+            color: @mainColor;
+            cursor: pointer;
+        }
+    }
+    .close-btn {
+        right: 0.5rem;
+        top: .5rem;
+    }
+}
+
+.gt_guide_tip {
+    color: @greyColor !important;
+}
+
+@keyframes loading {
+    00% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-4px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .sign-container {
+        padding: 5% 8%;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .sign-container {
+        padding: 5% 8%;
+        width: 90%;
+        box-sizing: border-box;
+        .logo {
+            width: 44%;
+        }
+        .title-box {
+            p {
+                width: 6rem;
+                font-size: .7rem;
+                margin-left: -3rem;
+                &.seek-back {
+                    width: 10rem;
+                    margin-left: -5rem;
+                }
+            }
+        }
+        input {
+            width: 100%;
+            height: 2rem;
+            line-height: 2rem;
+        }
+        button {
+            width: 100%;
+            height: 2rem;
+            font-size: .7rem;
+            cursor: pointer;
+        }
+    }
+}

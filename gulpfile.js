@@ -419,7 +419,7 @@ gulp.task('multi:scripts', function(done) {
 //         .on('end', done);
 // })
 
-gulp.task('scripts:common', buildApp.bind(null, ['./src/bin/multiMain.js'], [brfs], targetDir + '/js', true, {appName: 'main.js'}));
+gulp.task('scripts:common', buildApp.bind(null, ['./src/bin/multiMain.js'], [brfs], targetDir + '/js', true, { appName: 'main.js' }));
 // gulp.task, buildApp.bind(null, ['./src/bin/app.js'], [brfs], targetDir + '/js', true, {appName: 'app.js'}));
 
 gulp.task('scripts:vender', (done) => {
@@ -511,10 +511,9 @@ gulp.task('serve', function() {
 // gulp.task('default', ['serve', 'watch']);
 // gulp.task('default', ['lang', 'html']);
 gulp.task('local', function(done) {
-    runSequence(['lang', 'html', 'images', 'other', 'less', 'common:less'], ['scripts:common','multi:scripts','scripts:vender'], ['multi:less', 'images'], ['serve'], done);
+    runSequence(['lang', 'html', 'images', 'other', 'less', 'common:less'], ['scripts:common', 'multi:scripts', 'scripts:vender'], ['multi:less', 'images'], ['serve'], done);
 });
 
 gulp.task('dev', function() {
     runSequence(['local'], ['watch']);
 });
-

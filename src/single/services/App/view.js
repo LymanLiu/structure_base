@@ -10,7 +10,7 @@ import styles from './style.js';
 
 //component
 import Header from '../Header';
-import PostForm from '../PostForm';
+import newsForm from '../newsForm';
 import Slider from '../../widgets/Slider';
 
 export default class view extends React.Component {
@@ -48,7 +48,7 @@ export default class view extends React.Component {
                         onChange={(type, num) => this.actions.slider(type, num)}
                     />
                     <div className="content-box">
-                        <PostForm></PostForm>
+                        <newsForm></newsForm>
                     </div>
                 </div>
     		</div>

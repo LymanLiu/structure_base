@@ -1,0 +1,52 @@
+@import '../../../core/index.less';
+@arrowSize: 6 / @remScale;
+.orin-sw-reiconbutton-root {
+    position: relative;
+    width: 30 / @remScale;
+    height: 30 / @remScale;
+    color: #fff;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .icon-box {
+        width: 20 / @remScale;
+        height: 20 / @remScale;
+    }
+    .tooltip-box {
+        position: absolute;
+        opacity: 0;
+        transform: scale(0);
+        transition: opacity .3s;
+        &:before {
+            .arrow(top, @arrowSize, rgba(0, 0, 0, @maskAlpha));
+            content: '';
+            position: absolute;
+            left: 50%;
+            margin-left: -@arrowSize;
+            bottom: @arrowSize * -2;
+        }
+        &.top {
+            left: 50%;
+            top: -37 / @remScale;
+            display: block;
+            width: 70 / @remScale;
+            margin-left: -35 / @remScale;
+            text-align: center;
+            background: rgba(0, 0, 0, @maskAlpha);
+            padding: 5 / @remScale 0;
+            border-radius: 4 / @remScale;
+        }
+    }
+    &:hover {
+        .tooltip-box {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+    &.mask {
+        border-radius: 50%;
+        background: rgba(0, 0, 0, @maskAlpha);
+        
+    }
+}

@@ -7,7 +7,7 @@ module.exports = class {
     constructor() {
         this.ejs = ejs;
 
-        this.langs = ['en', 'cn', 'hk'];
+        this.langs = ['en', 'cn'];
         this.mainLanguage = 'en';
 
 

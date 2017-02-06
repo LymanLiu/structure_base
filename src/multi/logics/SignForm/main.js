@@ -6,9 +6,8 @@ const _ = require('underscore');
 const MultiMain = require('../../../core/MultiMain.js');
 
 //inner
-const Head = require('../../logics/head');
-const Header = require('../../logics/header');
-const Footer = require('../../logics/footer');
+
+
 
 class Frame extends MultiMain {
 
@@ -21,17 +20,9 @@ class Frame extends MultiMain {
     }
 
     initModel() {
-        let head = new Head();
-        let header = new Header();
-        let footer = new Footer();
-
         this.model = _.extend(this.model, {
-            head: head.render({ less: 'manager', title: '<$- RUSSIA_TITLE $>' }).html,
-            header: header.render().html,
-            footer: footer.render().html
+            title: '',
         });
-
-        return this;
     }
 
 }
