@@ -13,6 +13,7 @@ import styles from './style.js';
 //component
 import ReButton from '../../widgets/ReButton';
 import ReTextField from '../../widgets/ReTextField';
+import FourButton from '../../widgets/FourButton';
 import MyEditor from '../../widgets/MyEditor';
 
 export default class view extends React.Component {
@@ -43,11 +44,16 @@ export default class view extends React.Component {
 
     render() {
         return (
-            <div className="post-form-root">
-                <MyEditor 
-                    onChange={(editorState) => {console.log(editorState)}}
+            <div className="news-form-root">
+                <FourButton 
+                    onAdd={() => console.log('add')}
+                    onSearch={() => console.log('Search')}
+                    onFixed={() => console.log('Fixed')}
+                    onDelete={() => console.log('Delete')}
                 />
+                <MyEditor />
                 <ReButton
+                    className="news-btn"
                     label='提交'
                     onClick={(res) => this.actions.result(res)}
                 />

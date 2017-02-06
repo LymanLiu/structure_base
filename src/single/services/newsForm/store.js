@@ -32,15 +32,17 @@ const self = class store {
         }
     }
     onResult(res) {
-        // console.log(res, 'form')
+        console.log(UM.getEditor('myEditor').getContent() , 'form')
         // browserHistory.push('/981/cn/manager.html/admin')
-        axios.post($$.getApi('insertBusinessNews'), {title: 'news_test', content: 'xixixix'})
-            .then((res) => {
-                console.log(res)
-            })
-            .catch((err) => console.log(err))
+        // 
+    
+        // axios.post($$.getApi('insertBusinessNews'), {title: 'news_test', content: 'xixixix'})
+        //     .then((res) => {
+        //         console.log(res)
+        //     })
+        //     .catch((err) => console.log(err))
 
-        console.log($$.getApi('insertBusinessNews'));
+        // console.log($$.getApi('insertBusinessNews'));
     }
 
     init() {
