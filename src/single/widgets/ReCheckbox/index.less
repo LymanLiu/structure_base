@@ -1,0 +1,47 @@
+@import '../../../core/index.less';
+.ori-checkbox-root {
+    padding: 0px;
+    margin: 0px;
+    display: inline-block;
+    width: auto;
+    height: 14 / @remScale;
+    cursor: pointer;
+
+    .input {
+        display: inline-block;
+        position: relative;
+        width: 14 / @remScale;
+        height: 14 / @remScale;
+        border: 1 / @remScale solid @borderColor;
+
+        .checked::after {
+            box-sizing: content-box;
+            content: '';
+            border: 2 / @remScale solid @mainColor;
+            border-left: 0;
+            border-top: 0;
+            width: 4 / @remScale;
+            height: 8 / @remScale;
+            position: absolute;
+            top: 0;
+            left: 4 / @remScale;
+            transform: rotate(45deg) scaleY(1);
+        }
+
+        input[type="checkbox"] {
+            opacity: 0;
+            margin: 0;
+            outline: none;
+            position: absolute;
+            left: -999 / @remScale;
+        }
+
+    }
+
+    .label {
+        font-size: 14 / @remScale;
+        line-height: 18 / @remScale;
+        margin-left: 5 / @remScale;
+        vertical-align: top;
+    }
+}

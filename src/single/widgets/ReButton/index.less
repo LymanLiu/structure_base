@@ -1,0 +1,27 @@
+@import '../../../core/index.less';
+.ori-button-root {
+    width: 120 / @remScale;
+    height: 42/ @remScale;
+    line-height: 100%;
+    border-radius: 4/ @remScale;
+    color: #fff;
+    font-size: 16/ @remScale;
+    text-align: center;
+    -webkit-appearance: none;
+    background: @mainColor;
+    span {
+        display: inline-block;
+    }
+    .icon {
+        margin-right: 5 / @remScale;
+    }
+    .icon-before {
+        margin-left: 5 / @remScale;
+    }
+    &:hover {
+        background: @mainColorHover;
+    }
+    &:active {
+        background: radial-gradient(rgba(0, 157, 174, .8), rgba(0, 157, 174, 1))
+    }
+}

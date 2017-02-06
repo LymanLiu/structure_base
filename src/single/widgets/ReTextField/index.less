@@ -1,0 +1,75 @@
+@import '../../../core/index.less';
+.ori-retextfield-root {
+    margin-bottom: 20 / @remScale;
+    .input::-webkit-input-placeholder,
+    .textarea::-webkit-input-placeholder {
+        color: #ccc;
+    }
+    .input:focus,
+    .textarea:focus {
+        // border-color: @mainColor !important;
+        box-shadow: 0 0 0 1px @mainColor;
+    }
+    .label {
+        display: inline-block;
+        vertical-align: middle;
+        width: 100 / @remScale;
+        line-height: 42 / @remScale;
+        text-align: left;
+    }
+    .input,
+    .textarea {
+        display: inline-block;
+        vertical-align: middle;
+        width: 260 / @remScale;
+        height: 42 / @remScale;
+        border: 1px solid @borderColor;
+        border-radius: 4 / @remScale;
+        padding-left: 10 / @remScale;
+    }
+    .textarea {
+        height: 90 / @remScale;
+        padding: 5 / @remScale 10 / @remScale;
+    }
+    .err-text {
+        display: inline-block;
+        vertical-align: middle;
+        margin-bottom: 0;
+        margin-left: 10px;
+        color: @errorColor;
+        line-height: 42px;
+        font-size: 16 / @remScale;
+        svg {
+            vertical-align: -2 / @remScale;
+        }
+    }
+    .success-text {
+        display: inline-block;
+        vertical-align: middle;
+        margin-bottom: 0;
+        margin-left: 10px;
+        color: @successColor;
+        line-height: 42px;
+        font-size: 16 / @remScale;
+        svg {
+            vertical-align: -2 / @remScale;
+        }
+    }
+    &.err-box {
+        .input,
+        .textarea {
+            border-color: @errorColor;
+        }
+        .input:focus,
+        .textarea:focus {
+            box-shadow: none;
+        }
+    }
+    &.full-width {
+        display: flex;
+        .input,
+        .textarea {
+            flex: 1;
+        }
+    }
+}

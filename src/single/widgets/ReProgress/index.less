@@ -1,0 +1,47 @@
+@import '../../../core/index.less';
+.ori-progress-root {
+    padding: 0px;
+    margin: 0px;
+    .progress-wrapper,
+    .progress {
+        height: 6 / @remScale ;
+        border-radius: 6 / @remScale;
+        display: inline-block;
+    }
+    .progress-wrapper {
+        width: 60%;
+        position: relative;
+        background-color: #ddd;
+        overflow: hidden;
+    }
+    .progress {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: @mainColor;
+        background-image: linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
+        background-size: 18 / @remScale 18 / @remScale;
+        &.ind-progress {
+            width: 30%;
+            animation: infinity .8s linear infinite;
+        }
+        & {
+            width: 100%;
+        }
+    }
+    .percentage {
+        font-size: 14 / @remScale;
+        line-height: 14 / @remScale;
+        margin-left: 10 / @remScale;
+        color: @greyColor;
+    }
+}
+
+@keyframes infinity {
+    0% {
+        left: -30%
+    }
+    100% {
+        left: 100%;
+    }
+}
