@@ -3,11 +3,13 @@ import Reflux from 'reflux';
 
 //react-router;
 import { Link } from 'react-router';
+//
+import Pagination from 'rc-pagination';
+import 'rc-pagination/assets/index.css';
 
 import Store from './store.js';
 import Actions from './actions.js';
 import styles from './style.js';
-
 
 
 //component
@@ -15,6 +17,7 @@ import ReButton from '../../widgets/ReButton';
 import ReTextField from '../../widgets/ReTextField';
 import FourButton from '../../widgets/FourButton';
 import MyEditor from '../../widgets/MyEditor';
+// import Pagination from '../Pagination';
 
 export default class view extends React.Component {
     constructor(props, context) {
@@ -30,7 +33,9 @@ export default class view extends React.Component {
 
         //init state
         this.state = {
-
+            totalNumber: 25,
+            pageSize: 10,
+            currentPage: 10
         }
     }
 
@@ -50,6 +55,11 @@ export default class view extends React.Component {
                     onSearch={() => console.log('Search')}
                     onFixed={() => console.log('Fixed')}
                     onDelete={() => console.log('Delete')}
+                />
+                 <Pagination
+                    onChange={(idx) => console.log(idx)}
+                    current={this.state.currentPage} 
+                    total={this.state.totalNumber}
                 />
                 <MyEditor />
                 <ReButton
