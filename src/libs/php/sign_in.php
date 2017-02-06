@@ -17,12 +17,12 @@
         if($row['userflag'] == 1 or $row['userflag'] == 0){
             $_SESSION['username'] = $row['username'];
             $_SESSION['userflag'] = $row['userflag'];
-            echo 1;
+            echo '{code: 1, result: "ok"}';
         }else{
-            echo 0;
+            echo '{code: 403002, result: "user or password error"}';
         }
 
     }else{
-        echo 2;
+        echo '{code: 404001, result: "not user"}';
     }
 ?>

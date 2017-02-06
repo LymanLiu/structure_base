@@ -21,7 +21,7 @@ class View {
         };
         this.url = {
             // individualCms: this._config.urlHost + this._config.urlPrefix(this._config.language) + this.rawURL.individualCms(),
-            // individualCms: location.
+            individualCms: '/manager.html'
         };
 
         this.isRememberPassword = false;
@@ -494,25 +494,25 @@ class View {
             this.showError(errorDom, '请输入密码');
         } else {
             this.loadingEvent(signBtn, 'begin');
+            console.log(this.api.signIn)
             utils.ajax('post')(this.api.signIn, {
                     email: emailIpn.value.toLowerCase(),
                     password: passwordIpn.value
                 })
                 .then((res) => {
                     console.log(res)
-                    console.log(this.api.signIn)
                     return;
                     this.loadingEvent(signBtn, 'done');
-                    this.rememberPassword(emailIpn, passwordIpn);
+                    // this.rememberPassword(emailIpn, passwordIpn);
                     this.signInToIndividualCms(res);
 
                 }, (err) => {
                     this.loadingEvent(signBtn, 'done');
-
+                    console.log(err,'err')
                     if (err.code === 403002 || err.code === 404001) {
                         this.showError(errorDom, '请输入正确的用户名或密码');
-                    } else if (err.code === 403005) {
-                        this.show('active email', { email: emailIpn.value });
+                    } else if (err.code === 404001) {
+                        this.showError(errorDom, '该帐号不存在');
                     } else {
                         this.showError(errorDom, '服务器错误，请稍后再试');
                     }
@@ -579,8 +579,8 @@ class View {
     }
 
     signInToIndividualCms(res) {
-        utils.setCookie('username', res.uid, this.cookieTime);
-        utils.setCookie('email', res.email, this.cookieTime);
+        // utils.setCookie('username', res.uid, this.cookieTime);
+        // utils.setCookie('email', res.email, this.cookieTime);
         window.location.href = this.url.individualCms;
     }
 

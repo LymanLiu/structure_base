@@ -41,10 +41,6 @@ export default class view extends React.Component {
         this.removeEvents();
     }
 
-    renderTextInput() {
-
-    }
-
     render() {
         return (
             <div className="post-form-root">
@@ -52,6 +48,10 @@ export default class view extends React.Component {
                     onChange={(editorState) => {console.log(editorState)}}
                 />
                 <button onClick={(res) => this.actions.result(res)}> 提交 </button>
+                <ReButton
+                    label='提交'
+                    onClick={(res) => this.actions.result(res)}
+                />
             </div>
         )
     }

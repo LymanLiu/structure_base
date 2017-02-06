@@ -48,7 +48,7 @@ export default class view extends React.Component {
                         onChange={(type, num) => this.actions.slider(type, num)}
                     />
                     <div className="content-box">
-                        <newsForm></newsForm>
+                       <newsForm />
                     </div>
                 </div>
     		</div>
