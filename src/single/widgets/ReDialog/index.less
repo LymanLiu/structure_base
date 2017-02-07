@@ -1,0 +1,118 @@
+@import '../../../core/less/variables.less';
+.orin-sw-respinner-root {
+    width: 400 / @remScale;
+    box-sizing: border-box;
+    margin: 0 auto;
+    border-radius: 4 / @remScale;
+    overflow: hidden;
+    background: #fff;
+    .title-box {
+        height: 50 / @remScale;
+        line-height: 50 / @remScale;
+        background: #fff;
+        position: relative;
+        padding-left: 20 / @remScale;
+        font-size: 18 / @remScale;
+        color: @blackColor;
+        .spinner-close {
+            position: absolute;
+            right: 20 / @remScale;
+            top: 0;
+            cursor: pointer;
+        }
+    }
+    .content-box {
+        background: @greyBgColor;
+        min-height: 160 / @remScale;
+        text-align: center;
+        font-size: 16 / @remScale;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: @blackColor;
+        .dialog-box {}
+        .circular-box {
+            .circular {
+                width: 60 / @remScale;
+                height: 60 / @remScale;
+                animation: loading-rotate 2s linear infinite;
+                .path {
+                    animation: loading-dash 1.5s ease-in-out infinite;
+                    stroke-dasharray: 90, 150;
+                    stroke-dashoffset: 0;
+                    stroke-width: 2;
+                    stroke: @mainColor;
+                    stroke-linecap: round;
+                }
+            }
+        }
+        .success-box {
+            .success-icon {
+                color: @mainColor;
+                width: 60 / @remScale;
+                height: 60 / @remScale;
+            }
+            .success-text {}
+        }
+        .error-box {
+            .error-icon {
+                color: @errorColor;
+                width: 60 / @remScale;
+                height: 60 / @remScale;
+            }
+        }
+    }
+    .footer-box {
+        .btn-box {
+            text-align: center;
+            padding: 15 / @remScale 0;
+            background: #fff;
+            .dialog-btn {
+                width: 110 / @remScale;
+                height: 40 / @remScale;
+                &:first-child {
+                    margin-right: 20 / @remScale;
+                    color: @blackColor;
+                    background: @cancelBtnColor;
+                    &:hover {
+                        background: @cancelBtnColorHover;
+                    }
+                }
+                &.disable-style {
+                    background: @disabledBgColor;
+                    color: @disabledFontColor;
+                    &:hover {
+                        background: @disabledBgColor;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.spinner-modal {
+    .orin-sw-remodal-wrapper {
+        background: transparent;
+    }
+}
+
+@keyframes loading-rotate {
+    to {
+        transform: rotate(1turn)
+    }
+}
+
+@keyframes loading-dash {
+    0% {
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0
+    }
+    50% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -40px
+    }
+    to {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -120px
+    }
+}

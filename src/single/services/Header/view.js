@@ -23,9 +23,7 @@ export default class view extends React.Component {
         });
 
         //init state
-        this.state = {
-
-        }
+        this.state = this.store.getState();
     }
 
     componentDidMount() {

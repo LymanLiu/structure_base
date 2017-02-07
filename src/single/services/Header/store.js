@@ -1,11 +1,12 @@
 import Reflux from 'reflux';
-import axios from 'axios';
 import _ from 'underscore';
+import axios from 'axios';
+import RootStore from '../../../core/Store.js';
 import { browserHistory } from 'react-router';
 
-const self = class store {
+const self = class store extends RootStore {
     constructor(actions, type) {
-
+        super();
         if (type != 'self') {
 
             return Reflux.createStore(new self(actions, 'self'));
@@ -21,16 +22,28 @@ const self = class store {
                 .object()
                 .extend({
                     listenables: actions,
+                    emit: this.emit,
+                    eventor: this.eventor,
                     onRemoveEvents: this.onRemoveEvents,
+                    init: this.init,
                     omitAutoRemoveEvents: this.omitAutoRemoveEvents,
                     eventLoger: this.eventLoger,
                     removeListenersToCommunicationEvents: this.removeListenersToCommunicationEvents,
                     listenEvents: this.listenEvents,
-                    init: this.init
+                    setState: this.setState,
+                    registerEventToStoreObserver: this.registerEventToStoreObserver,
+                    addListenersToCommunicationEvent: this.addListenersToCommunicationEvent,
+                    fireCommunicationEvent: this.fireCommunicationEvent,
+                    storeCommunicationEvents: this.storeCommunicationEvents,
+                    storeObserver: this.storeObserver,
+                    listenMulti: this.listenMulti,
+                    strategy: this.strategy
+
                 })
                 .value();
         }
     }
+
     onSignOut() {
         console.log($$.getApi('signOut'))
         // browserHistory.push('/981/cn/manager.html/admin')
@@ -42,7 +55,10 @@ const self = class store {
     }
 
     init() {
-        // console.log(browserHistory)
+
+        this.state = {
+            
+        };
     }
 
 

@@ -1,0 +1,59 @@
+@import '../../../core/less/variables.less';
+.orin-sw-remodal-root{
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    position: fixed;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+    height: 100%;
+    top:0;
+    left:0;
+    z-index: 9999;
+}
+.orin-sw-remodal-mask{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: 0;
+    transition: opacity .5s;
+    z-index:1;
+}
+.orin-sw-remodal-wrapper{
+    position: absolute;
+    left: auto;
+    right: auto;
+    width: auto;
+    height: auto;
+    background-color: #fff;
+    border-radius:3/@remScale;
+    z-index:2;
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity .5s;
+    &.show{
+        opacity: 1;
+    }
+    &.orin-sw-remodal-position{
+        display: block;
+        top:20/@remScale;
+        right:20/@remScale;
+        bottom:20/@remScale;
+        left:20/@remScale;
+    }
+    &.orin-sw-remodal-auto{
+        min-width: 280/@remScale;
+        min-height: 160/@remScale;
+        display:inline-block;
+        left: 50%;
+        top: 50%;
+        transform: translate3d(-50%,-50%,0);
+    }
+    &.orin-sw-remodal-horizontal{
+        display: block;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}

@@ -1,10 +1,12 @@
 import Reflux from 'reflux';
 import _ from 'underscore';
+import axios from 'axios';
 import { browserHistory } from 'react-router';
+import RootStore from '../../../core/Store.js';
 
-const self = class store {
+const self = class store extends RootStore {
     constructor(actions, type) {
-
+        super();
         if (type != 'self') {
 
             return Reflux.createStore(new self(actions, 'self'));
@@ -20,22 +22,34 @@ const self = class store {
                 .object()
                 .extend({
                     listenables: actions,
+                    emit: this.emit,
+                    eventor: this.eventor,
                     onRemoveEvents: this.onRemoveEvents,
+                    init: this.init,
                     omitAutoRemoveEvents: this.omitAutoRemoveEvents,
                     eventLoger: this.eventLoger,
                     removeListenersToCommunicationEvents: this.removeListenersToCommunicationEvents,
                     listenEvents: this.listenEvents,
-                    init: this.init
+                    setState: this.setState,
+                    registerEventToStoreObserver: this.registerEventToStoreObserver,
+                    addListenersToCommunicationEvent: this.addListenersToCommunicationEvent,
+                    fireCommunicationEvent: this.fireCommunicationEvent,
+                    storeCommunicationEvents: this.storeCommunicationEvents,
+                    storeObserver: this.storeObserver,
+                    listenMulti: this.listenMulti,
+                    strategy: this.strategy
+
                 })
                 .value();
         }
     }
-    onSlider(type,num) {
-        console.log(type,num)
-    }
+
 
     init() {
-        // console.log(browserHistory)
+
+        this.state = {
+            
+        };
     }
 
 

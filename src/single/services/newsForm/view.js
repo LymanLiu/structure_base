@@ -5,7 +5,6 @@ import Reflux from 'reflux';
 import { Link } from 'react-router';
 //
 import Pagination from 'rc-pagination';
-import 'rc-pagination/assets/index.css';
 
 import Store from './store.js';
 import Actions from './actions.js';
