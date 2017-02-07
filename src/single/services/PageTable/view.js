@@ -8,7 +8,9 @@ import Store from './store.js';
 import Actions from './actions.js';
 
 //component
-
+import ReTable from '../../widgets/ReTable';
+//
+import Pagination from 'rc-pagination';
 
 
 export default class view extends React.Component {
@@ -55,8 +57,17 @@ export default class view extends React.Component {
     render() {
 
         return (
-            <div className="orin-ss-demo-root" >
-                
+            <div className="orin-ss-pagetable-root" >
+                <ReTable 
+                    tableDate={this.state.tableDate}
+                />
+                <div className="pagination-box">
+                    <Pagination
+                        onChange={(idx) => console.log(idx)}
+                        current={this.state.currentPage} 
+                        total={this.state.totalNumber}
+                    />
+                </div>
             </div>
         );
     }

@@ -52,7 +52,17 @@ const self = class store extends RootStore {
 
     init() {
         this.state = {
-            test: ''
+            totalNumber: 25,
+            pageSize: 10,
+            currentPage: 10,
+            tableDate: {
+                th: ['title1', 'title2','title3'],
+                td: [
+                    ['conten1','conten1','conten1'],
+                    ['conten2','conten2','conten2'],
+                    ['conten3','conten3','conten3']
+                ] 
+            }
         };
     }
 

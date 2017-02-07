@@ -1,7 +1,7 @@
 import Reflux from 'reflux';
 import _ from 'underscore';
-import axios from 'axios';
-import RootStore from '../../../core/Store.js';
+import axios from 'prv_modules/axios';
+import RootStore from '../../../../core/Store.js';
 const self = class store extends RootStore {
     constructor(actions, type) {
         super();
