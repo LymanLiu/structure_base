@@ -31,4 +31,5 @@ class View extends App {
 
 }
 
-window.$$ = new View();
+window.$$ = global.$$ = new View();
+$$.render();

@@ -23,8 +23,7 @@ class Application {
         this.utils = utils;
 
 
-        this.init()
-            .render();
+        this.init();
     }
 
     define() {

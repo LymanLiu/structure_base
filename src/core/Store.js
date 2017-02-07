@@ -1,5 +1,8 @@
 import _ from 'underscore';
 import storeCommunicationEvents from './storeCommunicationEvents.js';
+// import App from './application.js';
+// // var $$ = new App()
+// console.log(App)
 export default class Store {
 
     constructor() {
