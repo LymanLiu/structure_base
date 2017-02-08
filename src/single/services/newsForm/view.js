@@ -16,7 +16,7 @@ import ReButton from '../../widgets/ReButton';
 import ReTextField from '../../widgets/ReTextField';
 import FourButton from '../../widgets/FourButton';
 import MyEditor from '../../widgets/MyEditor';
-// import Pagination from '../Pagination';
+import ReDialog from '../../widgets/ReDialog';
 
 export default class view extends React.Component {
     constructor(props, context) {
@@ -31,11 +31,7 @@ export default class view extends React.Component {
         });
 
         //init state
-        this.state = {
-            totalNumber: 25,
-            pageSize: 10,
-            currentPage: 10
-        }
+        this.state = this.state.getSate();
     }
 
     componentDidMount() {
@@ -46,12 +42,14 @@ export default class view extends React.Component {
         this.removeEvents();
     }
 
+
+
     render() {
         return (
             <div className="news-form-root">
                 <FourButton 
                     onAdd={() => console.log('add')}
-                    onSearch={() => console.log('Search')}
+                    isShowSearch={false}
                     onFixed={() => console.log('Fixed')}
                     onDelete={() => console.log('Delete')}
                 />
@@ -66,6 +64,17 @@ export default class view extends React.Component {
                     label='提交'
                     onClick={(res) => this.actions.result(res)}
                 />
+
+                <ReDialog
+                    title={ this.state.dialogTitle }
+                    isShow={this.state.dialogShow}
+                    dialogPending={this.state.dialogPending}
+                    onCancel={() => this.actions.dialogClose()}
+                    sureBtnDisabled={this.state.sureBtnDisabled}
+                    className='model-edit-dialog'
+                > 
+                    { this.renderReDialogContent() }
+                </ReDialog>
             </div>
         )
     }

@@ -1,9 +1,7 @@
 import Reflux from 'reflux';
 import _ from 'underscore';
-import axios from 'axios';
-import { browserHistory } from 'react-router';
+import axios from 'prv_modules/axios';
 import RootStore from '../../../core/Store.js';
-
 const self = class store extends RootStore {
     constructor(actions, type) {
         super();
@@ -31,6 +29,7 @@ const self = class store extends RootStore {
                     removeListenersToCommunicationEvents: this.removeListenersToCommunicationEvents,
                     listenEvents: this.listenEvents,
                     setState: this.setState,
+                    getState: this.getState,
                     registerEventToStoreObserver: this.registerEventToStoreObserver,
                     addListenersToCommunicationEvent: this.addListenersToCommunicationEvent,
                     fireCommunicationEvent: this.fireCommunicationEvent,
@@ -44,11 +43,16 @@ const self = class store extends RootStore {
         }
     }
 
+    onTest(text) {
+        alert(text);
+        this.setState({
+            test: 'run a reflux workflow'
+        });
+    }
 
     init() {
-
         this.state = {
-
+            test: ''
         };
     }
 

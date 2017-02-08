@@ -1,5 +1,7 @@
 import _ from 'underscore';
 import storeCommunicationEvents from './storeCommunicationEvents.js';
+import appliaction from './appliaction.js';
+
 export default class Store {
 
     constructor() {

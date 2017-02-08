@@ -45,10 +45,10 @@ const self = class store extends RootStore {
     }
 
     onResult(res) {
-        console.log(UM.getEditor('myEditor').getContent() , 'form')
-        // browserHistory.push('/981/cn/manager.html/admin')
-        // 
-    
+        console.log(UM.getEditor('myEditor').getContent(), 'form')
+            // browserHistory.push('/981/cn/manager.html/admin')
+            // 
+
         // axios.post($$.getApi('insertBusinessNews'), {title: 'news_test', content: 'xixixix'})
         //     .then((res) => {
         //         console.log(res)
@@ -58,10 +58,20 @@ const self = class store extends RootStore {
         // console.log($$.getApi('insertBusinessNews'));
     }
 
+    onDialogClose() {
+        this.setState({ dialogShow: false });
+    }
+
     init() {
 
         this.state = {
-            
+            totalNumber: 20,
+            pageSize: 10,
+            currentPage: 5,
+            dialogTitle: 'dialog',
+            dialogShow: false,
+            dialogPending: 'dialog',
+            sureBtnDisabled: false,
         };
     }
 

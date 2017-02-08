@@ -12,6 +12,7 @@ import semantic from './semantic.js';
 import utils from "./utils.js";
 import API from './api.js';
 import URL from './url.js';
+import Eventor from './Eventor.js';
 
 
 class Application {
@@ -48,6 +49,7 @@ class Application {
         this.gState = {};
         this.observers = {};
         this.storeObserver = {};
+        this.eventor = {};
         this._config = config;
         this._routeParams = {};
 
@@ -56,6 +58,13 @@ class Application {
         this.rawAPI = API;
         this.rawURL = URL;
 
+        this.initEventor();
+
+        return this;
+    }
+
+    initEventor() {
+        this.eventor = new Eventor();
         return this;
     }
 
@@ -63,13 +72,37 @@ class Application {
         return this._config.apiHost() + this.rawAPI[name]();
     }
 
+    listen(name, func) {
+
+        if (this.observers[name] && !(~this.observers[name].indexOf(func))) {
+            this.observers[name].push(func);
+        } else {
+            this.observers[name] = [func];
+        }
+    }
+
+    unlisten(name, func) {
+        var index = this.observers[name].indexOf(func);
+        if (this.observers[name] && (~index)) {
+            this.observers[name].slice(index, 1);
+        }
+    }
+
+    fire(name, ...rest) {
+        if (this.storeObserver[name]) {
+            this.storeObserver[name].forEach(fun => fun(...rest));
+        } else {
+            throw Error(name + ': this event is not exsited');
+        }
+    }
+
 
     render() {
         injectTapEventPlugin();
-            // console.log(!this._appDom.innerHTML, 33)
+        // console.log(!this._appDom.innerHTML, 33)
         // if (!this._appDom.innerHTML) {
-            // console.log(Router, 11)
-            render(<Router />, this._appDom);
+        // console.log(Router, 11)
+        render(<Router />, this._appDom);
         // }
 
         return this;
