@@ -31,6 +31,7 @@ const self = class store extends RootStore {
                     removeListenersToCommunicationEvents: this.removeListenersToCommunicationEvents,
                     listenEvents: this.listenEvents,
                     setState: this.setState,
+                    getState: this.getState,
                     registerEventToStoreObserver: this.registerEventToStoreObserver,
                     addListenersToCommunicationEvent: this.addListenersToCommunicationEvent,
                     fireCommunicationEvent: this.fireCommunicationEvent,

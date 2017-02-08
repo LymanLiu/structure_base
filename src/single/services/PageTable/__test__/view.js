@@ -8,7 +8,7 @@ import Store from './store.js';
 import Actions from './actions.js';
 
 //component
-
+import Demo from '../index';
 
 
 export default class view extends React.Component {
@@ -19,7 +19,6 @@ export default class view extends React.Component {
     static defaultProps = {
         //name: 'component name'
     };
-
 
     constructor(props, context) {
 
@@ -55,8 +54,8 @@ export default class view extends React.Component {
     render() {
 
         return (
-            <div className="orin-ss-demo-root" >
-                
+            <div className="orin-ss-demo-root-test" >
+                <Demo/>
             </div>
         );
     }

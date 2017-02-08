@@ -1,9 +1,7 @@
 import Reflux from 'reflux';
 import _ from 'underscore';
-import axios from 'axios';
-import { browserHistory } from 'react-router';
-import RootStore from '../../../core/Store.js';
-
+import axios from 'prv_modules/axios';
+import RootStore from '../../../../core/Store.js';
 const self = class store extends RootStore {
     constructor(actions, type) {
         super();
@@ -45,11 +43,16 @@ const self = class store extends RootStore {
         }
     }
 
+    onTest(text) {
+        alert(text);
+        this.setState({
+            test: 'run a reflux workflow'
+        });
+    }
 
     init() {
-
         this.state = {
-
+            test: ''
         };
     }
 

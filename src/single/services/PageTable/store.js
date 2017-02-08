@@ -1,9 +1,7 @@
 import Reflux from 'reflux';
 import _ from 'underscore';
 import axios from 'axios';
-import { browserHistory } from 'react-router';
 import RootStore from '../../../core/Store.js';
-
 const self = class store extends RootStore {
     constructor(actions, type) {
         super();
@@ -45,11 +43,26 @@ const self = class store extends RootStore {
         }
     }
 
+    onTest(text) {
+        alert(text);
+        this.setState({
+            test: 'run a reflux workflow'
+        });
+    }
 
     init() {
-
         this.state = {
-
+            totalNumber: 25,
+            pageSize: 10,
+            currentPage: 10,
+            tableDate: {
+                th: ['title1', 'title2','title3'],
+                td: [
+                    ['conten1','conten1','conten1'],
+                    ['conten2','conten2','conten2'],
+                    ['conten3','conten3','conten3']
+                ] 
+            }
         };
     }
 

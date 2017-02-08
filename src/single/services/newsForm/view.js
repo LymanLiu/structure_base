@@ -3,8 +3,6 @@ import Reflux from 'reflux';
 
 //react-router;
 import { Link } from 'react-router';
-//
-import Pagination from 'rc-pagination';
 
 import Store from './store.js';
 import Actions from './actions.js';
@@ -17,6 +15,7 @@ import ReTextField from '../../widgets/ReTextField';
 import FourButton from '../../widgets/FourButton';
 import MyEditor from '../../widgets/MyEditor';
 import ReDialog from '../../widgets/ReDialog';
+import PageTable from '../PageTable';
 
 export default class view extends React.Component {
     constructor(props, context) {
@@ -53,11 +52,8 @@ export default class view extends React.Component {
                     onFixed={() => console.log('Fixed')}
                     onDelete={() => console.log('Delete')}
                 />
-                 <Pagination
-                    onChange={(idx) => console.log(idx)}
-                    current={this.state.currentPage} 
-                    total={this.state.totalNumber}
-                />
+
+               <PageTable />
                 <MyEditor />
                 <ReButton
                     className="news-btn"
