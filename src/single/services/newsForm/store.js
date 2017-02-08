@@ -59,6 +59,14 @@ const self = class store extends RootStore {
         // console.log($$.getApi('insertBusinessNews'));
     }
 
+    onForbtn(pending) {
+        this.setState({
+            pending,
+            dialogShow: true
+        });
+
+    }
+
     onDialogClose() {
         this.setState({ dialogShow: false });
     }
@@ -73,6 +81,9 @@ const self = class store extends RootStore {
             dialogShow: false,
             dialogPending: 'dialog',
             sureBtnDisabled: false,
+            title:'',
+            titleErrorText:'',
+            pending: 'add'
         };
     }
 

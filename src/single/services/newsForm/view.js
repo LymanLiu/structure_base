@@ -30,7 +30,7 @@ export default class view extends React.Component {
         });
 
         //init state
-        this.state = this.state.getSate();
+        this.state = this.store.getState();
     }
 
     componentDidMount() {
@@ -41,20 +41,42 @@ export default class view extends React.Component {
         this.removeEvents();
     }
 
+    renderReDialogContent() {
 
+        if(this.state.pending === 'add') {
+            return this.renderAddContent();
+        }
+    }
+
+    renderAddContent() {
+        return (
+            <div className="add-content">
+                 <ReTextField 
+                    className="edit-textfiled"
+                    label="标题"
+                    placeholder="请输入标题"
+                    value={this.state.title}
+                    onChange={(e)=>this.actions.setVal('name',e.target.value)}
+                    errorText={this.state.titleErrorText}
+                />
+                <p className="mb10">新闻内容</p>
+                <MyEditor />
+            </div>
+        )
+    }
 
     render() {
         return (
             <div className="news-form-root">
                 <FourButton 
-                    onAdd={() => console.log('add')}
+                    onAdd={() => this.actions.forbtn('add')}
                     isShowSearch={false}
                     onFixed={() => console.log('Fixed')}
                     onDelete={() => console.log('Delete')}
                 />
 
                <PageTable />
-                <MyEditor />
+                
                 <ReButton
                     className="news-btn"
                     label='提交'
@@ -69,7 +91,9 @@ export default class view extends React.Component {
                     sureBtnDisabled={this.state.sureBtnDisabled}
                     className='model-edit-dialog'
                 > 
-                    { this.renderReDialogContent() }
+                    <div className="edit-container">
+                        { this.renderReDialogContent() }
+                    </div>
                 </ReDialog>
             </div>
         )

@@ -217,13 +217,13 @@ export default class view extends React.Component {
                 <div className="btn-box">
                     <ReButton 
                         className="dialog-btn"
-                        label={$$.LN.CANCEL}
+                        label="取消"
                         onClick={(e) =>{ this.props.onCancel && this.props.onCancel(e) } }
                    />
                    <ReButton 
                         className={this.props.sureBtnDisabled ? "dialog-btn disable-style" : "dialog-btn"}
                         disabled={this.props.sureBtnDisabled}
-                        label={$$.LN.OK}
+                        label="确定"
                         onClick={(e) =>{ this.props.onConfirm && this.props.onConfirm(e) } }
                    />
                 </div>
