@@ -1,6 +1,6 @@
 import Reflux from 'reflux';
 import _ from 'underscore';
-import axios from 'axios';
+// import axios from 'axios';
 import RootStore from '../../../core/Store.js';
 import { browserHistory } from 'react-router';
 
@@ -47,18 +47,18 @@ const self = class store extends RootStore {
 
     onSignOut() {
         console.log($$.getApi('signOut'))
-        // browserHistory.push('/981/cn/manager.html/admin')
-        // axios.post($$.getApi('signIn'), {username: 'admin', passcode: 'admin123'})
-        //     .then((res) => {
-        //         console.log(res)
-        //     })
-        //     .catch((err) => console.log(err))
+            // browserHistory.push('/981/cn/manager.html/admin')
+            // axios.post($$.getApi('signIn'), {username: 'admin', passcode: 'admin123'})
+            //     .then((res) => {
+            //         console.log(res)
+            //     })
+            //     .catch((err) => console.log(err))
     }
 
     init() {
 
         this.state = {
-            
+
         };
     }
 

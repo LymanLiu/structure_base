@@ -15,7 +15,8 @@ import Pagination from 'rc-pagination';
 
 export default class view extends React.Component {
     static propTypes = {
-        //name: React.PropTypes.string,
+        api: React.PropTypes.string.isRequired,
+        thData: React.PropTypes.object.isRequired,
     };
 
     static defaultProps = {
@@ -46,7 +47,7 @@ export default class view extends React.Component {
     }
 
     componentDidMount() {
-
+        this.actions.initData(this.props);
     }
 
     componentWillUnmount() {
@@ -59,13 +60,14 @@ export default class view extends React.Component {
         return (
             <div className="orin-ss-pagetable-root" >
                 <ReTable 
-                    tableDate={this.state.tableDate}
+                    thData={this.props.thData.en}
+                    tdData={this.state.tdData}
                 />
                 <div className="pagination-box">
                     <Pagination
-                        onChange={(idx) => console.log(idx)}
+                        onChange={(idx) => this.actions.pagination(idx)}
                         current={this.state.currentPage} 
-                        total={this.state.totalNumber}
+                        total={this.state.total}
                     />
                 </div>
             </div>

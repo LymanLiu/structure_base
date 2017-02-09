@@ -31,6 +31,11 @@ export default class view extends React.Component {
 
         //init state
         this.state = this.store.getState();
+
+        this.thData = {
+            en: ['title', 'content', 'time'],
+            cn: ['标题', '文章内容', '发布时间']
+        };
     }
 
     componentDidMount() {
@@ -43,7 +48,7 @@ export default class view extends React.Component {
 
     renderReDialogContent() {
 
-        if(this.state.pending === 'add') {
+        if (this.state.pending === 'add') {
             return this.renderAddContent();
         }
     }
@@ -55,8 +60,8 @@ export default class view extends React.Component {
                     className="edit-textfiled"
                     label="标题"
                     placeholder="请输入标题"
-                    value={this.state.title}
-                    onChange={(e)=>this.actions.setVal('name',e.target.value)}
+                    value={this.state.newsTitle}
+                    onChange={(e)=>this.actions.setVal('newsTitle',e.target.value)}
                     errorText={this.state.titleErrorText}
                 />
                 <p className="mb10">新闻内容</p>
@@ -71,23 +76,23 @@ export default class view extends React.Component {
                 <FourButton 
                     onAdd={() => this.actions.forbtn('add')}
                     isShowSearch={false}
+                    isShowFixed={false}
+                    isShowDelete={false}
                     onFixed={() => console.log('Fixed')}
                     onDelete={() => console.log('Delete')}
                 />
 
-               <PageTable />
-                
-                <ReButton
-                    className="news-btn"
-                    label='提交'
-                    onClick={(res) => this.actions.result(res)}
-                />
+               <PageTable 
+                    api={$$.getApi('getBusinessNews')}
+                    thData={this.thData}
+               />
 
                 <ReDialog
                     title={ this.state.dialogTitle }
                     isShow={this.state.dialogShow}
                     dialogPending={this.state.dialogPending}
                     onCancel={() => this.actions.dialogClose()}
+                    onConfirm={() => this.actions.result()}
                     sureBtnDisabled={this.state.sureBtnDisabled}
                     className='model-edit-dialog'
                 > 

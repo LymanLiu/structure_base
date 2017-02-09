@@ -1,6 +1,6 @@
 import Reflux from 'reflux';
 import _ from 'underscore';
-import axios from 'axios';
+// import axios from 'axios';
 import { browserHistory } from 'react-router';
 import RootStore from '../../../core/Store.js';
 

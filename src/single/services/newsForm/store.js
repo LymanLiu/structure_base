@@ -1,6 +1,6 @@
 import Reflux from 'reflux';
 import _ from 'underscore';
-import axios from 'axios';
+// import axios from 'axios';
 import RootStore from '../../../core/Store.js';
 import { browserHistory } from 'react-router';
 
@@ -47,8 +47,22 @@ const self = class store extends RootStore {
 
     onResult(res) {
         console.log(UM.getEditor('myEditor').getContent(), 'form')
-            // browserHistory.push('/981/cn/manager.html/admin')
-            // 
+
+        console.log(this.state.newsTitle, 't');
+
+        if (this.state.newsTitle === '') {
+            this.setState({ titleErrorText: '请输入标题' });
+        } else {
+            this.setState({ titleErrorText: '' });
+            var params = {
+                title: this.state.newsTitle,
+                content: UM.getEditor('myEditor').getContent()
+            }
+            $.post($$.getApi('insertBusinessNews'), params, (res) => {
+                console.log(res, 'iii')
+            })
+        }
+
 
         // axios.post($$.getApi('insertBusinessNews'), {title: 'news_test', content: 'xixixix'})
         //     .then((res) => {
@@ -57,6 +71,12 @@ const self = class store extends RootStore {
         //     .catch((err) => console.log(err))
 
         // console.log($$.getApi('insertBusinessNews'));
+    }
+
+    onSetVal(k, v) {
+        this.setState({
+            [k]: v
+        })
     }
 
     onForbtn(pending) {
@@ -74,15 +94,12 @@ const self = class store extends RootStore {
     init() {
 
         this.state = {
-            totalNumber: 20,
-            pageSize: 10,
-            currentPage: 5,
-            dialogTitle: 'dialog',
+            dialogTitle: '添加新闻',
             dialogShow: false,
             dialogPending: 'dialog',
             sureBtnDisabled: false,
-            title:'',
-            titleErrorText:'',
+            newsTitle: '',
+            titleErrorText: '',
             pending: 'add'
         };
     }

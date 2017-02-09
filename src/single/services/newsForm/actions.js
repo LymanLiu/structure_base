@@ -6,7 +6,8 @@ const self = class Actions {
             'removeEvents',
             'result',
             'dialogClose',
-            'forbtn'
+            'forbtn',
+            'setVal'
         ];
         return Reflux.createActions(actions);
     }

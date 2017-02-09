@@ -61,9 +61,11 @@
     "gulp-watch": "^4.3.11",
     "gutil": "^1.6.4",
     "run-sequence": "^1.2.2",
+    "stream-combiner2": "^1.1.1",
     "through2": "^2.0.3",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.7.0",
-    "xtend": "^4.0.1"
+    "xtend": "^4.0.1",
+    "yargs": "^6.6.0"
   }
 }

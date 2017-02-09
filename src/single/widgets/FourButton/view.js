@@ -11,6 +11,8 @@ export default class view extends React.Component {
         onFixed: React.PropTypes.func,
         onDelete: React.PropTypes.func,
         isShowSearch: React.PropTypes.bool,
+        isShowFixed: React.PropTypes.bool,
+        isShowDelete: React.PropTypes.bool,
     };
 
     static defaultProps = {
@@ -18,7 +20,9 @@ export default class view extends React.Component {
         onSearch: () => {},
         onFixed: () => {},
         onDelete: () => {},
-        isShowSearch: true
+        isShowSearch: true,
+        isShowFixed: true,
+        isShowDelete: true,
     }
 
     //icon 参考 libs/font/demo_symbol.html
@@ -34,20 +38,12 @@ export default class view extends React.Component {
         };
 
         this.list = [{
-                'label': '增加',
-                'action': 'Add',
-            }, {
-                'label': '查询',
-                'action': 'Search',
-            }, {
-                'label': '修改',
-                'action': 'Fixed',
-            }, {
-                'label': '删除',
-                'action': 'Delete',
-            },
-
-        ]
+            'label': '增加',
+            'action': 'Add',
+        }];
+        this.props.isShowSearch && this.list.push({ 'label': '查询', 'action': 'Search' });
+        this.props.isShowFixed && this.list.push({ 'label': '修改', 'action': 'Fixed' });
+        this.props.isShowDelete && this.list.push({ 'label': '删除', 'action': 'Delete' });
     }
     componentWillMount() {
         this._isMounted = true;
@@ -64,28 +60,15 @@ export default class view extends React.Component {
 
     renderList() {
         return this.list.map((item, i) => {
-            if (i === 1) {
-                if (this.props.isShowSearch) {
-                    return (
-                        <ReButton
-                            key={'four' + i}
-                            label={item.label}
-                            onClick={() => this.props['on'+item.action]() }
-                        />
-                    )
 
-                } else {
-                    return null;
-                }
-            } else {
-                return (
-                    <ReButton
-                        key={'four' + i}
-                        label={item.label}
-                        onClick={() => this.props['on'+item.action]() }
-                    />
-                )
-            }
+            return (
+                <ReButton
+                    key={'four' + i}
+                    label={item.label}
+                    onClick={() => this.props['on'+item.action]() }
+                />
+            )
+
         })
     }
 

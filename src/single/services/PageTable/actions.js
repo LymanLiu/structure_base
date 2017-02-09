@@ -4,7 +4,8 @@ const self = class Actions {
     constructor() {
         var actions = [
             'removeEvents', //do not delete;
-            'test'
+            'pagination',
+            'initData'
         ];
         return Reflux.createActions(actions);
     }

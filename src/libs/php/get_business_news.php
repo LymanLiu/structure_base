@@ -6,12 +6,11 @@
 	mysql_query("SET NAMES UTF8");
 	
 	$page = intval($_GET['page']); //当前页 
+	$pageSize = intval($_GET['pageSize']); //每页显示数 
   
 	$result = mysql_query("SELECT * FROM news_business"); 
 	$total = mysql_num_rows($result);//总记录数 
-	$pageSize = 6; //每页显示数 
 	$totalPage = ceil($total/$pageSize); //总页数 
-	  
 	$startPage = ($page - 1)*$pageSize; //开始记录 
 	//构造数组 
 	$arr['total'] = $total; 

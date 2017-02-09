@@ -16,6 +16,7 @@ var replace = require('gulp-replace');
 var buffer = require('gulp-buffer');
 var uglify = require('gulp-uglify');
 var less = require('gulp-less');
+var combiner = require('stream-combiner2');
 var autoprefixer = require('gulp-autoprefixer');
 var connect = require('gulp-connect');
 var watch = require('gulp-watch');
@@ -29,6 +30,9 @@ var path = require('path');
 var browsersync = require('browser-sync').create();
 //browserify
 var lessPicker = require('./build/modules/lessPicker.js');
+var argv = require('yargs')
+    .alias('p', 'pass')
+    .argv;
 
 var externals = [{
     require: 'axios',
@@ -294,26 +298,39 @@ gulp.task('html', function() {
 });
 
 gulp.task('multi:less', function(done) {
-    var pipe = gulp.src('./src/multi/entries/*/style.less')
-        .pipe(less())
-        .on('error', (err) => {
-            var parts = err.message.split('.js: ');
-            var br = '\n           ';
-            var msg = parts.length === 2 ? chalk.red('MultiLess Error in ') + chalk.red.underline(parts[0] + '.less') + br + parts[1] : chalk.red('MultiLess Error:') + br + err.message;
-            gutil.log(msg);
-        })
-        .pipe(autoprefixer({
-            browsers: ['last 2 versions'],
-            cascade: false
-        }))
 
-    if (!isDev) {
-        pipe.pipe(cleanCss())
+    let srcs = ['./src/multi/entries/*/style.less'];
+
+    if (isDev) {
+
+        let files = glob.sync('./src/multi/entries/*/style.less');
+        let fnames = files.map(f => f.split('/').splice(-2, 1)[0]).forEach(fname => {
+            if (argv.pass && !!~argv.pass.split(',').indexOf(fname)) {
+                srcs.push(`!./src/multi/entries/${fname}/style.less`);
+            }
+        });
+
+    } else {
+        srcs.push(`!./src/multi/entries/single_debug/style.less`);
     }
+    //console.log(srcs);
 
-    pipe.pipe(gulp.dest(targetDir + 'css/multi/'))
-        .pipe(connect.reload())
-        .on('end', done);
+    var combined = combiner.obj([
+        gulp.src(srcs),
+        less(),
+        autoprefixer({
+            browsers: ['last 6 versions'],
+            cascade: false
+        }),
+        isDev ? null : cleanCss(),
+        gulp.dest(targetDir + 'css/multi/'),
+    ].filter(v => v));
+
+    // any errors in the above streams will get caught
+    // by this listener, instead of being thrown:
+    combined.on('error', console.error.bind(console));
+    combined.on('end', () => {}); //done have been call when return combined;
+    return combined;
 });
 
 gulp.task('multi:scripts', function(done) {

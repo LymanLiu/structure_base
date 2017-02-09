@@ -10,7 +10,8 @@ import ReCheckbox from '../ReCheckbox'
 export default class view extends React.Component {
     static propTypes = {
         //name: React.PropTypes.string,
-        tableDate: React.PropTypes.object.isRequired,
+        tdData: React.PropTypes.array.isRequired,
+        thData: React.PropTypes.array.isRequired,
         onChange: React.PropTypes.func
     };
 
@@ -42,19 +43,20 @@ export default class view extends React.Component {
     }
 
     checked(id, e, b) {
-       console.log(id, e, b)
-       if(b) {
-            if(id === 999) {
-                this.state({checkArr: []})
+        console.log(id, e, b)
+        if (b) {
+            if (id === 999) {
+                this.state({ checkArr: [] })
             }
-       } else {
+        } else {
 
-       }
+        }
     }
 
     render() {
 
-        var {th, td} = this.props.tableDate
+        var td = this.props.tdData;
+        var th = this.props.thData;
 
         return (
             <div className="orin-sw-retable-root" >

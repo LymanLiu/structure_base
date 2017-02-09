@@ -1,6 +1,6 @@
 import Reflux from 'reflux';
 import _ from 'underscore';
-import axios from 'axios';
+// import axios from 'axios';
 import RootStore from '../../../core/Store.js';
 const self = class store extends RootStore {
     constructor(actions, type) {
@@ -36,33 +36,67 @@ const self = class store extends RootStore {
                     storeCommunicationEvents: this.storeCommunicationEvents,
                     storeObserver: this.storeObserver,
                     listenMulti: this.listenMulti,
-                    strategy: this.strategy
+                    strategy: this.strategy,
+                    getData: this.getData
 
                 })
                 .value();
         }
     }
 
-    onTest(text) {
-        alert(text);
+    onInitData(props) {
+        this.api = props.api
+        this.thData = props.thData.en
+        this.getData();
+    }
+
+    onPagination(currentPage) {
         this.setState({
-            test: 'run a reflux workflow'
+            currentPage
         });
+        this.getData();
+
+    }
+
+    getData() {
+        // axios.get(this.api, { page })
+        //     .then(res => {
+        //         console.log(res, 1)
+        //     }).catch(err => {
+        //         console.log(err, 'err')
+        //     })
+
+        $.get(this.api, { page: this.state.currentPage, }, (res) => {
+            res = JSON.parse(res);
+
+            var { total, list } = res;
+            var tdData = [];
+            list.forEach(obj => {
+                var _td = [];
+                this.thData.forEach(k => {
+                    _td.push(obj[k]);
+                });
+                tdData.push(_td);
+            });
+
+            this.setState({
+                total,
+                tdData
+            });
+        })
     }
 
     init() {
+
+
+
         this.state = {
-            totalNumber: 25,
-            pageSize: 10,
-            currentPage: 10,
-            tableDate: {
-                th: ['title1', 'title2','title3'],
-                td: [
-                    ['conten1','conten1','conten1'],
-                    ['conten2','conten2','conten2'],
-                    ['conten3','conten3','conten3']
-                ] 
-            }
+            total: 1,
+            pageSize: 1,
+            currentPage: 1,
+            tdData: [
+                []
+            ]
         };
     }
 
