@@ -14,13 +14,18 @@ export default class view extends React.Component {
         this.state = {
             list: [
                 {
-                    title: '新闻',
-                    type:'news1',
+                    title: '订单',
+                    type:'order',
                     isActive: true
                 },
                 {
-                    title: '新闻2',
-                    type: 'news2',
+                    title: '行业资讯',
+                    type:'business',
+                    isActive: false
+                },
+                {
+                    title: '公司新闻',
+                    type: 'company',
                     isActive: false
                 }
             ]
@@ -35,14 +40,14 @@ export default class view extends React.Component {
         this._isMounted = false;
     }
 
-    hanlderChoose(num,type) {
+    hanlderChoose(num,type, title) {
         // console.log(num,type)
        this.state.list.forEach((v,i) => num === i ? v.isActive = true : v.isActive = false );
        // console.log(this.state.list);
         this.setState({
             list: this.state.list
         });
-        this.props.onChange && this.props.onChange(type, num);
+        this.props.onChange && this.props.onChange(type, num, title);
     }
 
     render() {
@@ -53,7 +58,7 @@ export default class view extends React.Component {
                         return (
                             <li 
                                 className={item.isActive ? 'active' : ''} 
-                                onClick={() => this.hanlderChoose(i,item.type)}
+                                onClick={() => this.hanlderChoose(i,item.type, item.title)}
                                 key={"title" + i} >
                                {item.title}
                             </li>

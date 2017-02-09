@@ -31,7 +31,7 @@ export default class view extends React.Component {
     }
     componentWillUnmount() {
         this._isMounted = false;
-        this.removeEvents();
+        this.actions.removeEvents(); //do not delete
     }
 
     render() {

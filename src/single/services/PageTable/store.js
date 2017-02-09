@@ -45,8 +45,9 @@ const self = class store extends RootStore {
     }
 
     onInitData(props) {
-        this.api = props.api
-        this.thData = props.thData.en
+        this.api = props.api;
+        this.params = props.params || {};
+        this.thData = props.thData.en;
         this.getData();
     }
 
@@ -65,8 +66,11 @@ const self = class store extends RootStore {
         //     }).catch(err => {
         //         console.log(err, 'err')
         //     })
+        //     
+        
+        let params = {...this.params, ...{ page: this.state.currentPage}};
 
-        $.get(this.api, { page: this.state.currentPage, }, (res) => {
+        $.get(this.api, params, (res) => {
             res = JSON.parse(res);
 
             var { total, list } = res;

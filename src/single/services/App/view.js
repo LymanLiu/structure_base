@@ -10,6 +10,7 @@ import styles from './style.js';
 
 //component
 import Header from '../Header';
+import OrderForm from '../OrderForm';
 import NewsForm from '../NewsForm';
 import Slider from '../../widgets/Slider';
 
@@ -26,9 +27,7 @@ export default class view extends React.Component {
         });
 
         //init state
-        this.state = {
-
-        }
+        this.state = this.store.getState();
     }
 
     componentDidMount() {
@@ -36,7 +35,15 @@ export default class view extends React.Component {
     }
     componentWillUnmount() {
         this._isMounted = false;
-        this.removeEvents();
+        this.actions.removeEvents(); //do not delete
+    }
+
+    renderComponent() {
+        if(this.state.type === 'order') {
+            return (<OrderForm />);
+        } else if (this.state.type === 'business' || this.state.type === 'company') {
+           return (<NewsForm type={this.state.type} />); 
+        }
     }
 
     render() {
@@ -45,10 +52,11 @@ export default class view extends React.Component {
     			<Header />
                 <div className="container-body">
                     <Slider 
-                        onChange={(type, num) => this.actions.slider(type, num)}
+                        onChange={(type, num, title) => this.actions.slider(type, num, title)}
                     />
                     <div className="content-box">
-                       <NewsForm />
+                        <h2>{this.state.title}</h2>
+                        {this.renderComponent()} 
                     </div>
                 </div>
     		</div>

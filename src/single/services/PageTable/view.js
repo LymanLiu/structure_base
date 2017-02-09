@@ -16,6 +16,7 @@ import Pagination from 'rc-pagination';
 export default class view extends React.Component {
     static propTypes = {
         api: React.PropTypes.string.isRequired,
+        params: React.PropTypes.object,
         thData: React.PropTypes.object.isRequired,
     };
 

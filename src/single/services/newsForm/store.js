@@ -45,10 +45,12 @@ const self = class store extends RootStore {
         }
     }
 
-    onResult(res) {
+    onResult(type) {
         console.log(UM.getEditor('myEditor').getContent(), 'form')
 
         console.log(this.state.newsTitle, 't');
+
+
 
         if (this.state.newsTitle === '') {
             this.setState({ titleErrorText: '请输入标题' });
@@ -56,9 +58,10 @@ const self = class store extends RootStore {
             this.setState({ titleErrorText: '' });
             var params = {
                 title: this.state.newsTitle,
-                content: UM.getEditor('myEditor').getContent()
+                content: UM.getEditor('myEditor').getContent(),
+                type
             }
-            $.post($$.getApi('insertBusinessNews'), params, (res) => {
+            $.post($$.getApi('insertNews'), params, (res) => {
                 console.log(res, 'iii')
             })
         }

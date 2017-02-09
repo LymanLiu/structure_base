@@ -45,11 +45,16 @@ const self = class store extends RootStore {
         }
     }
 
+    onSlider(type, idx, title) {
+
+        this.setState({type,title});
+    }
 
     init() {
 
         this.state = {
-
+            title: '订单',
+            type: 'order'
         };
     }
 

@@ -18,6 +18,13 @@ import ReDialog from '../../widgets/ReDialog';
 import PageTable from '../PageTable';
 
 export default class view extends React.Component {
+     static propTypes = {
+        type: React.PropTypes.string.isRequired
+    };
+
+    static defaultProps = {
+        //name: 'component name'
+    };
     constructor(props, context) {
         super(props, context);
 
@@ -43,7 +50,7 @@ export default class view extends React.Component {
     }
     componentWillUnmount() {
         this._isMounted = false;
-        this.removeEvents();
+        this.actions.removeEvents(); //do not delete
     }
 
     renderReDialogContent() {
@@ -83,7 +90,8 @@ export default class view extends React.Component {
                 />
 
                <PageTable 
-                    api={$$.getApi('getBusinessNews')}
+                    api={$$.getApi('getNews')}
+                    params={{type: this.props.type, pageSize: 10}}
                     thData={this.thData}
                />
 
@@ -92,7 +100,7 @@ export default class view extends React.Component {
                     isShow={this.state.dialogShow}
                     dialogPending={this.state.dialogPending}
                     onCancel={() => this.actions.dialogClose()}
-                    onConfirm={() => this.actions.result()}
+                    onConfirm={() => this.actions.result(this.props.type)}
                     sureBtnDisabled={this.state.sureBtnDisabled}
                     className='model-edit-dialog'
                 > 
