@@ -39,17 +39,17 @@ export default class view extends React.Component {
     }
 
     renderComponent() {
-        if(this.state.type === 'order') {
+        if (this.state.type === 'order') {
             return (<OrderForm />);
         } else if (this.state.type === 'business' || this.state.type === 'company') {
-           return (<NewsForm type={this.state.type} />); 
+            return (<NewsForm type={this.state.type} />);
         }
     }
 
     render() {
         return (
             <div className="app-root">
-    			<Header />
+                <Header />
                 <div className="container-body">
                     <Slider 
                         onChange={(type, num, title) => this.actions.slider(type, num, title)}
@@ -59,7 +59,7 @@ export default class view extends React.Component {
                         {this.renderComponent()} 
                     </div>
                 </div>
-    		</div>
+            </div>
         )
     }
 }

@@ -30,7 +30,7 @@
 		<div class="choose-lang">
 			<select id="chooseLang">
 				<option value="china">中文</option>
-				<option value="russia">俄文</option>
+				<option value="russia">русский</option>
 			</select>
 		</div>
 	</div>

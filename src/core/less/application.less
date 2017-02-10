@@ -94,12 +94,14 @@ select {
     border: none;
     outline: none;
 }
+
 button {
     outline: none;
     &:active {
         background: @mainColorHover;
     }
 }
+
 q:before,
 q:after {
     content: '';
@@ -118,7 +120,7 @@ sub {
 
 body {
     color: @blackColor;
-    font: 16px/1.5 '微软雅黑',YaHei,tahoma,arial,"Hiragino Sans GB";
+    font: 16px/1.5 '微软雅黑', YaHei, tahoma, arial, "Hiragino Sans GB";
     padding-top: 70px;
 }
 
@@ -127,7 +129,8 @@ a {
     color: @greyColor;
 }
 
-h3,h4 {
+h3,
+h4 {
     font-weight: normal;
 }
 
@@ -138,6 +141,15 @@ h3,h4 {
 .clear {
     clear: both;
 }
+
+.afterClear {
+    &:after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+}
+
 .wrapper {
     width: @wrapperWidth;
     margin: 0 auto;
@@ -150,8 +162,9 @@ h3,h4 {
     font-size: 42px;
     text-align: center;
     background: url() no-repeat center;
-    text-shadow: 0 1px 1px rgba(0,0,0,.5);
+    text-shadow: 0 1px 1px rgba(0, 0, 0, .5);
 }
+
 .bg-body {
     background: @greyBgColor;
 }
