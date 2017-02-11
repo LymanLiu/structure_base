@@ -8,21 +8,16 @@ import Store from './store.js';
 import Actions from './actions.js';
 
 //component
-import ReTable from '../../widgets/ReTable';
-//
-import Pagination from 'rc-pagination';
+import NewsForm from '../NewsForm';
 
 
 export default class view extends React.Component {
     static propTypes = {
-        api: React.PropTypes.string.isRequired,
-        params: React.PropTypes.object,
-        thData: React.PropTypes.object.isRequired,
-        onRefresh: React.PropTypes.func,
+        //name: React.PropTypes.string,
     };
 
     static defaultProps = {
-        onRefresh: () => {}
+        //name: 'component name'
     };
 
 
@@ -43,19 +38,14 @@ export default class view extends React.Component {
         // init state;
         this.state = this.store.getState();
     }
-
     componentWillMount() {
         this._isMounted = true;
 
     }
 
     componentDidMount() {
-        this.actions.initData(this.props);
-    }
 
-    componentDidUpdate() {
-      
-    }   
+    }
 
     componentWillUnmount() {
         this.actions.removeEvents(); //do not delete
@@ -64,20 +54,6 @@ export default class view extends React.Component {
 
     render() {
 
-        return (
-            <div className="orin-ss-pagetable-root" >
-                <ReTable 
-                    thData={this.props.thData.en}
-                    tdData={this.state.tdData}
-                />
-                <div className="pagination-box">
-                    <Pagination
-                        onChange={(idx) => this.actions.pagination(idx)}
-                        current={this.state.currentPage} 
-                        total={this.state.total}
-                    />
-                </div>
-            </div>
-        );
+        return (<NewsForm type="company" />)
     }
 }

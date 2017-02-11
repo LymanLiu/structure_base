@@ -1,9 +1,7 @@
 import Reflux from 'reflux';
 import _ from 'underscore';
 // import axios from 'axios';
-import { browserHistory } from 'react-router';
 import RootStore from '../../../core/Store.js';
-
 const self = class store extends RootStore {
     constructor(actions, type) {
         super();
@@ -38,24 +36,23 @@ const self = class store extends RootStore {
                     storeCommunicationEvents: this.storeCommunicationEvents,
                     storeObserver: this.storeObserver,
                     listenMulti: this.listenMulti,
-                    strategy: this.strategy,
-                    updatePageTabel: this.updatePageTabel
+                    strategy: this.strategy
 
                 })
                 .value();
         }
     }
 
-    onSlider(type, idx, title) {
-
-        this.setState({type,title});
+    onTest(text) {
+        alert(text);
+        this.setState({
+            test: 'run a reflux workflow'
+        });
     }
 
     init() {
-
         this.state = {
-            title: '订单',
-            type: 'order'
+            test: ''
         };
     }
 

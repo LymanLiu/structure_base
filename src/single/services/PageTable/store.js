@@ -46,9 +46,10 @@ const self = class store extends RootStore {
 
     onInitData(props) {
         this.api = props.api;
-        this.params = props.params || {};
         this.thData = props.thData.en;
+        this.params = props.params || {pageSize: 10};  
         this.getData();
+        props.onRefresh(this.getData);
     }
 
     onPagination(currentPage) {
@@ -57,6 +58,10 @@ const self = class store extends RootStore {
         });
         this.getData();
 
+    }
+
+    onGetData(){
+        this.getData();
     }
 
     getData() {
@@ -74,6 +79,7 @@ const self = class store extends RootStore {
             res = JSON.parse(res);
 
             var { total, list } = res;
+            if(!list) return;
             var tdData = [];
             list.forEach(obj => {
                 var _td = [];
@@ -92,15 +98,11 @@ const self = class store extends RootStore {
 
     init() {
 
-
-
         this.state = {
             total: 1,
             pageSize: 1,
             currentPage: 1,
-            tdData: [
-                []
-            ]
+            tdData: []
         };
     }
 

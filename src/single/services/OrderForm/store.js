@@ -38,24 +38,81 @@ const self = class store extends RootStore {
                     storeCommunicationEvents: this.storeCommunicationEvents,
                     storeObserver: this.storeObserver,
                     listenMulti: this.listenMulti,
-                    strategy: this.strategy
+                    strategy: this.strategy,
+                    checkMesg: this.checkMesg,
+                    checkAllMesg: this.checkAllMesg,
+                    resetState: this.resetState,
 
                 })
                 .value();
         }
     }
 
-    onResult(type) {
+    onResult() {
+         if (this.checkAllMesg()) {
 
-        $.post($$.getApi('insertOrder'), params, (res) => {
-            console.log(res, 'iii')
-        })
+            this.setState({ sureBtnDisabled: true });
+            var params = {
+                orderID: this.state.orderID,
+                consignee: this.state.consignee,
+                address: this.state.address,
+                logisticsInfo: this.state.logisticsInfo,
+            }
+            $$.utils.ajax('post')($$.getApi('insertOrder'), params)
+            .then(res => {
+                console.log(res, 'iii')
+                if(res == 1) {
+                    alert('提交成功')
+                } else {
+                    alert('服务器错误,请稍后在试')
+                }
+                this.resetState();
+                this.refresh();
+            }).catch(err => console.log(err))
+        } else {
+            this.setState({ sureBtnDisabled: false });
+        }
+    
+    }
+
+    resetState() {
+        this.setState({
+            orderID: '',
+            consignee: '',
+            address: '',
+            logisticsInfo: '',
+            dialogShow: false
+        });
+    }
+
+    onRefresh(fn) {
+        if(fn) this.refresh = fn;
+    }  
+
+    checkAllMesg() {
+        let bool = (this.checkMesg(this.state.orderID,'orderID','请输入订单号') && this.checkMesg(this.state.consignee,'consignee','请输入收件人') && this.checkMesg(this.state.address,'address','请输入收件人地址') && this.checkMesg(this.state.logisticsInfo,'logisticsInfo','请输入物流信息')) ? true : false;
+
+        return bool
+    }
+
+    checkMesg(str,type,err) {
+        if(str === '') {
+            this.setState({[type +'ErrorText']: err})
+            return false
+        } else {
+            this.setState({[type +'ErrorText']: ''})
+            return true
+        }
     }
 
     onSetVal(k, v) {
         this.setState({
             [k]: v
         })
+    }
+
+    onFocus(type) {
+        this.setState({[type+'ErrorText'] : ''})
     }
 
     onForbtn(pending) {

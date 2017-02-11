@@ -38,6 +38,7 @@ const self = class store extends RootStore {
                     storeCommunicationEvents: this.storeCommunicationEvents,
                     storeObserver: this.storeObserver,
                     listenMulti: this.listenMulti,
+                    resetState: this.resetState,
                     strategy: this.strategy
 
                 })
@@ -46,35 +47,48 @@ const self = class store extends RootStore {
     }
 
     onResult(type) {
-        console.log(UM.getEditor('myEditor').getContent(), 'form')
-
-        console.log(this.state.newsTitle, 't');
-
-
+        // console.log(UM.getEditor('myEditor').getContent(), 'form')
 
         if (this.state.newsTitle === '') {
             this.setState({ titleErrorText: '请输入标题' });
         } else {
-            this.setState({ titleErrorText: '' });
+            this.setState({ titleErrorText: '', sureBtnDisabled: true });
+            let content = UM.getEditor('myEditor').getContent().toString();
             var params = {
                 title: this.state.newsTitle,
-                content: UM.getEditor('myEditor').getContent(),
+                content,
                 type
             }
-            $.post($$.getApi('insertNews'), params, (res) => {
-                console.log(res, 'iii')
-            })
+
+            $$.utils.ajax('post')($$.getApi('insertNews'), params)
+            .then(res => {
+                // console.log(res, 'iii')
+                if(res == 1) {
+                    alert('提交成功')
+                } else {
+                    alert('服务器错误,请稍后在试')
+                }
+                
+                this.resetState();
+                this.refresh();
+            }).catch(err => alert('服务器错误,请稍后在试'))
         }
 
-
-        // axios.post($$.getApi('insertBusinessNews'), {title: 'news_test', content: 'xixixix'})
-        //     .then((res) => {
-        //         console.log(res)
-        //     })
-        //     .catch((err) => console.log(err))
-
-        // console.log($$.getApi('insertBusinessNews'));
     }
+
+    resetState() {
+        this.setState({
+            sureBtnDisabled: false,
+            dialogShow: false,
+            newsTitle: '',
+            titleErrorText: ''
+        });
+         UM.getEditor('myEditor').setContent('');
+    }
+
+    onRefresh(fn) {
+        if(fn) this.refresh = fn;
+    }   
 
     onSetVal(k, v) {
         this.setState({
@@ -103,7 +117,8 @@ const self = class store extends RootStore {
             sureBtnDisabled: false,
             newsTitle: '',
             titleErrorText: '',
-            pending: 'add'
+            pending: 'add',
+            type: 'business'
         };
     }
 

@@ -11,7 +11,8 @@ import styles from './style.js';
 //component
 import Header from '../Header';
 import OrderForm from '../OrderForm';
-import NewsForm from '../NewsForm';
+import BusinessNews from '../BusinessNews';
+import CompanyNews from '../CompanyNews';
 import Slider from '../../widgets/Slider';
 
 export default class view extends React.Component {
@@ -41,8 +42,10 @@ export default class view extends React.Component {
     renderComponent() {
         if (this.state.type === 'order') {
             return (<OrderForm />);
-        } else if (this.state.type === 'business' || this.state.type === 'company') {
-            return (<NewsForm type={this.state.type} />);
+        } else if (this.state.type === 'business') {
+            return (<BusinessNews />);
+        } else if (this.state.type === 'company') {
+            return (<CompanyNews />);
         }
     }
 

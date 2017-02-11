@@ -18,7 +18,6 @@ import PageTable from '../PageTable';
 
 export default class view extends React.Component {
     static propTypes = {
-        type: React.PropTypes.string.isRequired
     };
 
     static defaultProps = {
@@ -69,6 +68,7 @@ export default class view extends React.Component {
                     label="订单号"
                     placeholder="请输入订单号"
                     value={this.state.orderID}
+                    onFocus={() => this.actions.focus('orderID')}
                     onChange={(e)=>this.actions.setVal('orderID',e.target.value)}
                     errorText={this.state.orderIDErrorText}
                 />
@@ -77,6 +77,7 @@ export default class view extends React.Component {
                     label="收件人"
                     placeholder="请输入收件人姓名"
                     value={this.state.consignee}
+                    onFocus={() => this.actions.focus('consignee')}
                     onChange={(e)=>this.actions.setVal('consignee',e.target.value)}
                     errorText={this.state.consigneeErrorText}
                 />
@@ -86,6 +87,7 @@ export default class view extends React.Component {
                     label="收件人地址"
                     placeholder="请输入收件人地址"
                     value={this.state.address}
+                    onFocus={() => this.actions.focus('address')}
                     onChange={(e)=>this.actions.setVal('address',e.target.value)}
                     errorText={this.state.addressErrorText}
                 />
@@ -95,6 +97,7 @@ export default class view extends React.Component {
                     label="物流信息"
                     placeholder="请输入物流信息"
                     value={this.state.logisticsInfo}
+                    onFocus={() => this.actions.focus('logisticsInfo')}
                     onChange={(e)=>this.actions.setVal('logisticsInfo',e.target.value)}
                     errorText={this.state.logisticsInfoErrorText}
                 />
@@ -153,6 +156,7 @@ export default class view extends React.Component {
                <PageTable 
                     api={$$.getApi('getOrder')}
                     thData={this.thData}
+                    onRefresh={this.actions.refresh}
                />
 
                 <ReDialog

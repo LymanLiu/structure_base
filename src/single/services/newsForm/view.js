@@ -52,6 +52,9 @@ export default class view extends React.Component {
         this._isMounted = false;
         this.actions.removeEvents(); //do not delete
     }
+ 
+    componentDidUpdate() {
+    } 
 
     renderReDialogContent() {
 
@@ -93,6 +96,7 @@ export default class view extends React.Component {
                     api={$$.getApi('getNews')}
                     params={{type: this.props.type, pageSize: 10}}
                     thData={this.thData}
+                    onRefresh={this.actions.refresh}
                />
 
                 <ReDialog
