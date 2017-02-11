@@ -109,11 +109,6 @@ export default class view extends React.Component {
         return (
             <div className="add-content">
                 <div className="search-box afterClear">
-                    <ReButton 
-                        className="search-btn"
-                        label="查询"
-                        onClick={()=> this.actions.search()}
-                    />
                     <div className="input-box">
                         <ReTextField 
                             className="edit-textfiled"
@@ -124,20 +119,28 @@ export default class view extends React.Component {
                             errorText={this.state.orderIDErrorText}
                         />
                     </div>
+                     <ReButton
+                        disabled={this.state.searchBtn} 
+                        className="search-btn"
+                        label="查询"
+                        onClick={()=> this.actions.search()}
+                    />
                 </div>
-               <ul className="result-box">
+                {!this.state.isResult ? <div className="result-box">
+                   <b> {this.state.resText} </b>
+                </div> :  <ul className="result-box">
                    {    
-                        this.state.resList.map((v, i) => {
+                        this.state.reslist.map((v, i) => {
                             return (
                                 <li
                                     key={"s" + i}
                                 >
-                                    {this.thData.cn[i]} : {v.content}
+                                    {this.thData.cn[i]} : {v}
                                 </li>
                             );
                         })
                    }
-               </ul>
+               </ul>}
             </div>
         )
     }

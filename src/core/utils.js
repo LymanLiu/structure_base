@@ -267,7 +267,7 @@ export default {
     },
     ajax(name) {
         return {
-            get(URL) {
+            get(URL,queryJSON) {
                 if (window.XMLHttpRequest) {
                     var xhr = new XMLHttpRequest();
                 } else {
@@ -288,11 +288,19 @@ export default {
                         }
                     };
                 });
-                // var querystring = this._queryjson2querystring(queryJSON);
-                // xhr.open('get', URL + '?' + querystring, true);
-                xhr.open('GET', URL, true);
+                var querystring = _queryjson2querystring(queryJSON);
+                xhr.open('get', URL + '?' + querystring, true);
+                // xhr.open('GET', URL, true);
                 xhr.send(null);
                 return promise;
+
+                function _queryjson2querystring(json) {
+                    var arr = [];
+                    for (var k in json) {
+                        arr.push(k + '=' + encodeURIComponent(json[k]));
+                    }
+                    return arr.join('&');
+                }
             },
             delete(URL) {
                 if (window.XMLHttpRequest) {

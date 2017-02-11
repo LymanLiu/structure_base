@@ -495,8 +495,10 @@ class View {
         } else {
             this.loadingEvent(signBtn, 'begin');
             console.log(this.api.signIn)
+            console.log(emailIpn.value)
+            console.log(passwordIpn.value)
             utils.ajax('post')(this.api.signIn, {
-                    email: emailIpn.value.toLowerCase(),
+                    username: emailIpn.value,
                     password: passwordIpn.value
                 })
                 .then((res) => {
@@ -506,7 +508,7 @@ class View {
                     // this.rememberPassword(emailIpn, passwordIpn);
                     this.signInToIndividualCms(res);
 
-                }, (err) => {
+                }).catch( (err) => {
                     this.loadingEvent(signBtn, 'done');
                     console.log(err,'err')
                     if (err.code === 403002 || err.code === 404001) {

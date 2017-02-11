@@ -48,11 +48,11 @@ const self = class store extends RootStore {
     onSignIn() {
         console.log($$.getApi('signIn'))
         browserHistory.push('/981/cn/manager.html/admin')
-            // axios.post($$.getApi('signIn'), {username: 'admin', passcode: 'admin123'})
-            //     .then((res) => {
-            //         console.log(res)
-            //     })
-            //     .catch((err) => console.log(err))
+            $$.utils.ajax('post')($$.getApi('signIn'), {username: 'admin', passcode: 'admin123'})
+                .then((res) => {
+                    console.log(res)
+                })
+                .catch((err) => console.log(err))
     }
 
     init() {

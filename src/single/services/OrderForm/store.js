@@ -63,11 +63,12 @@ const self = class store extends RootStore {
                 console.log(res, 'iii')
                 if(res == 1) {
                     alert('提交成功')
+                    this.resetState();
+                    this.refresh();
                 } else {
                     alert('服务器错误,请稍后在试')
                 }
-                this.resetState();
-                this.refresh();
+                this.setState({ sureBtnDisabled: false });
             }).catch(err => console.log(err))
         } else {
             this.setState({ sureBtnDisabled: false });
@@ -78,9 +79,13 @@ const self = class store extends RootStore {
     resetState() {
         this.setState({
             orderID: '',
+            orderIDErrorText: '',
             consignee: '',
+            consigneeErrorText: '',
             address: '',
+            addressErrorText: '',
             logisticsInfo: '',
+            logisticsInfoErrorText: '',
             dialogShow: false
         });
     }
@@ -123,16 +128,33 @@ const self = class store extends RootStore {
 
     }
     onSearch() {
-        $.get($$.getApi('searchOrder'), { orderID }, (res) => {
-            res = JSON.parse(res);
-            console.log(res, 'search');
-        }, (err) => {
+        if(this.state.orderID === '') {
+            this.setState({orderIDErrorText: '请输入订单号'})
+        } else {
+            this.setState({orderIDErrorText: '', searchBtn: true})
+            $$.utils.ajax('get')($$.getApi('searchOrder'), { orderID:this.state.orderID })
+            .then(res => {
+                // res = JSON.parse(res);
+                console.log(res, 'search');
+                if(res === 0) {
+                    this.setState({isResult: false, resText: '没有该订单'})
+                } else {
+                    var {list} = res;
+                    var reslist = [];
+                    this.state.thData.forEach(k => {
+                        reslist.push(list[0][k]);
+                    })
+                    this.setState({isResult: true, reslist})
+                }
 
-        })
+                this.setState({searchBtn: false});
+            }).catch(err => console.log(err,'search err'));
+        }
     }
 
     onDialogClose() {
-        this.setState({ dialogShow: false });
+        // this.setState({ dialogShow: false , orderID: ''});
+        this.resetState();
     }
 
     init() {
@@ -151,7 +173,11 @@ const self = class store extends RootStore {
             addressErrorText: '',
             logisticsInfo: '',
             logisticsInfoErrorText: '',
-            resList: ['orderID', 'consignee', 'address', 'logisticsInfo', 'inputTime']
+            resText: '查询结果',
+            isResult: false,
+            searchBtn: false,
+            thData: ['orderID', 'consignee', 'address', 'logisticsInfo', 'inputTime'],
+            reslist: []
         };
     }
 
