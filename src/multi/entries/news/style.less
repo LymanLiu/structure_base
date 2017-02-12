@@ -34,6 +34,7 @@
 			color: @mainColor;
 			display: block;
 			margin-top: 20px;
+			cursor: pointer;
 			&:hover {
 				background: @mainColor;
 				color: #fff;
@@ -43,6 +44,9 @@
 			.item {
 				padding: 20px 0;
 				border-bottom: 1px solid @borderColor;
+				&>a {
+					display: block;
+				}
 				.title {
 					font-size: 16px;
 					font-weight: 700px;
@@ -54,6 +58,12 @@
 				}
 				.content-box {
 					color: @greyColor;
+				    height: 60px;
+				    overflow: hidden;
+				    text-overflow: ellipsis;
+				    display: -webkit-box;
+					-webkit-line-clamp: 4;
+					-webkit-box-orient: vertical;
 				}
 			}
 		}

@@ -26,8 +26,8 @@ class Frame extends MultiMain {
         let footer = new Footer();
 
         this.model = _.extend(this.model, {
-            head: head.render({ less: 'search', title: '<$- RUSSIA_TITLE $>' }).html,
-            header: header.render({num: 5}).html,
+            head: head.render({ less: 'newslistdetail', title: '<$- RUSSIA_TITLE $>' }).html,
+            header: header.render({num: 6}).html,
             footer: footer.render().html
         });
 

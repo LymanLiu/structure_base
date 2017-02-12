@@ -2,6 +2,7 @@
     include 'header.php';
 	mysql_query("set character set 'utf8'");
 	$type=$_GET['type'];
+	$id=$_GET['id'];
 	$page = intval($_GET['page']); //当前页 
 	$pageSize = intval($_GET['pageSize']); //每页显示数 
   
@@ -14,9 +15,17 @@
 	$arr['pageSize'] = $pageSize; 
 	$arr['totalPage'] = $totalPage; 
 	if($type == 'business') {
-		$query = mysql_query("SELECT * FROM news_business ORDER BY id DESC LIMIT $startPage,$pageSize"); //查询分页数据 
+		if($id) {
+			$query = mysql_query("SELECT * FROM news_business WHERE id={$id}");  
+		} else {
+			$query = mysql_query("SELECT * FROM news_business ORDER BY id DESC LIMIT $startPage,$pageSize"); //查询分页数据 
+		}
 	} else {
-		$query = mysql_query("SELECT * FROM news_company ORDER BY id DESC LIMIT $startPage,$pageSize"); //查询分页数据 
+		if($id) {
+			$query = mysql_query("SELECT * FROM news_company WHERE id={$id}");
+		} else {
+			$query = mysql_query("SELECT * FROM news_company ORDER BY id DESC LIMIT $startPage,$pageSize"); //查询分页数据 
+		}
 	}
 	while($row=mysql_fetch_array($query)){ 
 	  $arr['list'][] = array( 

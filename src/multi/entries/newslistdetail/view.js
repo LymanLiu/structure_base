@@ -14,38 +14,27 @@ class View extends MultiView {
     initEvent() {
         this.$newslistTitle=$('#newslistTitle');
         this.$newList=$('#newList');
+        this.id = location.hash.match(/id=\d+/).join('').replace('id=', '');
         this.type = location.hash.replace('#', '');
-        this.lang = !~location.href.indexOf('cn') ? 'cn' : 'en';
 
         let title = this.type === 'business' ? '行业咨询' : '公司新闻';
         this.$newslistTitle.html(title);
 
-        $.get(this.getApi('getNews'), {page: 1, pageSize: 6, type: this.type}, (res) => {
+        $.get(this.getApi('getNews'), {page: 1, pageSize: 1, type: this.type, id: this.id }, (res) => {
             res = JSON.parse(res);
-            this.$newList.html(this.initNews(res.list, this.type));
-        });
-
-        $(window).bind('hashchange', function() {
-            location.reload();   
-            // location.href = location.href;
+            this.$newList.html(this.initNews(res.list));
         });
 
         return this;
     }
-
-
-     initNews(list, type) {
+    initNews(list) {
         if(!list) return;
        return list.map(item => {
-            return ` <li class="item">
-                    <a href="/981/${this.lang}/newslistdetail.html#${type}?id=${item.id}">
-                    <h4 class="title">${item.title}</h4>
+            return `<h2 class="title">${item.title}</h2>
                     <p class="time-box">${item.time}</p>
                     <div class="content-box">
                         ${item.content}
-                    </div>
-                    </a>
-                </li>`;
+                    </div>`;
         })
     }
 

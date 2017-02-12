@@ -478,7 +478,7 @@ gulp.task('images', function() {
 gulp.task('scripts-watch', buildApp.bind(null, ['./src/bin/app.js'], [brfs], targetDir + '/js', true));
 gulp.task('watch', function() {
 
-    watch(['src/multi/**/*.tpl', 'src/multi/**/main.js', 'src/multi/**/model.js'], function() {
+    watch(['src/multi/**/*.tpl', 'src/multi/**/main.js', 'src/multi/**/model.js', './src/bin/multiMain.js'], function() {
         runSequence(['html']);
     });
     watch(['src/**/images/**'], function() {

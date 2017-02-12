@@ -4,6 +4,7 @@ module.exports = class {
     constructor() {
     	this.api = api;
     	this.config = config;
+        this.lang = !~location.href.indexOf('cn') ? 'cn' : 'en';
     }
 
     getApi(name) {

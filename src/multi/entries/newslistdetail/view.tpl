@@ -5,15 +5,14 @@
 	<?- header ?>
 	<div class="n-main-banner main-banner">新闻中心</div>
 	<p class="title-tips wrapper">新闻中心&gt;<span id="newslistTitle">行业咨询</span></p>
-	<ul class="new-list wrapper" id="newList">
-		<li class="item">
+	<div class="new-list wrapper" id="newList">
+		
 			<div class="content-box">
 				暂无新闻
 			</div>
-		</li>
 		
-	</ul>
+	</div>
 	<?- footer ?>
-	<script type="text/javascript" src="/static/js/multi/newslist.js"></script>
+	<script type="text/javascript" src="/static/js/multi/newslistdetail.js"></script>
 </body>
 </html>

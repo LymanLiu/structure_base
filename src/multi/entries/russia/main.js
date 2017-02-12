@@ -141,7 +141,7 @@ class Frame extends MultiMain {
 
         this.model = _.extend(this.model, {
             head: head.render({ less: 'russia', title: '<$- RUSSIA_TITLE $>' }).html,
-            header: header.render().html,
+            header: header.render({num: 2}).html,
             footer: footer.render().html,
             specialLineBanner: specialLineBanner.render({bannerList: this.bannerList}).html,
             sliderContainer: sliderContainer.render({sliderData: this.sliderData}).html

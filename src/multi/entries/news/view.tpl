@@ -7,57 +7,25 @@
 	<ul class="new-list wrapper">
 		<li class="level_1">
 			<h3 class="title-box">行业资讯</h3>
-			<ul class="list-box">
+			<ul class="list-box" id="businessNews">
 				<li class="item">
-					<h4 class="title">“互联网+航运”：机遇与挑战并存</h4>
-					<p class="time-box">2发布时间：016-12-30</p>
 					<div class="content-box">
-						近日，《上海市推进国际航运中心建设条例》开始实施，这是我国第一部关于航运中心建设的地方性法规。业内认为，这是航运业向纵深布局、转型发展的一次号角。其中，“互联网+航运”被认为是行业转型发展中的“黑马”。这个行业有哪些机遇和挑战?通过一家名为亿海蓝的企业发展经历，或可一窥其现状。
-					</div>
-				</li>
-				<li class="item">
-					<h4 class="title">“互联网+航运”：机遇与挑战并存</h4>
-					<p class="time-box">2发布时间：016-12-30</p>
-					<div class="content-box">
-						近日，《上海市推进国际航运中心建设条例》开始实施，这是我国第一部关于航运中心建设的地方性法规。业内认为，这是航运业向纵深布局、转型发展的一次号角。其中，“互联网+航运”被认为是行业转型发展中的“黑马”。这个行业有哪些机遇和挑战?通过一家名为亿海蓝的企业发展经历，或可一窥其现状。
-					</div>
-				</li>
-				<li class="item">
-					<h4 class="title">“互联网+航运”：机遇与挑战并存</h4>
-					<p class="time-box">2发布时间：016-12-30</p>
-					<div class="content-box">
-						近日，《上海市推进国际航运中心建设条例》开始实施，这是我国第一部关于航运中心建设的地方性法规。业内认为，这是航运业向纵深布局、转型发展的一次号角。其中，“互联网+航运”被认为是行业转型发展中的“黑马”。这个行业有哪些机遇和挑战?通过一家名为亿海蓝的企业发展经历，或可一窥其现状。
-					</div>
-				</li>
+                        暂时没有新闻
+                    </div>
+                </li>
 			</ul>
-			<a class="more-btn" href="#">查看更多</a>
+			<span class="more-btn" id="businessMore">查看更多</span>
 		</li>
 		<li class="level_1 right-box">
 			<h3 class="title-box">公司新闻</h3>
-			<ul class="list-box">
+			<ul class="list-box" id="companyNews">
 				<li class="item">
-					<h4 class="title">“互联网+航运”：机遇与挑战并存</h4>
-					<p class="time-box">2发布时间：016-12-30</p>
 					<div class="content-box">
-						近日，《上海市推进国际航运中心建设条例》开始实施，这是我国第一部关于航运中心建设的地方性法规。业内认为，这是航运业向纵深布局、转型发展的一次号角。其中，“互联网+航运”被认为是行业转型发展中的“黑马”。这个行业有哪些机遇和挑战?通过一家名为亿海蓝的企业发展经历，或可一窥其现状。
-					</div>
-				</li>
-				<li class="item">
-					<h4 class="title">“互联网+航运”：机遇与挑战并存</h4>
-					<p class="time-box">2发布时间：016-12-30</p>
-					<div class="content-box">
-						近日，《上海市推进国际航运中心建设条例》开始实施，这是我国第一部关于航运中心建设的地方性法规。业内认为，这是航运业向纵深布局、转型发展的一次号角。其中，“互联网+航运”被认为是行业转型发展中的“黑马”。这个行业有哪些机遇和挑战?通过一家名为亿海蓝的企业发展经历，或可一窥其现状。
-					</div>
-				</li>
-				<li class="item">
-					<h4 class="title">“互联网+航运”：机遇与挑战并存</h4>
-					<p class="time-box">2发布时间：016-12-30</p>
-					<div class="content-box">
-						近日，《上海市推进国际航运中心建设条例》开始实施，这是我国第一部关于航运中心建设的地方性法规。业内认为，这是航运业向纵深布局、转型发展的一次号角。其中，“互联网+航运”被认为是行业转型发展中的“黑马”。这个行业有哪些机遇和挑战?通过一家名为亿海蓝的企业发展经历，或可一窥其现状。
-					</div>
-				</li>
+                        暂时没有新闻
+                    </div>
+                </li>
 			</ul>
-			<a class="more-btn" href="#">查看更多</a>
+			<span class="more-btn" id="companyMore">查看更多</span>
 		</li>
 	</ul>
 	<?- footer ?>

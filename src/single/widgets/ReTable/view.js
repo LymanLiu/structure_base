@@ -84,7 +84,9 @@ export default class view extends React.Component {
                                     <td className="tc">{i + 1}</td>
                                    {list.map((item, i) => {
                                      return (
-                                        <td key={'td' + i} dangerouslySetInnerHTML={{__html: item}}></td>
+                                        <td key={'td' + i}>
+                                            <div  dangerouslySetInnerHTML={{__html: item}} className="inner-box"></div>
+                                        </td>
                                     )                                   
                                    })}
                                     {/*<td className="tc">

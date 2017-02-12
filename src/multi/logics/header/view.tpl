@@ -2,21 +2,17 @@
 	<div class="wrapper">
 		<ul>
 			<? navlist.forEach((item, i) => { ?>
-				<? if(i === 0) { ?>
-					<li class="level_1 cur"><a href="<?- item.url ?>" ><?- item.name ?></a></li>
+				<? if(item.child) { ?>
+					<li class="<?- i === num ? "level_1 cur" : "level_1" ?>" >
+						<a href="<?- item.url ?>" ><?- item.name ?></a>
+						<ul class="nav-slider">
+							<? item.child.forEach((itemChild, j) => { ?>
+								<li><a href="<?- itemChild.url ?>"><?- itemChild.name ?></a></li>
+							<? }) ?>
+						</ul>
+					</li>
 				<? } else { ?>
-					<? if(item.child) { ?>
-						<li class="level_1">
-							<a href="<?- item.url ?>" ><?- item.name ?></a>
-							<ul class="nav-slider">
-								<? item.child.forEach((itemChild, j) => { ?>
-									<li><a href="<?- item.url ?>"><?- itemChild ?></a></li>
-								<? }) ?>
-							</ul>
-						</li>
-					<? } else { ?>
-						<li class="level_1"><a href="<?- item.url ?>" ><?- item.name ?></a></li>
-					<? } ?>
+					<li class="<?- i === num ? "level_1 cur" : "level_1" ?>" ><a href="<?- item.url ?>" ><?- item.name ?></a></li>
 				<? } ?>
 			<? }) ?>
 		</ul>
