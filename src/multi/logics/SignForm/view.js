@@ -19,9 +19,11 @@ class View {
             // getcaptcha: this._config.apiHost + this._config.apiPrefixes[0] + this.rawAPI.getcaptcha(),
             signIn: this._config.apiHost() + this.rawAPI['signIn']()
         };
+
+        let lang = location.href.indexOf('cn') > 0 ? 'cn' : 'en';
         this.url = {
             // individualCms: this._config.urlHost + this._config.urlPrefix(this._config.language) + this.rawURL.individualCms(),
-            individualCms: '/manager.html'
+            individualCms: `/981/${lang}/manager.html`
         };
 
         this.isRememberPassword = false;
@@ -503,11 +505,16 @@ class View {
                 })
                 .then((res) => {
                     console.log(res)
-                    return;
-                    this.loadingEvent(signBtn, 'done');
-                    // this.rememberPassword(emailIpn, passwordIpn);
-                    this.signInToIndividualCms(res);
-
+                    if(res.code === 1) {
+                        
+                        // this.rememberPassword(emailIpn, passwordIpn);
+                        this.signInToIndividualCms(res);
+                    }
+                    else if (res.code === 403002 || res.code === 404001) {
+                        this.showError(errorDom, '请输入正确的用户名或密码');
+                    }
+                   
+                     this.loadingEvent(signBtn, 'done');
                 }).catch( (err) => {
                     this.loadingEvent(signBtn, 'done');
                     console.log(err,'err')
@@ -518,7 +525,7 @@ class View {
                     } else {
                         this.showError(errorDom, '服务器错误，请稍后再试');
                     }
-
+                     this.loadingEvent(signBtn, 'done');
                 });
         }
     }
@@ -581,7 +588,7 @@ class View {
     }
 
     signInToIndividualCms(res) {
-        // utils.setCookie('username', res.uid, this.cookieTime);
+        utils.setCookie('username', res.username, this.cookieTime);
         // utils.setCookie('email', res.email, this.cookieTime);
         window.location.href = this.url.individualCms;
     }
@@ -642,6 +649,11 @@ class View {
     }
 
     initModel() {
+
+        if(utils.getCookie('username'))  {
+            window.location.href = this.url.individualCms;
+        }
+
         this.model = {...this.model,
             ... {
 

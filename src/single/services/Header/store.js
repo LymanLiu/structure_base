@@ -47,12 +47,17 @@ const self = class store extends RootStore {
 
     onSignOut() {
         console.log($$.getApi('signOut'))
-            // browserHistory.push('/981/cn/manager.html/admin')
-            // axios.post($$.getApi('signIn'), {username: 'admin', passcode: 'admin123'})
-            //     .then((res) => {
-            //         console.log(res)
-            //     })
-            //     .catch((err) => console.log(err))
+        $$.utils.ajax('get')($$.getApi('signOut'))
+            .then(res => {
+                console.log(res)
+                if(res === 1) {
+                    $$.utils.delCookie('username', $$.utils.getCookie('username'));
+                    let lang = location.href.indexOf('cn') > 1 ? 'cn' : 'en'
+                    location.href = `/981/${lang}/login.html`;
+                }
+            })
+            .catch(err => console.log(err));
+        
     }
 
     init() {

@@ -18,6 +18,11 @@ class View extends App {
 
     initModel() {
 
+       if(!utils.getCookie('username'))  {
+            let lang = location.href.indexOf('cn') > 1 ? 'cn' : 'en';
+            location.href = `/981/${lang}/login.html`;
+                
+        }
 
         this.model = {...this.comModel,
             ... {

@@ -347,7 +347,7 @@ export default {
                                 }
                             }
                         } catch (err) {
-                            j({}, err);
+                            j(err);
                         }
                     };
 
