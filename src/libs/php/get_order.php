@@ -1,6 +1,7 @@
 <?php
 	include 'header.php';
 	mysql_query("set character set 'utf8'");
+	$id=$_GET['id'];
 	$page = intval($_GET['page']); //当前页 
 	$pageSize = intval($_GET['pageSize']); //每页显示数 
   
@@ -12,7 +13,11 @@
 	$arr['total'] = $total; 
 	$arr['pageSize'] = $pageSize; 
 	$arr['totalPage'] = $totalPage; 
-	$query = mysql_query("SELECT * FROM orders ORDER BY id DESC LIMIT $startPage,$pageSize"); //查询分页数据 
+	if($id) {
+		$query = mysql_query("SELECT * FROM orders WHERE id={$id}");  
+	} else {
+		$query = mysql_query("SELECT * FROM orders ORDER BY id DESC LIMIT $startPage,$pageSize"); //查询分页数据 
+	}
 	
 	while($row=mysql_fetch_array($query)){ 
 	  $arr['list'][] = array( 

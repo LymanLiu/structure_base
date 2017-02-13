@@ -10,7 +10,10 @@ const self = class Actions {
             'setVal',
             'search',
             'focus',
-            'refresh'
+            'refresh',
+            'editor',
+            'delete',
+
         ];
         return Reflux.createActions(actions);
     }

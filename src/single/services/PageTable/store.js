@@ -47,7 +47,8 @@ const self = class store extends RootStore {
     onInitData(props) {
         this.api = props.api;
         this.thData = props.thData.en;
-        this.params = props.params || {pageSize: 10};  
+        this.thData.unshift('id');
+        this.params = props.params || { pageSize: 10 };
         this.getData();
         props.onRefresh(this.getData);
     }
@@ -60,7 +61,7 @@ const self = class store extends RootStore {
 
     }
 
-    onGetData(){
+    onGetData() {
         this.getData();
     }
 
@@ -72,14 +73,14 @@ const self = class store extends RootStore {
         //         console.log(err, 'err')
         //     })
         //     
-        
-        let params = {...this.params, ...{ page: this.state.currentPage}};
+
+        let params = {...this.params, ... { page: this.state.currentPage } };
 
         $.get(this.api, params, (res) => {
             res = JSON.parse(res);
 
             var { total, list } = res;
-            if(!list) return;
+            if (!list) return;
             var tdData = [];
             list.forEach(obj => {
                 var _td = [];

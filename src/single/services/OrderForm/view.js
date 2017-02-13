@@ -17,8 +17,7 @@ import ReDialog from '../../widgets/ReDialog';
 import PageTable from '../PageTable';
 
 export default class view extends React.Component {
-    static propTypes = {
-    };
+    static propTypes = {};
 
     static defaultProps = {
         //name: 'component name'
@@ -151,15 +150,18 @@ export default class view extends React.Component {
                 <FourButton 
                     onAdd={() => this.actions.forbtn('add')}
                     onSearch={() => this.actions.forbtn('search')}
-                    onFixed={() => console.log('Fixed')}
-                    isShowFixed={false}
-                    isShowDelete={false}
+                    onFixed={() => this.actions.forbtn('fixed')}
+                    onDelete={() => this.actions.forbtn('delete')}
                 />
 
                <PageTable 
                     api={$$.getApi('getOrder')}
                     thData={this.thData}
                     onRefresh={this.actions.refresh}
+                    onEditor={(arg) => this.actions.editor(arg)}
+                    onDelete={(arg) => this.actions.delete(arg)}
+                    isShowDel={this.state.isShowDel}
+                    isShowEidt={this.state.isShowEidt}
                />
 
                 <ReDialog

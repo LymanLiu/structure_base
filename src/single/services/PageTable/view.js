@@ -19,11 +19,21 @@ export default class view extends React.Component {
         params: React.PropTypes.object,
         thData: React.PropTypes.object.isRequired,
         onRefresh: React.PropTypes.func,
+        onEditor: React.PropTypes.func,
+        onDelete: React.PropTypes.func,
+        isShowDel: React.PropTypes.bool,
+        isShowEidt: React.PropTypes.bool,
+
     };
 
     static defaultProps = {
-        onRefresh: () => {}
+        onRefresh: () => {},
+        onEditor: () => {},
+        onDelete: () => {},
+        isShowDel: false,
+        isShowEidt: false
     };
+
 
 
     constructor(props, context) {
@@ -54,8 +64,8 @@ export default class view extends React.Component {
     }
 
     componentDidUpdate() {
-      
-    }   
+
+    }
 
     componentWillUnmount() {
         this.actions.removeEvents(); //do not delete
@@ -69,6 +79,10 @@ export default class view extends React.Component {
                 <ReTable 
                     thData={this.props.thData.en}
                     tdData={this.state.tdData}
+                    onEditor={(arg) => this.props.onEditor(arg)}
+                    onDelete={(arg) => this.props.onDelete(arg)}
+                    isShowDel={this.props.isShowDel}
+                    isShowEidt={this.props.isShowEidt}
                 />
                 <div className="pagination-box">
                     <Pagination

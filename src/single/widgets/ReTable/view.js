@@ -12,11 +12,17 @@ export default class view extends React.Component {
         //name: React.PropTypes.string,
         tdData: React.PropTypes.array.isRequired,
         thData: React.PropTypes.array.isRequired,
-        onChange: React.PropTypes.func
+        onEditor: React.PropTypes.func,
+        onDelete: React.PropTypes.func,
+        isShowDel: React.PropTypes.bool,
+        isShowEidt: React.PropTypes.bool,
     };
 
     static defaultProps = {
-        onChange: () => {}
+        onEditor: () => {},
+        onDelete: () => {},
+        isShowDel: false,
+        isShowEidt: false
     };
 
     constructor(props, context) {
@@ -69,12 +75,8 @@ export default class view extends React.Component {
                                     <th key={'th' + i}>{res}</th>
                                 )
                            })}
-                           {/*<th width="100px">
-                               <ReCheckbox 
-                                   label="全部"
-                                   onChange={this.checked.bind(this, 999)}
-                               />
-                          </th>*/}
+                           {this.props.isShowEidt ? <th>修改</th> : null}
+                           {this.props.isShowDel ? <th>删除</th> : null}
                        </tr>
                     </thead>
                    <tbody>
@@ -89,11 +91,8 @@ export default class view extends React.Component {
                                         </td>
                                     )                                   
                                    })}
-                                    {/*<td className="tc">
-                                         <ReCheckbox 
-                                            onChange={this.checked.bind(this, list[0])}
-                                        />
-                                    </td>*/}
+                                    {this.props.isShowEidt ? <td className="edit" onClick={() => this.props.onEditor({id: list[0]})}>修改</td> : null}
+                                    {this.props.isShowDel ? <td className="del" onClick={() => this.props.onDelete({id: list[0]})}>删除</td> : null}
                                 </tr>
                             )                  
                         })}

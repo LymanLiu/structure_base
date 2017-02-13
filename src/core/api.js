@@ -6,4 +6,5 @@ export default {
     searchOrder: () => `search_order.php`, //post
     signIn: () => `sign_in.php`, //post
     signOut: () => `sign_out.php`, //delete
+    deleteData: () => `delete_data.php`, //post
 }
