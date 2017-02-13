@@ -65,7 +65,13 @@ const self = class store extends RootStore {
                 .then(res => {
                     // console.log(res, 'iii')
                     if (res == 1) {
-                        alert('提交成功')
+                        if(this.state.addDataType === 'update') {
+
+                            alert('修改成功')
+                        } else {
+                            alert('提交成功')
+                            
+                        }
                         this.resetState();
                         this.refresh();
                     } else {
@@ -91,7 +97,8 @@ const self = class store extends RootStore {
             logisticsInfoErrorText: '',
             addDataType: 'insert',
             dialogShow: false,
-            sureBtnDisabled: false
+            sureBtnDisabled: false,
+            isShowSureBtn: true
         });
     }
 
@@ -139,6 +146,10 @@ const self = class store extends RootStore {
                 pending,
                 dialogShow: true
             });
+        } 
+
+        if(pending === 'search') {
+            this.setState({isShowSureBtn: false });
         }
 
     }
@@ -159,7 +170,7 @@ const self = class store extends RootStore {
         if (this.state.orderID === '') {
             this.setState({ orderIDErrorText: '请输入订单号' })
         } else {
-            this.setState({ orderIDErrorText: '', searchBtn: true })
+            this.setState({ orderIDErrorText: '', searchBtn: true})
             $$.utils.ajax('get')($$.getApi('searchOrder'), { orderID: this.state.orderID })
                 .then(res => {
                     // res = JSON.parse(res);
@@ -246,7 +257,8 @@ const self = class store extends RootStore {
             addDataType: 'insert',
             upadteId: 0,
             thData: ['orderID', 'consignee', 'address', 'logisticsInfo', 'inputTime'],
-            reslist: []
+            reslist: [],
+            isShowSureBtn: true
         };
     }
 

@@ -31,7 +31,8 @@ export default class view extends React.Component {
         onEditor: () => {},
         onDelete: () => {},
         isShowDel: false,
-        isShowEidt: false
+        isShowEidt: false,
+        params: {pageSize: 10}
     };
 
 
@@ -79,8 +80,8 @@ export default class view extends React.Component {
                 <ReTable 
                     thData={this.props.thData.en}
                     tdData={this.state.tdData}
-                    onEditor={(arg) => this.props.onEditor(arg)}
-                    onDelete={(arg) => this.props.onDelete(arg)}
+                    onEditor={(arg) => this.props.onEditor({...arg, ...this.props.params})}
+                    onDelete={(arg) => this.props.onDelete({...arg, ...this.props.params})}
                     isShowDel={this.props.isShowDel}
                     isShowEidt={this.props.isShowEidt}
                 />

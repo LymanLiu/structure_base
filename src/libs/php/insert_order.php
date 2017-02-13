@@ -5,13 +5,15 @@
 	date_default_timezone_set('Asia/Shanghai'); 
 	$time = date('20'.'y/m/d H:i:s',time());
 
+	$id=$_POST['id'];
 	$type=$_POST['type'];
 	$orderID=$_POST['orderID'];
 	$consignee = $_POST["consignee"];
 	$address = $_POST["address"];
 	$logisticsInfo = $_POST["logisticsInfo"];
 	if ($type == 'update') {
-		$result = mysql_query("UPDATE orders SET 'orderID'={$orderID}, 'consignee'='{$consignee}','address'='{$address}','logisticsInfo'='{$logisticsInfo}' WHERE id=${id}");
+		mysql_query("UPDATE orders SET orderID={$orderID}, consignee='{$consignee}', address='{$address}',logisticsInfo='{$logisticsInfo}' WHERE id=${id}");
+		$result = mysql_affected_rows();
 	} else {
 		$result = mysql_query("INSERT INTO orders ( orderID, consignee, address, logisticsInfo,inputTime) VALUES ({$orderID},'{$consignee}','{$address}','{$logisticsInfo}','{$time}')");
 	}

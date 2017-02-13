@@ -171,6 +171,7 @@ export default class view extends React.Component {
                     onCancel={() => this.actions.dialogClose()}
                     onConfirm={() => this.actions.result(this.props.type)}
                     sureBtnDisabled={this.state.sureBtnDisabled}
+                    isShowSureBtn={this.state.isShowSureBtn}
                     className='model-edit-dialog'
                 > 
                     <div className="edit-container">

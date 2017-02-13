@@ -21,12 +21,14 @@ export default class view extends React.Component {
         title: React.PropTypes.string,
         onCancel: React.PropTypes.func,
         onConfirm: React.PropTypes.func,
+        isShowSureBtn: React.PropTypes.bool
 
     };
 
     static defaultProps = {
         isModal: true,
         isShow: false,
+        isShowSureBtn: true,
         dialogPending: 'alert',
         dialogText: '',
         successText: '',
@@ -220,12 +222,13 @@ export default class view extends React.Component {
                         label="取消"
                         onClick={(e) =>{ this.props.onCancel && this.props.onCancel(e) } }
                    />
-                   <ReButton 
+                   {this.props.isShowSureBtn ? <ReButton 
                         className={this.props.sureBtnDisabled ? "dialog-btn disable-style" : "dialog-btn"}
                         disabled={this.props.sureBtnDisabled}
                         label="确定"
                         onClick={(e) =>{ this.props.onConfirm && this.props.onConfirm(e) } }
-                   />
+                   /> : null}
+                   
                 </div>
             </div>
         );

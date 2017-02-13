@@ -86,10 +86,8 @@ export default class view extends React.Component {
                 <FourButton 
                     onAdd={() => this.actions.forbtn('add')}
                     isShowSearch={false}
-                    isShowFixed={false}
-                    isShowDelete={false}
-                    onFixed={() => console.log('Fixed')}
-                    onDelete={() => console.log('Delete')}
+                    onFixed={() => this.actions.forbtn('fixed')}
+                    onDelete={() => this.actions.forbtn('delete')}
                 />
 
                <PageTable 
@@ -97,6 +95,10 @@ export default class view extends React.Component {
                     params={{type: this.props.type, pageSize: 10}}
                     thData={this.thData}
                     onRefresh={this.actions.refresh}
+                    onEditor={(arg) => this.actions.editor(arg)}
+                    onDelete={(arg) => this.actions.delete(arg)}
+                    isShowDel={this.state.isShowDel}
+                    isShowEidt={this.state.isShowEidt}
                />
 
                 <ReDialog

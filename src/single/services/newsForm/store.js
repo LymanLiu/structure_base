@@ -39,6 +39,7 @@ const self = class store extends RootStore {
                     storeObserver: this.storeObserver,
                     listenMulti: this.listenMulti,
                     resetState: this.resetState,
+                    toogleBtn: this.toogleBtn,
                     strategy: this.strategy
 
                 })
@@ -57,20 +58,30 @@ const self = class store extends RootStore {
             var params = {
                 title: this.state.newsTitle,
                 content,
-                type
+                type,
+                update: this.state.isShowEidt
             }
+            if (this.state.isShowEidt) params.id = this.state.upadteId;
 
             $$.utils.ajax('post')($$.getApi('insertNews'), params)
             .then(res => {
                 // console.log(res, 'iii')
                 if(res == 1) {
-                    alert('提交成功')
+                    if(this.state.isShowEidt) {
+
+                        alert('修改成功')
+                    } else {
+                        alert('提交成功')
+                        
+                    }
+                    this.resetState();
+                    this.refresh();
                 } else {
                     alert('服务器错误,请稍后在试')
                 }
                 
-                this.resetState();
-                this.refresh();
+                this.setState({ sureBtnDisabled: false });
+                
             }).catch(err => alert('服务器错误,请稍后在试'))
         }
 
@@ -97,11 +108,61 @@ const self = class store extends RootStore {
     }
 
     onForbtn(pending) {
+        if (pending === 'fixed' || pending === 'delete') {
+            this.toogleBtn(pending);
+        } else {
+            this.setState({
+                pending,
+                dialogShow: true
+            });
+        }
+
+    }
+
+    toogleBtn(type) {
+        // this.setState({[isShowDel]})
+        switch (type) {
+            case 'fixed':
+                this.setState({ isShowEidt: !this.state.isShowEidt });
+                break;
+            case 'delete':
+                this.setState({ isShowDel: !this.state.isShowDel });
+                break;
+        }
+    }
+
+    onEditor(pkg) {
+        // console.log(pkg, 'edit')
+
+        $$.utils.ajax('get')($$.getApi('getNews'), { id: pkg.id, type: pkg.type })
+            .then(res => {
+                var { list } = res;
+                this.setState({
+                    newsTitle: list[0].title
+                });
+                UM.getEditor('myEditor').setContent(list[0].content);
+            })
+            .catch(err => console.log(err, 'err'));
+
         this.setState({
-            pending,
-            dialogShow: true
+            pending: 'add',
+            dialogShow: true,
+            upadteId: pkg.id
         });
 
+    }
+    onDelete(pkg) {
+        // console.log(pkg, 'del')
+        $$.utils.ajax('post')($$.getApi('deleteData'), { type: pkg.type, id: pkg.id })
+            .then(res => {
+                if (res === 1) {
+                    this.refresh();
+                    alert('删除成功');
+                } else {
+                    alert('删除失败，服务器错误');
+                }
+            })
+            .catch(err => console.log(err, 'err'));
     }
 
     onDialogClose() {
@@ -118,7 +179,8 @@ const self = class store extends RootStore {
             newsTitle: '',
             titleErrorText: '',
             pending: 'add',
-            type: 'business'
+            type: 'business',
+            upadteId: 0,
         };
     }
 
