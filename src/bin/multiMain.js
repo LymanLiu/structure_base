@@ -23,8 +23,113 @@ window.MultiView = class MultiView {
     	return this.config.apiHost() + this.api[name]();
     }
 
-    sayTest() {
-        console.log('hello')
+    ajax(name) {
+        return {
+            get(URL,queryJSON) {
+                if (window.XMLHttpRequest) {
+                    var xhr = new XMLHttpRequest();
+                } else {
+                    var xhr = new ActiveXObject('Microsoft.XMLHTTP');
+                }
+                var promise = new Promise((r, j) => {
+                    xhr.onreadystatechange = function() {
+                        try {
+                            if (xhr.readyState == 4) {
+                                if (xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {
+                                    r(JSON.parse(xhr.responseText));
+                                } else {
+                                    j(JSON.parse(xhr.responseText));
+                                }
+                            }
+                        } catch (err) {
+                            j({}, err);
+                        }
+                    };
+                });
+                var querystring = _queryjson2querystring(queryJSON);
+                xhr.open('get', URL + '?' + querystring, true);
+                // xhr.open('GET', URL, true);
+                xhr.send(null);
+                return promise;
+
+                function _queryjson2querystring(json) {
+                    var arr = [];
+                    for (var k in json) {
+                        arr.push(k + '=' + encodeURIComponent(json[k]));
+                    }
+                    return arr.join('&');
+                }
+            },
+            delete(URL) {
+                if (window.XMLHttpRequest) {
+                    var xhr = new XMLHttpRequest();
+                } else {
+                    var xhr = new ActiveXObject('Microsoft.XMLHTTP');
+                }
+                var promise = new Promise((r, j) => {
+                    xhr.onreadystatechange = function() {
+                        try {
+                            if (xhr.readyState == 4) {
+                                if (xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {
+                                    r(JSON.parse(xhr.responseText));
+                                } else {
+                                    j(JSON.parse(xhr.responseText));
+                                }
+                            }
+                        } catch (err) {
+                            j({}, err);
+                        }
+                    };
+                });
+                // var querystring = this._queryjson2querystring(queryJSON);
+                // xhr.open('get', URL + '?' + querystring, true);
+                xhr.open('DELETE', URL, true);
+                xhr.send(null);
+                return promise;
+            },
+            post(URL, queryJSON) {
+                if (window.XMLHttpRequest) {
+                    var xhr = new window.XMLHttpRequest();
+                } else {
+                    var xhr = new ActiveXObject('Microsoft.XMLHTTP');
+                }
+
+                var promise = new Promise((r, j) => {
+                    xhr.onreadystatechange = function() {
+                        try {
+                            if (xhr.readyState == 4) {
+                                if (xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {
+                                    r(JSON.parse(xhr.responseText));
+                                } else {
+                                    j(JSON.parse(xhr.responseText));
+                                }
+                            }
+                        } catch (err) {
+                            j(err);
+                        }
+                    };
+
+                });
+
+                var querystring = _queryjson2querystring(queryJSON);
+
+                xhr.open('POST', URL, true);
+
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhr.send(querystring);
+
+                function _queryjson2querystring(json) {
+                    var arr = [];
+                    for (var k in json) {
+                        arr.push(k + '=' + encodeURIComponent(json[k]));
+                    }
+                    return arr.join('&');
+                }
+
+                return promise;
+            }
+
+        }[name].bind(this);
     }
 }
 

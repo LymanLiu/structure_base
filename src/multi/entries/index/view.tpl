@@ -5,8 +5,8 @@
 	<?- header ?>
 	<div class="banner-box">
 		<div class="search-box">
-			<input type="text">
-			<button>单号查询</button>
+			<input type="text" id="orderID" >
+			<button id="searchBtn">单号查询</button>
 		</div>
 	</div>
 	<?- indexContainer ?>

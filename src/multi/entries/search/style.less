@@ -27,6 +27,30 @@
 			background: @mainColor;
 			cursor: pointer;
 			color: #fff;
+			&.disabledStyle {
+	            background: @mainColorHover;
+	            cursor: wait;
+	            &:hover {
+	                background: @mainColorHover;
+	            }
+	            span {
+	                display: inline-block;
+	                vertical-align: middle;
+	                i {
+	                    display: inline-block;
+	                    font-size: 24px;
+	                }
+	                i:first-child {
+	                    animation: loading 1s 0s linear infinite;
+	                }
+	                i:nth-child(2) {
+	                    animation: loading 1s 0.3s linear infinite;
+	                }
+	                i:last-child {
+	                    animation: loading 1s 0.6s linear infinite;
+	                }
+	            }
+	        }
 		}
 	}
 }
@@ -37,10 +61,23 @@
 		margin: 20px 0;
 	}
 	.search-detail {
-		text-align: center;
-		line-height: 180px;
-		height: 180px;
 		background: #fff;
-		margin-bottom: 30px;
+	    margin-bottom: 30px;
+	    padding: 20px;
+	    text-align: left;
+	    padding-left: 60px;
+	    min-height: 120px;
 	}
+}
+
+@keyframes loading {
+    00% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-4px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
 }
