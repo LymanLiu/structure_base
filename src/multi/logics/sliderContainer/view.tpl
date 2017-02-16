@@ -35,7 +35,7 @@
 						<? }) ?>
 					</div>
 					<div class="content-page-3">
-						<h3 class="russia-title">三 <?- placeName ?>双清关可到达城市 <span>(您可提供客户的英文或俄语地址，让客服协助查询，并告知运价、时效等。)</span></h3>
+						<h3 class="russia-title">三 俄罗斯双清关可到达城市 <span>(您可提供客户的英文或俄语地址，让客服协助查询，并告知运价、时效等。)</span></h3>
 						<table class="russia-table">
 							<? content.pageThree.forEach((trList, i) => { ?>
 								<tr>
