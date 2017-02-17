@@ -1,8 +1,9 @@
 {
 	"LNAG":"en",
 	"INDEX_TITLE":"主页",
-	"RUSSIA_TITLE":"俄罗斯专线",
+	"RUSSIA_TITLE":"ВИДЫ ТРАНСПОРТА",
 
+	"MANAGER_TITLE":"俄文后台管理系统",
 
 	"NAV_HOME":"ГЛАВНАЯ",
 	"NAV_ABOUT":"О КОМПАНИИ",
@@ -12,6 +13,12 @@
 	"NAV_WULIU":"Номер накладной",
 	"NAV_NEWS":"ИНФОРМАЦИЯ",
 	"NAV_CONTACT":"КАНТАКТЫ",
+	"SEARCH_BTN_TEXT":"Номер накладной",
+	"SLIDER_TEXT_ONE":"АВИА",
+	"SLIDER_TEXT_TWO":"АВТО  И  Ж/Д",
+	"SLIDER_TEXT_THREE":"ЭКСПРЕСС",
+
+
 
 	"ABOUT_TITLE_ONE":"981 международная логистическая компания (Гуанчжоу)",
 	"ABOUT_CONTENT_ONE_1":"Сайт 981Карго юридически относится  к \"981 международная логистическая компания (Гуанчжоу)/981 International Logistics (GuangZhou) Co. Ltd.\, которая зарегистрирована в Китае.\" ",

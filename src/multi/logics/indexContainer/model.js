@@ -7,15 +7,15 @@ module.exports = {
     		content: `
     			<ul class="first-page">
     				<li class="one">
-						<h4>俄罗斯空运</h4>
+						<h4><$- SLIDER_TEXT_ONE $></h4>
 						<img src="/static/images/multi/entries/index/images/index-product-1.jpg" alt="">
 					</li>
 					<li class="two">
-						<h4>俄罗斯陆运</h4>
+						<h4><$- SLIDER_TEXT_TWO $></h4>
 						<img src="/static/images/multi/entries/index/images/index-product-2.jpg" alt="">
 					</li>
 					<li class="three">
-						<h4>俄罗斯快递</h4>
+						<h4><$- SLIDER_TEXT_THREE $></h4>
 						<img src="/static/images/multi/entries/index/images/index-product-3.jpg" alt="">
 					</li>
     			</ul>

@@ -6,7 +6,7 @@
 	<div class="banner-box">
 		<div class="search-box">
 			<input type="text" id="orderID" >
-			<button id="searchBtn">单号查询</button>
+			<button id="searchBtn"><?- SEARCH_BTN_TEXT ?></button>
 		</div>
 	</div>
 	<?- indexContainer ?>

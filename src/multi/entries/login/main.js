@@ -25,7 +25,7 @@ class Frame extends MultiMain {
 
         this.model = _.extend(this.model, {
             head: head.render({ less: 'login', title: '<$- RUSSIA_TITLE $>' }).html,
-            signForm: signForm.render().html
+            signForm: signForm.render({title: '<$- MANAGER_TITLE $>' }).html
         });
 
         return this;
