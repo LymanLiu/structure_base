@@ -4,13 +4,13 @@ import React from 'react';
 
 
 export default class view extends React.Component {
-    // static propTypes = {
-    //     getUM: React.PropTypes.func
-    // };
+    static propTypes = {
+        value: React.PropTypes.any
+    };
 
-    // static defaultProps = {
-    //     getUM: () => {}
-    // };
+    static defaultProps = {
+       value: ''
+    };
 
     constructor(props, context) {
 
@@ -18,12 +18,21 @@ export default class view extends React.Component {
 
         // init state;
         this.state = {
-
+            value : props.value
         };
     }
     componentWillMount() {
         this._isMounted = true;
 
+    }
+
+    componentWillReceiveProps({ value }) {
+        if(value != this.state.value) {
+          this.setState({
+             value
+          });
+          UE.getEditor('myEditor').setContent(value);
+        }
     }
 
     componentDidMount() {

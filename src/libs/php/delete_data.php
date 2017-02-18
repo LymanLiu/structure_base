@@ -16,7 +16,7 @@
 		$tableNameBus = 'news_business';
 		$tableNameCom = 'news_company';
 		$tableNameOrd = 'orders';
-	} else {
+	} elseif($lang == 'en') {
 		$tableNameBus = 'en_news_business';
 		$tableNameCom = 'en_news_company';
 		$tableNameOrd = 'en_orders';

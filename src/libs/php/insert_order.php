@@ -15,7 +15,7 @@
 	$tableName = 'orders';
 	if($lang == 'cn') {
 		$tableName = 'orders';
-	} else {
+	} elseif($lang == 'en') {
 		$tableName = 'en_orders';
 	}
 	if ($type == 'update') {

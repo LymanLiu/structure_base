@@ -21,7 +21,7 @@
 	if($lang == 'cn') {
 		$tableNameBus = 'news_business';
 		$tableNameCom = 'news_company';
-	} else {
+	} elseif($lang == 'en') {
 		$tableNameBus = 'en_news_business';
 		$tableNameCom = 'en_news_company';
 	}
