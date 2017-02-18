@@ -20,11 +20,11 @@ class Application {
         this._appDom = null;
         this._config = null;
         this.observe = null;
-        this.LN = '';
         this.utils = utils;
 
 
         this.init();
+        // this.loadLanguage();
     }
 
     define() {
@@ -53,6 +53,7 @@ class Application {
         this._routeParams = {};
 
         this.LN = '';
+        this.lang = ~location.href.indexOf('cn') ? 'cn' : 'en';
         this.SEM = semantic;
         this.rawAPI = API;
         this.rawURL = URL;
@@ -92,6 +93,19 @@ class Application {
             this.storeObserver[name].forEach(fun => fun(...rest));
         } else {
             throw Error(name + ': this event is not exsited');
+        }
+    }
+
+    loadLanguage(lang) {
+        // let lang = ~window.location.href.indexOf('cn') ? 'cn' : 'en';
+        if(lang) {
+            return axios(`etc/lang/${lang}.lang`).then(res => {
+                console.log(res);
+                this.LN = res.data;
+                browserHistory.push(window.location.href);
+            });
+        } else {
+            return Promise.reject('no lang');
         }
     }
 

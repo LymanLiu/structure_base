@@ -45,27 +45,77 @@ const self = class store extends RootStore {
         }
     }
 
-    onSignOut() {
-        console.log($$.getApi('signOut'))
-        $$.utils.ajax('get')($$.getApi('signOut'))
-            .then(res => {
-                console.log(res)
-                if(res === 1) {
-                    $$.utils.delCookie('username', $$.utils.getCookie('username'));
-                    let lang = location.href.indexOf('cn') > 1 ? 'cn' : 'en'
-                    location.href = `/981/${lang}/login.html`;
-                }
-            })
-            .catch(err => console.log(err));
-        
+    onSave() {
+
+            let content = UE.getEditor('myEditor').getContent().toString();
+            var params = {
+               content,
+               lang: $$.lang,
+               type: 'update'
+            }
+            this.setState({ sureBtnDisabled: true });
+            $$.utils.ajax('post')($$.getApi('aboutCompany'), params)
+                .then(res => {
+                    // console.log(res, 'iii')
+                    if (res == 1) {
+                        // if(this.state.addDataType === 'update') {
+
+                        //     alert('修改成功')
+                        // } else {
+                            alert('修改成功');
+                            this.setState({
+                                isEdit: false,
+                                content
+                            });
+                            
+                        // }
+                    } else {
+                        alert('服务器错误,请稍后在试')
+                    }
+                    this.setState({ sureBtnDisabled: false });
+                }).catch(err => console.log(err))
+
     }
 
+    onInitData() {
+        $$.utils.ajax('get')($$.getApi('aboutCompany'), { lang: $$.lang })
+            .then(res => {
+                var { list } = res;
+                this.setState({
+                    content: list[0].content
+                });
+
+                 UE.getEditor('myEditor').setContent(this.state.content);
+            })
+            .catch(err => console.log(err, 'err'));
+    }
+
+   
+    onEditor(pkg) {
+        // console.log(pkg, 'edit')
+        
+        this.setState({
+            isEdit: true
+        });
+
+        UE.getEditor('myEditor').setContent(this.state.content);
+       
+
+    }
+
+    onCancel() {
+          this.setState({
+            isEdit: false
+        });
+    }
 
 
     init() {
 
         this.state = {
-            title: ''
+          isEdit: false,
+          content: '',
+          sureBtnDisabled: false
         };
     }
 

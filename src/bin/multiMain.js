@@ -11,6 +11,7 @@ const API = {
     searchOrder: () => `search_order.php`, //post
     signIn: () => `sign_in.php`, //post
     signOut: () => `sign_out.php`, //delete
+    aboutCompany: () => `about_company.php` //get post
 }
 
 window.MultiView = class MultiView {

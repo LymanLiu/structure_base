@@ -27,6 +27,11 @@ export default class view extends React.Component {
                     title: '公司新闻',
                     type: 'company',
                     isActive: false
+                },
+                 {
+                    title: '公司简介',
+                    type: 'aboutCompany',
+                    isActive: false
                 }
             ]
         }

@@ -5,26 +5,35 @@
 	date_default_timezone_set('Asia/Shanghai'); 
 	$time = date('20'.'y/m/d H:i:s',time());
 
+	$lang=$_POST['lang'];
 	$id=$_POST['id'];
 	$update=$_POST['update'];
 	$type=$_POST['type'];
 	$title = $_POST["title"];
 	$content = $_POST["content"];
-	// $title = iconv('utf-8','gb2312', $_POST["title"]);
-	// $content = iconv('utf-8','gb2312', $_POST["content"]);
-	//执行一条SQL语句，SQL语句操作数据库的语句。SQL是独立的语言，PHP、JavaEE、.net、pethon都在用SQL语句
+
+	$tableNameBus = 'news_business';
+	$tableNameCom = 'news_company';
+	if($lang == 'cn') {
+		$tableNameBus = 'news_business';
+		$tableNameCom = 'news_company';
+	} else {
+		$tableNameBus = 'en_news_business';
+		$tableNameCom = 'en_news_company';
+	}
+
 	if($update) {
 		if($type == 'business') {
-			mysql_query("UPDATE news_business SET title='{$title}', content='{$content}' WHERE id=${id}");
-		} else {
-			mysql_query("UPDATE news_company SET title='{$title}', content='{$content}' WHERE id=${id}");
+			mysql_query("UPDATE {$tableNameBus} SET title='{$title}', content='{$content}' WHERE id=${id}");
+		} elseif ($type == 'company')  {
+			mysql_query("UPDATE {$tableNameCom} SET title='{$title}', content='{$content}' WHERE id=${id}");
 		}
 		$result = mysql_affected_rows();
 	} else {
 	 	if($type == 'business') {
-			$result = mysql_query("INSERT INTO news_business (title,content,time) VALUES ('{$title}','{$content}','{$time}')");
-		} else {
-			$result = mysql_query("INSERT INTO news_company (title,content,time) VALUES ('{$title}','{$content}','{$time}')");
+			$result = mysql_query("INSERT INTO {$tableNameBus} (title,content,time) VALUES ('{$title}','{$content}','{$time}')");
+		} elseif ($type == 'company') {
+			$result = mysql_query("INSERT INTO {$tableNameCom} (title,content,time) VALUES ('{$title}','{$content}','{$time}')");
 		}
 	}
 	if($result == 1){

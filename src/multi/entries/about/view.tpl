@@ -4,7 +4,7 @@
 <body class="bg-body">
 	<?- header ?>
 	<div class="a-main-banner main-banner"><?- ABOUT_TITLE ?></div>
-	<div class="about-container wrapper">
+	<div class="about-container wrapper" id="aboutContainer">
 		<h2 class="about-title"><?- ABOUT_TITLE ?></h2>
 		<dl class="about-page-1">
 			<dt>
@@ -39,6 +39,6 @@
 		</div>
 	</div>
 	<?- footer ?>
-	<script type="text/javascript" src="/static/js/multi/russia.js"></script>
+	<script type="text/javascript" src="/static/js/multi/about.js"></script>
 </body>
 </html>

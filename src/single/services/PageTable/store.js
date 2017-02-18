@@ -74,7 +74,7 @@ const self = class store extends RootStore {
         //     })
         //     
 
-        let params = {...this.params, ... { page: this.state.currentPage } };
+        let params = {...this.params, ... { page: this.state.currentPage }, ...{lang: $$.lang} };
 
         $.get(this.api, params, (res) => {
             res = JSON.parse(res);
