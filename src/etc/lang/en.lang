@@ -13,10 +13,14 @@
 	"NAV_WULIU":"Номер накладной",
 	"NAV_NEWS":"ИНФОРМАЦИЯ",
 	"NAV_CONTACT":"КАНТАКТЫ",
+	"ABOUT_US":"КАНТАКТЫ",
 	"SEARCH_BTN_TEXT":"Номер накладной",
 	"SLIDER_TEXT_ONE":"АВИА",
 	"SLIDER_TEXT_TWO":"АВТО  И  Ж/Д",
 	"SLIDER_TEXT_THREE":"ЭКСПРЕСС",
+	"FOOTER_ABOUT_TWO":"保险赔付",
+	"FOOTER_ABOUT_THREE":"待收货款",
+	"FOOTER_ABOUT_FOUR":"接货生命",
 
 
 
