@@ -59,7 +59,7 @@ const self = class store extends RootStore {
                 title: this.state.newsTitle,
                 content,
                 type,
-                update: this.state.isShowEidt,
+                update: this.state.isShowEidt ? 'update' : 'insert',
                 lang: $$.lang
             }
             if (this.state.isShowEidt) params.id = this.state.upadteId;

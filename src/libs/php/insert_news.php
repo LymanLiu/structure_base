@@ -21,7 +21,7 @@
 		$tableNameCom = 'en_news_company';
 	}
 
-	if($update) {
+	if($update == 'update') {
 		$id=$_POST['id'];
 		if($type == 'business') {
 			mysql_query("UPDATE {$tableNameBus} SET title='{$title}', content='{$content}' WHERE id=${id}");
@@ -29,7 +29,7 @@
 			mysql_query("UPDATE {$tableNameCom} SET title='{$title}', content='{$content}' WHERE id=${id}");
 		}
 		$result = mysql_affected_rows();
-	} else {
+	} elseif($update == 'insert') {
 	 	if($type == 'business') {
 			$result = mysql_query("INSERT INTO {$tableNameBus}(title,content,time) VALUES ('{$title}','{$content}','{$time}')");
 		} elseif ($type == 'company') {
