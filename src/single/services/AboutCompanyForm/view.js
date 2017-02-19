@@ -79,7 +79,7 @@ export default class view extends React.Component {
         return (
             <div className="about-company-form-root">
                 <div className="ab-content-box" style={{display: this.state.isEdit ? 'block' : 'none'}} >
-                    <MyEditor />
+                    <MyEditor id="abContent" />
                     <div className="btn-box">
                         <ReButton 
                             label="取消" 

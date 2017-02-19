@@ -5,7 +5,9 @@ import React from 'react';
 
 export default class view extends React.Component {
     static propTypes = {
-        value: React.PropTypes.any
+        value: React.PropTypes.any,
+        id: React.PropTypes.string.isRequired,
+
     };
 
     static defaultProps = {
@@ -52,7 +54,8 @@ export default class view extends React.Component {
     }
 
     render() {
-        var html = ` <script type="text/plain" id="myEditor" style="width:100%;height:300px;"></script>`;
+        var html = ` <script type="text/plain" id="myEditor" name=${this.props.id} style="width:100%;height:300px;"></script>`;
+        // var html = ` <script type="text/plain" id="myEditor" style="width:100%;height:300px;"></script>`;
 
         return (
            <div className="my-editor-root">

@@ -34,6 +34,7 @@ export default class view extends React.Component {
 
     componentDidMount() {
         this._isMounted = true;
+        // this.initData();
     }
     componentWillUnmount() {
         this._isMounted = false;

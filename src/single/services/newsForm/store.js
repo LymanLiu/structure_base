@@ -48,13 +48,13 @@ const self = class store extends RootStore {
     }
 
     onResult(type) {
-        // console.log(UE.getEditor('myEditor').getContent(), 'form')
+        // console.log(UE.getEditor('NewsForm').getContent(), 'form')
 
         if (this.state.newsTitle === '') {
             this.setState({ titleErrorText: '请输入标题' });
         } else {
             this.setState({ titleErrorText: '', sureBtnDisabled: true });
-            let content = UE.getEditor('myEditor').getContent().toString();
+            let content = UE.getEditor('NewsForm').getContent().toString();
             var params = {
                 title: this.state.newsTitle,
                 content,
@@ -97,7 +97,7 @@ const self = class store extends RootStore {
             newsContent: '',
             isShowEidt: false
         });
-         // UE.getEditor('myEditor').setContent('');
+         // UE.getEditor('NewsForm').setContent('');
     }
 
     onRefresh(fn) {

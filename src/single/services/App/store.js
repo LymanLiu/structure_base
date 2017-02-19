@@ -49,9 +49,25 @@ const self = class store extends RootStore {
     onSlider(type, idx, title) {
 
         this.setState({type,title});
+
+        location.hash = type;
     }
 
+    // onInitData() {
+    //     let type = location.hash.replace('#', '');
+    //     this.setState({
+    //         type
+    //     });
+    // }
+
     init() {
+
+        // document.onhashchange = () => {
+        //     let type = location.hash.replace('#', '');
+        //     this.setState({
+        //         type
+        //     });
+        // }
 
         this.state = {
             title: '订单',
