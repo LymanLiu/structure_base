@@ -3,21 +3,21 @@
 	<?- head ?>
 <body>
 	<?- header ?>
-	<div class="main-banner c-main-banner">联系我们</div>
+	<div class="main-banner c-main-banner"><?- nav_contact ?></div>
 	<div class="wrapper">
 		<ul class="contact-box">
 			<li>
-				<h4>联系方式1</h4>
+				<h4><?- nav_contact ?>1</h4>
 				<p>联系人：宁代华  Алеша) 13719292556 </p>
 				<p>E-mail: 1083817959@qq.com </p>
 			</li>
 			<li>
-				<h4>联系方式2</h4>
+				<h4><?- nav_contact ?>2</h4>
 				<p>联系人：张辰 13570332127</p>
 				<p>E-mail: 1987269118@qq.com </p>
 			</li>
 			<li>
-				<h4>联系方式3</h4>
+				<h4><?- nav_contact ?>3</h4>
 				<p>联系人：宁洋洋 13261406100</p>
 			</li>
 		</ul>

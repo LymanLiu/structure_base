@@ -2,7 +2,7 @@
 // import MultiView from '../../../core/MultiView';
 // import Header from '../../logics/header/view.js';
 // import Footer from '../../logics/footer/view.js';
-console.log(MultiView)
+// console.log(MultiView)
 class View {
     constructor() {
         // super();

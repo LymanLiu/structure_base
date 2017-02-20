@@ -1,4 +1,4 @@
-<div class="header" id="header">
+<div class="header <?- headerCss ?>" id="header">
 	<div class="wrapper">
 		<ul>
 			<? navlist.forEach((item, i) => { ?>

@@ -3,7 +3,7 @@
 	<?- head ?>
 <body class="bg-body">
 	<?- header ?>
-	<div class="n-main-banner main-banner">新闻中心</div>
+	<div class="n-main-banner main-banner"><?- news_center ?></div>
 	<ul class="new-list wrapper">
 		<li class="level_1">
 			<h3 class="title-box">行业资讯</h3>
