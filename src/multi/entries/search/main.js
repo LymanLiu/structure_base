@@ -28,7 +28,8 @@ class Frame extends MultiMain {
         this.model = _.extend(this.model, {
             head: head.render({ less: 'search', title: '<$- RUSSIA_TITLE $>' }).html,
             header: header.render({num: 5}).html,
-            footer: footer.render().html
+            footer: footer.render().html,
+            SEARCH_BTN_TEXT: '<$- SEARCH_BTN_TEXT $>'
         });
 
         return this;

@@ -19,7 +19,7 @@ class Frame extends MultiMain {
     }
 
     initModel() {
-       this.model = _.extend( this.comModel, this.model);
+       this.model = _.extend( this.comModel, {langCss: '<$- LNAG $>'});
     }
 
 }

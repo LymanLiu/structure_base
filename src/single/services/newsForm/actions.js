@@ -4,7 +4,7 @@ const self = class Actions {
     constructor() {
         var actions = [
             'removeEvents',
-            'result',
+            'initData',
             'dialogClose',
             'forbtn',
             'setVal',

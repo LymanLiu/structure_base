@@ -47,44 +47,9 @@ const self = class store extends RootStore {
         }
     }
 
-    onResult(type) {
+    onInitData(props) {
+        this.type = props.type;
         // console.log(UE.getEditor('NewsForm').getContent(), 'form')
-
-        if (this.state.newsTitle === '') {
-            this.setState({ titleErrorText: '请输入标题' });
-        } else {
-            this.setState({ titleErrorText: '', sureBtnDisabled: true });
-            let content = UE.getEditor('NewsForm').getContent().toString();
-            var params = {
-                title: this.state.newsTitle,
-                content,
-                type,
-                update: this.state.isShowEidt ? 'update' : 'insert',
-                lang: $$.lang
-            }
-            if (this.state.isShowEidt) params.id = this.state.upadteId;
-
-            $$.utils.ajax('post')($$.getApi('insertNews'), params)
-                .then(res => {
-                    // console.log(res, 'iii')
-                    if (res == 1) {
-                        if (this.state.isShowEidt) {
-
-                            alert('修改成功')
-                        } else {
-                            alert('提交成功')
-
-                        }
-                        this.resetState();
-                        this.refresh();
-                    } else {
-                        alert('服务器错误,请稍后在试')
-                    }
-
-                    this.setState({ sureBtnDisabled: false });
-
-                }).catch(err => alert('服务器错误,请稍后在试'))
-        }
 
     }
 
@@ -113,10 +78,12 @@ const self = class store extends RootStore {
     onForbtn(pending) {
         if (pending === 'fixed' || pending === 'delete') {
             this.toogleBtn(pending);
-        } else {
-            this.setState({
-                pending,
-                dialogShow: true
+        } else if(pending === 'add') {
+            this.emit('get', '/components/MyEditor/:viewData', {
+                viewData: 'news'
+            }).with({
+                newsTitle: '',
+                newsContent: ''
             });
         }
 
@@ -136,14 +103,28 @@ const self = class store extends RootStore {
 
     onEditor(pkg) {
         // console.log(pkg, 'edit')
+        // 
+        this.emit('get', '/components/MyEditor/:viewData', {
+            viewData: 'news'
+        }).with({
+            newsTitle: '',
+            newsContent: ''
+        });
 
         $$.utils.ajax('get')($$.getApi('getNews'), { id: pkg.id, type: pkg.type, lang: $$.lang })
             .then(res => {
                 var { list } = res;
-                this.setState({
+                // this.setState({
+                //     newsTitle: list[0].title,
+                //     newsContent: list[0].content
+                // });
+                this.emit('get', '/components/MyEditor/:viewData', {
+                    viewData: 'news'
+                }).with({
                     newsTitle: list[0].title,
                     newsContent: list[0].content
                 });
+
             })
             .catch(err => console.log(err, 'err'));
 
@@ -172,19 +153,56 @@ const self = class store extends RootStore {
         this.setState({ dialogShow: false });
     }
 
+    strategy(name) {
+        return {
+            uploadData(data, rest) {
+                console.log(data, rest ,' 555')
+                var params = {
+                    title: data.newsTitle,
+                    content: data.newsContent,
+                    type: this.type,
+                    update: this.state.isShowEidt ? 'update' : 'insert',
+                    lang: $$.lang
+                }
+                if (this.state.isShowEidt) params.id = this.state.upadteId;
+
+                $$.utils.ajax('post')($$.getApi('insertNews'), params)
+                    .then(res => {
+                        // console.log(res, 'iii')
+                        if (res == 1) {
+                            if (this.state.isShowEidt) {
+
+                                alert('修改成功')
+                            } else {
+                                alert('提交成功')
+
+                            }
+                            this.emit('upd', '/components/MyEditor/:close', {
+                                close: 'close'
+                            }).with({
+                                dialogShow: false
+                            });
+                            this.refresh();
+                        } else {
+                            alert('服务器错误,请稍后在试')
+                        }
+
+                        this.setState({ sureBtnDisabled: false });
+
+                    }).catch(err => console.log('err:', err));
+            }
+        }[name].bind(this);
+    }
+
     init() {
 
-        this.emit('upd', '/components/App/:viewData', {
-            viewData: 'editData',
-        }).with({
-            test: 'test'
-        });
+        this.emit('onGet', '/components/MyEditor/:viewData', {
+            viewData: 'news',
+        }).with([(data, rest) => this.strategy('uploadData')(data,rest)]);
 
+        this.type = 'business';
         this.state = {
-            dialogTitle: '添加新闻',
-            dialogShow: false,
-            dialogPending: 'dialog',
-            sureBtnDisabled: false,
+           
             newsTitle: '',
             newsContent: '',
             titleErrorText: '',

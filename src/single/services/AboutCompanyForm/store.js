@@ -45,15 +45,14 @@ const self = class store extends RootStore {
         }
     }
 
-    onSave() {
+    onSave(data, rest) {
 
-            let content = UE.getEditor('myEditor').getContent().toString();
+        console.log(data, rest, 'ccc');
             var params = {
-               content,
+               content: data.content,
                lang: $$.lang,
                type: 'update'
             }
-            this.setState({ sureBtnDisabled: true });
             $$.utils.ajax('post')($$.getApi('aboutCompany'), params)
                 .then(res => {
                     // console.log(res, 'iii')
@@ -65,14 +64,19 @@ const self = class store extends RootStore {
                             alert('修改成功');
                             this.setState({
                                 isEdit: false,
-                                content
+                                content: data.content
+                            });
+
+                            this.emit('upd', '/components/MyEditor/:close', {
+                                close: 'close'
+                            }).with({
+                                dialogShow: false
                             });
                             
                         // }
                     } else {
                         alert('服务器错误,请稍后在试')
                     }
-                    this.setState({ sureBtnDisabled: false });
                 }).catch(err => console.log(err))
 
     }
@@ -85,7 +89,7 @@ const self = class store extends RootStore {
                     content: list[0].content
                 });
 
-                 UE.getEditor('myEditor').setContent(this.state.content);
+                
             })
             .catch(err => console.log(err, 'err'));
     }
@@ -98,7 +102,11 @@ const self = class store extends RootStore {
             isEdit: true
         });
 
-        UE.getEditor('myEditor').setContent(this.state.content);
+        this.emit('get', '/components/MyEditor/:viewData', {
+            viewData: 'aboutCompany'
+        }).with({
+            content: this.state.content
+        });
        
 
     }
@@ -111,6 +119,10 @@ const self = class store extends RootStore {
 
 
     init() {
+
+        this.emit('onGet', '/components/MyEditor/:viewData', {
+            viewData: 'aboutCompany',
+        }).with([(data, rest) => this.onSave(data,rest)]);
 
         this.state = {
           isEdit: false,

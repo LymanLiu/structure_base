@@ -43,11 +43,18 @@ export default class view extends React.Component {
     }
 
     render() {
+        let lang = !~location.href.indexOf('cn') ? 'cn' : 'en';
+        let url = location.origin + `/981/${lang}/manager.html`;
+        let urlName = lang !== 'cn' ? '俄语' : '中文';
         return (
             <div className="header-root header">
                 <h2>{this.title}</h2>
+               
                 <div className="choose-lang">
                     <p className="sign-out" onClick={() => this.actions.signOut()}>退出</p>
+                </div>
+                 <div className="choose-lang">
+                    <a href={url} > {urlName} </a>
                 </div>
             </div>
         )

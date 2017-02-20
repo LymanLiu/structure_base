@@ -43,16 +43,115 @@ const self = class store extends RootStore {
         }
     }
 
-    onTest(text) {
-        alert(text);
-        this.setState({
-            test: 'run a reflux workflow'
+    onResult() {
+
+        if(this.state.isShowTitle) {
+
+            if (this.state.newsTitle === '') {
+                this.setState({ titleErrorText: '请输入标题' });
+            } else {
+                this.setState({ titleErrorText: '', sureBtnDisabled: true });
+                 let content =  this.myEditor.getContent();
+                this.emit('publishGet', '/components/MyEditor/:viewData', {
+                    viewData: 'news'
+                }).with({
+                    newsTitle: this.state.newsTitle,
+                    newsContent: content
+                });
+
+
+            }
+            
+        } else {
+             this.setState({ sureBtnDisabled: true });
+                 let content =  this.myEditor.getContent();
+                this.emit('publishGet', '/components/MyEditor/:viewData', {
+                    viewData: 'aboutCompany'
+                }).with({
+                    content
+                });
+        }
+
+    }
+
+    onDialogClose() {
+        this.setState({ 
+            dialogShow: false, 
+            newsTitle: '', 
+            newsContent: '', 
+            sureBtnDisabled: false , 
+            isShowTitle: true,
+            dialogTitle: '添加新闻',
         });
+         this.myEditor.setContent('');
+    }
+
+    strategy(name) {
+        return {
+            getNews(data,rest) {
+
+                if(rest.viewData !== 'news') return;
+                console.log(data, rest, 11)
+                this.setState({
+                    dialogShow: true,
+                    newsTitle: data.newsTitle,
+                    newsContent: data.newsContent
+                });
+
+                this.myEditor.setContent(data.newsContent);
+
+            },
+            getAboutCompany(data,rest) {
+                 if(rest.viewData !== 'aboutCompany') return;
+                 console.log(data, rest, 'aaa');
+                 this.setState({
+                     dialogShow: true,
+                     isShowTitle: false,
+                     dialogTitle: '公司简介',
+                     newsContent: data.content
+                 });
+                 this.myEditor.setContent(data.content);
+            },
+            dialogHidden(data,rest) {
+                console.log(data,rest, 22)
+                this.onDialogClose();
+            }
+        }[name].bind(this);
+    }
+
+    onSetVal(k, v) {
+        this.setState({
+            [k]: v
+        })
     }
 
     init() {
+
+        this.emit('handleGet', '/components/MyEditor/:viewData', {
+            viewData: 'news',
+        }).with([(data,rest) => this.strategy('getNews')(data,rest)]);
+
+        this.emit('handleGet', '/components/MyEditor/:viewData', {
+            viewData: 'aboutCompany',
+        }).with([(data,rest) => this.strategy('getAboutCompany')(data,rest)]);
+
+        this.emit('handleUpd', '/components/MyEditor/:close', {
+            close: 'close',
+        }).with([(data,rest) => this.strategy('dialogHidden')(data,rest)]);
+
+
+        this.myEditor = UE.getEditor('myEditor');
+
         this.state = {
-            test: ''
+            dialogTitle: '添加新闻',
+            dialogShow: false,
+            dialogPending: 'dialog',
+            sureBtnDisabled: false,
+            newsTitle: '',
+            titleErrorText: '',
+            newsContent: '',
+            isShowTitle: true,
+
         };
     }
 

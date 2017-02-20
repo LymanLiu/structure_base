@@ -47,6 +47,7 @@ export default class view extends React.Component {
 
     componentDidMount() {
         this._isMounted = true;
+        this.actions.initData(this.props);
     }
     componentWillUnmount() {
         this._isMounted = false;
@@ -56,32 +57,7 @@ export default class view extends React.Component {
     componentDidUpdate() {
     } 
 
-    renderReDialogContent() {
-
-        if (this.state.pending === 'add') {
-            return this.renderAddContent();
-        }
-    }
-
-    renderAddContent() {
-        return (
-            <div className="add-content">
-                 <ReTextField 
-                    className="edit-textfiled"
-                    label="标题"
-                    placeholder="请输入标题"
-                    value={this.state.newsTitle}
-                    onChange={(e)=>this.actions.setVal('newsTitle',e.target.value)}
-                    errorText={this.state.titleErrorText}
-                />
-                <p className="mb10">新闻内容</p>
-                <MyEditor 
-                    value={this.state.newsContent}
-                    id="NewsForm"
-                />
-            </div>
-        )
-    }
+   
 
     render() {
         return (
@@ -104,19 +80,7 @@ export default class view extends React.Component {
                     isShowEidt={this.state.isShowEidt}
                />
 
-                <ReDialog
-                    title={ this.state.dialogTitle }
-                    isShow={this.state.dialogShow}
-                    dialogPending={this.state.dialogPending}
-                    onCancel={() => this.actions.dialogClose()}
-                    onConfirm={() => this.actions.result(this.props.type)}
-                    sureBtnDisabled={this.state.sureBtnDisabled}
-                    className='model-edit-dialog'
-                > 
-                    <div className="edit-container">
-                        { this.renderReDialogContent() }
-                    </div>
-                </ReDialog>
+               
             </div>
         )
     }

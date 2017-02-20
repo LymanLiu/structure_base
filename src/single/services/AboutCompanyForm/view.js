@@ -11,7 +11,7 @@ import styles from './style.js';
 
 //component
 import ReButton from '../../widgets/ReButton';
-import MyEditor from '../../widgets/MyEditor';
+// import MyEditor from '../../widgets/MyEditor';
 
 export default class view extends React.Component {
     static propTypes = {};
@@ -49,48 +49,36 @@ export default class view extends React.Component {
     }
 
     renderContent() {
-        if(this.state.isEdit){
+        // if(this.state.isEdit){
 
-            return (
-               <div className="ab-content-box" style={{display: this.state.isEdit ? 'block' : 'none'}} >
-                    <MyEditor />
-                    <div className="btn-box">
-                        <ReButton 
-                            label="取消" 
-                            onClick={ () => this.actions.cancel() }  />
-                        <ReButton 
-                            label="保存" 
-                            disabled={this.state.sureBtnDisabled} 
-                            onClick={ () => this.actions.save() }  />
-                    </div>
-               </div>
-            );
-        } else {
+        //     return (
+        //        <div className="ab-content-box" style={{display: this.state.isEdit ? 'block' : 'none'}} >
+        //             <MyEditor />
+        //             <div className="btn-box">
+        //                 <ReButton 
+        //                     label="取消" 
+        //                     onClick={ () => this.actions.cancel() }  />
+        //                 <ReButton 
+        //                     label="保存" 
+        //                     disabled={this.state.sureBtnDisabled} 
+        //                     onClick={ () => this.actions.save() }  />
+        //             </div>
+        //        </div>
+        //     );
+        // } else {
             return (
                 <div className="ab-content-box" >
                     <div className="btn-top"> <ReButton label="编辑"  onClick={ () => this.actions.editor() } /></div>
                     <div className="inner" dangerouslySetInnerHTML={{ __html: this.state.content }} ></div>
                 </div>
             );
-        }
+        // }
 
     }
     render() {
         return (
             <div className="about-company-form-root">
-                <div className="ab-content-box" style={{display: this.state.isEdit ? 'block' : 'none'}} >
-                    <MyEditor id="abContent" />
-                    <div className="btn-box">
-                        <ReButton 
-                            label="取消" 
-                            onClick={ () => this.actions.cancel() }  />
-                        <ReButton 
-                            label="保存" 
-                            disabled={this.state.sureBtnDisabled} 
-                            onClick={ () => this.actions.save() }  />
-                    </div>
-               </div>
-                <div className="ab-content-box"  style={{display: !this.state.isEdit ? 'block' : 'none'}} >
+                <div className="ab-content-box" >
                     <div className="btn-top"> <ReButton label="编辑"  onClick={ () => this.actions.editor() } /></div>
                     <div className="inner" dangerouslySetInnerHTML={{ __html: this.state.content }} ></div>
                 </div>

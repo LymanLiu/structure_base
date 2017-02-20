@@ -13,6 +13,7 @@ import Header from '../Header';
 import OrderForm from '../OrderForm';
 import BusinessNews from '../BusinessNews';
 import CompanyNews from '../CompanyNews';
+import MyEditor from '../MyEditor';
 import AboutCompanyForm from '../AboutCompanyForm';
 import Slider from '../../widgets/Slider';
 
@@ -66,6 +67,7 @@ export default class view extends React.Component {
                         {this.renderComponent()} 
                     </div>
                 </div>
+                <MyEditor />
             </div>
         )
     }

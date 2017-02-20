@@ -179,10 +179,10 @@ const self = class store extends RootStore {
                     if (res === 0) {
                         this.setState({ isResult: false, resText: '没有该订单' })
                     } else {
-                        var { list } = res;
+                        // var { list } = res;
                         var reslist = [];
                         this.state.thData.forEach(k => {
-                            reslist.push(list[0][k]);
+                            reslist.push(res['list_' + $$.lang][0][k]);
                         })
                         this.setState({ isResult: true, reslist })
                     }
@@ -217,7 +217,7 @@ const self = class store extends RootStore {
     }
     onDelete(pkg) {
         // console.log(pkg, 'del')
-        $$.utils.ajax('post')($$.getApi('deleteData'), { type: 'order', id: pkg.id })
+        $$.utils.ajax('post')($$.getApi('deleteData'), { type: 'order', id: pkg.id, lang: $$.lang })
             .then(res => {
                 if (res === 1) {
                     this.refresh();

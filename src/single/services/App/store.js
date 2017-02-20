@@ -62,10 +62,6 @@ const self = class store extends RootStore {
 
     init() {
 
-        this.emit('handleUpd', '/components/App/:viewData', {
-            viewData: 'editData',
-        }).with([(data) => console.log(data, 'stor')]);
-
         this.state = {
             title: '订单',
             type: 'order'

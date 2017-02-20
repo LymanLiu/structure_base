@@ -4,9 +4,9 @@ module.exports = {
    			title: '<$- ABOUT_US $>',
    			content: [
    				'<$- NAV_ABOUT $>',
-       //         '<$- FOOTER_ABOUT_TWO $>',
-       //         '<$- FOOTER_ABOUT_THREE $>',
-   				// '<$- FOOTER_ABOUT_FOUR $>'		
+               '<$- FOOTER_ABOUT_TWO $>',
+               '<$- FOOTER_ABOUT_THREE $>',
+   				'<$- FOOTER_ABOUT_FOUR $>'		
    			]
    		},
    		{
@@ -19,7 +19,9 @@ module.exports = {
    		},
    		{
    			title: '<$- NAV_NEWS $>',
-   			content: [			
+   			content: [	
+               '行业资讯',
+               '公司新闻'	
 			   ]
    		},
    		{

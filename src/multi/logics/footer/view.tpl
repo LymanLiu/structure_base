@@ -1,6 +1,6 @@
 <div class="footer">
 	<div class="wrapper">
-		<ul>
+		<ul class="<?- langCss ?>" >
 			<? footerList.forEach((item, i) => { ?>
 				<li>
 					<h3><?- item.title ?></h3>
@@ -11,7 +11,7 @@
 			<?})?>
 		</ul>
 		<div class="right-box">
-			<h3>400-100-5678</h3>
+			<h3>13719292556</h3>
 			<p>Time: 8:00 - 18:00</p>
 			<div class="btn-box">马上致电我们</div>
 		</div>

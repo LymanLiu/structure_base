@@ -29,7 +29,7 @@ module.exports = {
    		{
    			name: '<$- NAV_NEWS $>',
             url: `${host}news.html`,
-            // child: [{name:'行业资讯', url: `${host}newslist.html#business`},{name:'公司新闻', url: `${host}newslist.html#company`}]
+            child: [{name:'行业资讯', url: `${host}newslist.html#business`},{name:'公司新闻', url: `${host}newslist.html#company`}]
    		},
    		{
    			name: '<$- NAV_CONTACT $>',
