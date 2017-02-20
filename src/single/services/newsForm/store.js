@@ -65,25 +65,25 @@ const self = class store extends RootStore {
             if (this.state.isShowEidt) params.id = this.state.upadteId;
 
             $$.utils.ajax('post')($$.getApi('insertNews'), params)
-            .then(res => {
-                // console.log(res, 'iii')
-                if(res == 1) {
-                    if(this.state.isShowEidt) {
+                .then(res => {
+                    // console.log(res, 'iii')
+                    if (res == 1) {
+                        if (this.state.isShowEidt) {
 
-                        alert('修改成功')
+                            alert('修改成功')
+                        } else {
+                            alert('提交成功')
+
+                        }
+                        this.resetState();
+                        this.refresh();
                     } else {
-                        alert('提交成功')
-                        
+                        alert('服务器错误,请稍后在试')
                     }
-                    this.resetState();
-                    this.refresh();
-                } else {
-                    alert('服务器错误,请稍后在试')
-                }
-                
-                this.setState({ sureBtnDisabled: false });
-                
-            }).catch(err => alert('服务器错误,请稍后在试'))
+
+                    this.setState({ sureBtnDisabled: false });
+
+                }).catch(err => alert('服务器错误,请稍后在试'))
         }
 
     }
@@ -97,12 +97,12 @@ const self = class store extends RootStore {
             newsContent: '',
             isShowEidt: false
         });
-         // UE.getEditor('NewsForm').setContent('');
+        // UE.getEditor('NewsForm').setContent('');
     }
 
     onRefresh(fn) {
-        if(fn) this.refresh = fn;
-    }   
+        if (fn) this.refresh = fn;
+    }
 
     onSetVal(k, v) {
         this.setState({
@@ -156,7 +156,7 @@ const self = class store extends RootStore {
     }
     onDelete(pkg) {
         // console.log(pkg, 'del')
-        $$.utils.ajax('post')($$.getApi('deleteData'), { type: pkg.type, id: pkg.id, lang: $$.lang  })
+        $$.utils.ajax('post')($$.getApi('deleteData'), { type: pkg.type, id: pkg.id, lang: $$.lang })
             .then(res => {
                 if (res === 1) {
                     this.refresh();
@@ -173,6 +173,12 @@ const self = class store extends RootStore {
     }
 
     init() {
+
+        this.emit('upd', '/components/App/:viewData', {
+            viewData: 'editData',
+        }).with({
+            test: 'test'
+        });
 
         this.state = {
             dialogTitle: '添加新闻',
