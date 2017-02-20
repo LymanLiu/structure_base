@@ -64,6 +64,31 @@
 				border-right: 1px solid @borderColor;
 				text-align: center;
 				padding: 20px 0;
+				position: relative;
+				.isMask {
+					position: absolute;
+					left: 0;
+					top: 0;
+					right: 0;
+					bottom: 0;
+					background: rgba(0,0,0,.5);
+					color: #fff;
+					font-size: 14px;
+					display: none;
+					.mask-inner {
+						text-align: left;
+						width: 90%;
+						display: inline-block;
+						vertical-align: middle;
+						height: auto;
+					}
+					&::after {
+						content: '';
+						vertical-align: middle;
+						display: inline-block;
+						height: 157px;
+					}
+				}
 				// background: url(/static/images/multi/entries/index/images/icon-ditu.png) no-repeat center 20px;
 				.img-box {
 					height: 90px;

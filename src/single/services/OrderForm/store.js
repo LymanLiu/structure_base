@@ -58,7 +58,8 @@ const self = class store extends RootStore {
                 consignee: this.state.consignee,
                 address: this.state.address,
                 logisticsInfo: this.state.logisticsInfo,
-                type: this.state.addDataType
+                type: this.state.addDataType,
+                lang:　$$.lang
             }
             if (this.state.addDataType === 'update') params.id = this.state.upadteId;
             $$.utils.ajax('post')($$.getApi('insertOrder'), params)
@@ -171,7 +172,7 @@ const self = class store extends RootStore {
             this.setState({ orderIDErrorText: '请输入订单号' })
         } else {
             this.setState({ orderIDErrorText: '', searchBtn: true})
-            $$.utils.ajax('get')($$.getApi('searchOrder'), { orderID: this.state.orderID })
+            $$.utils.ajax('get')($$.getApi('searchOrder'), { orderID: this.state.orderID, lang: $$.lang })
                 .then(res => {
                     // res = JSON.parse(res);
                     console.log(res, 'search');
@@ -194,7 +195,7 @@ const self = class store extends RootStore {
     onEditor(pkg) {
         // console.log(pkg, 'edit')
 
-        $$.utils.ajax('get')($$.getApi('getOrder'), { id: pkg.id })
+        $$.utils.ajax('get')($$.getApi('getOrder'), { id: pkg.id, lang: $$.lang })
             .then(res => {
                 var { list } = res;
                 this.setState({

@@ -5,7 +5,8 @@ const self = class Actions {
         var actions = [
             'removeEvents',
             'mount',
-            'slider'
+            'slider',
+            'initData'
         ];
         return Reflux.createActions(actions);
     }

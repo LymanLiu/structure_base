@@ -50,7 +50,7 @@ class View extends MultiView {
         } else {
             this.loadingEvent(this.$searchBtn[0], 'begin');
             var orderID = _orderID || this.$orderID.val();
-            this.ajax('get')(this.getApi('searchOrder'), { orderID } )
+            this.ajax('get')(this.getApi('searchOrder'), { orderID, lang: 'both' } )
             .then(res => {
                     this.loadingEvent(this.$searchBtn[0], 'done');
                     // res = JSON.parse(res);
@@ -58,16 +58,34 @@ class View extends MultiView {
                     if (res === 0) {
                         this.$searchResult.html('<p style="color:red; text-align:center">没有该订单</p>');
                     } else {
-                        var { list } = res;
-                       this.tpl = `
+                        var { list_cn, list_en } = res;
+                        this.tpl = '';
+                       if(list_cn) {
+                            this.tplCN = `
                             <ul>
-                                <li>订单号：${list[0].orderID}</li>
-                                <li>收件人: ${list[0].consignee}</li>
-                                <li>收件地址：${list[0].address}</li>
-                                <li>物流信息：${list[0].logisticsInfo}</li>
-                                <li>录入时间：${list[0].inputTime}</li>
-                            </ul>
-                        `;
+                                <li>订单号：${list_cn[0].orderID}</li>
+                                <li>收件人: ${list_cn[0].consignee}</li>
+                                <li>收件地址：${list_cn[0].address}</li>
+                                <li>物流信息：${list_cn[0].logisticsInfo}</li>
+                                <li>录入时间：${list_cn[0].inputTime}</li>
+                            </ul> `;
+
+                            this.tpl += this.tplCN;
+                       }
+                       if(list_en) {
+                            this.tplEN = `
+                                <ul>
+                                    <li>订单号：${list_en[0].orderID}</li>
+                                    <li>收件人: ${list_en[0].consignee}</li>
+                                    <li>收件地址：${list_en[0].address}</li>
+                                    <li>物流信息：${list_en[0].logisticsInfo}</li>
+                                    <li>录入时间：${list_en[0].inputTime}</li>
+                                </ul>
+                            `;
+
+                            this.tpl += this.tplEN;
+
+                       }
                         this.$searchResult.html(this.tpl);
                     };
             })

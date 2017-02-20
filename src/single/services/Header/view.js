@@ -26,6 +26,14 @@ export default class view extends React.Component {
         this.state = this.store.getState();
     }
 
+    componentWillMount() {
+     
+        let title = ~window.location.href.indexOf('cn') ? '中' : '俄';
+       this.title = `${title}文后台管理系统`;
+       
+
+    }
+
     componentDidMount() {
         this._isMounted = true;
     }
@@ -37,6 +45,7 @@ export default class view extends React.Component {
     render() {
         return (
             <div className="header-root header">
+                <h2>{this.title}</h2>
                 <div className="choose-lang">
                     <p className="sign-out" onClick={() => this.actions.signOut()}>退出</p>
                 </div>

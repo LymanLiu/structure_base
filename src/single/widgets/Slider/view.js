@@ -27,15 +27,53 @@ export default class view extends React.Component {
                     title: '公司新闻',
                     type: 'company',
                     isActive: false
+                },
+                 {
+                    title: '公司简介',
+                    type: 'aboutCompany',
+                    isActive: false
                 }
-            ]
+            ],
+            type: 'order',
+            idx: 0
         }
 
     }
 
     componentDidMount() {
         this._isMounted = true;
+
+        // this.changeHash();
+
+        window.onhashchange = () => {
+           this.changeHash();
+        }
+
     }
+
+    changeHash() {
+        let type = location.hash.replace('#', '');
+        if(type !== this.state.type) {
+            let num = 0;
+            let title = '';
+            this.state.list.forEach((v,i) => {
+                 type === v.type ? v.isActive = true : v.isActive = false;
+                 type === v.type && (num = i);
+                 type === v.type && (title = v.title);
+            } );
+            this.setState({
+                type,
+                list: this.state.list
+            });
+
+            this.props.onChange && this.props.onChange(type, num, title);
+        }
+    }
+
+    componentWillMount() {
+        // location.hash && (location.hash = this.state.type);
+    }
+
     componentWillUnmount() {
         this._isMounted = false;
     }
@@ -47,6 +85,9 @@ export default class view extends React.Component {
         this.setState({
             list: this.state.list
         });
+
+       location.hash = this.state.list[num].type;
+
         this.props.onChange && this.props.onChange(type, num, title);
     }
 

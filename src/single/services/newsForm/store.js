@@ -48,18 +48,19 @@ const self = class store extends RootStore {
     }
 
     onResult(type) {
-        // console.log(UM.getEditor('myEditor').getContent(), 'form')
+        // console.log(UE.getEditor('NewsForm').getContent(), 'form')
 
         if (this.state.newsTitle === '') {
             this.setState({ titleErrorText: '请输入标题' });
         } else {
             this.setState({ titleErrorText: '', sureBtnDisabled: true });
-            let content = UM.getEditor('myEditor').getContent().toString();
+            let content = UE.getEditor('NewsForm').getContent().toString();
             var params = {
                 title: this.state.newsTitle,
                 content,
                 type,
-                update: this.state.isShowEidt
+                update: this.state.isShowEidt ? 'update' : 'insert',
+                lang: $$.lang
             }
             if (this.state.isShowEidt) params.id = this.state.upadteId;
 
@@ -92,9 +93,11 @@ const self = class store extends RootStore {
             sureBtnDisabled: false,
             dialogShow: false,
             newsTitle: '',
-            titleErrorText: ''
+            titleErrorText: '',
+            newsContent: '',
+            isShowEidt: false
         });
-         UM.getEditor('myEditor').setContent('');
+         // UE.getEditor('NewsForm').setContent('');
     }
 
     onRefresh(fn) {
@@ -134,13 +137,13 @@ const self = class store extends RootStore {
     onEditor(pkg) {
         // console.log(pkg, 'edit')
 
-        $$.utils.ajax('get')($$.getApi('getNews'), { id: pkg.id, type: pkg.type })
+        $$.utils.ajax('get')($$.getApi('getNews'), { id: pkg.id, type: pkg.type, lang: $$.lang })
             .then(res => {
                 var { list } = res;
                 this.setState({
-                    newsTitle: list[0].title
+                    newsTitle: list[0].title,
+                    newsContent: list[0].content
                 });
-                UM.getEditor('myEditor').setContent(list[0].content);
             })
             .catch(err => console.log(err, 'err'));
 
@@ -153,7 +156,7 @@ const self = class store extends RootStore {
     }
     onDelete(pkg) {
         // console.log(pkg, 'del')
-        $$.utils.ajax('post')($$.getApi('deleteData'), { type: pkg.type, id: pkg.id })
+        $$.utils.ajax('post')($$.getApi('deleteData'), { type: pkg.type, id: pkg.id, lang: $$.lang  })
             .then(res => {
                 if (res === 1) {
                     this.refresh();
@@ -177,10 +180,12 @@ const self = class store extends RootStore {
             dialogPending: 'dialog',
             sureBtnDisabled: false,
             newsTitle: '',
+            newsContent: '',
             titleErrorText: '',
             pending: 'add',
             type: 'business',
             upadteId: 0,
+            isShowEidt: false
         };
     }
 

@@ -60,10 +60,12 @@ const self = class store extends RootStore {
         
     }
 
+
+
     init() {
 
         this.state = {
-
+            title: ''
         };
     }
 

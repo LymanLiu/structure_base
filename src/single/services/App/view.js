@@ -13,6 +13,7 @@ import Header from '../Header';
 import OrderForm from '../OrderForm';
 import BusinessNews from '../BusinessNews';
 import CompanyNews from '../CompanyNews';
+import AboutCompanyForm from '../AboutCompanyForm';
 import Slider from '../../widgets/Slider';
 
 export default class view extends React.Component {
@@ -33,6 +34,7 @@ export default class view extends React.Component {
 
     componentDidMount() {
         this._isMounted = true;
+        // this.initData();
     }
     componentWillUnmount() {
         this._isMounted = false;
@@ -46,6 +48,8 @@ export default class view extends React.Component {
             return (<BusinessNews />);
         } else if (this.state.type === 'company') {
             return (<CompanyNews />);
+        } else if( this.state.type === 'aboutCompany') {
+            return (<AboutCompanyForm />);
         }
     }
 

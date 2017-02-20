@@ -1,6 +1,7 @@
 <?php 
     include 'header.php';
 	mysql_query("set character set 'utf8'");
+	$lang=$_GET['lang'];
 	$type=$_GET['type'];
 	$id=$_GET['id'];
 	$page = intval($_GET['page']); //当前页 
@@ -14,17 +15,28 @@
 	$arr['total'] = $total; 
 	$arr['pageSize'] = $pageSize; 
 	$arr['totalPage'] = $totalPage; 
+
+	$tableNameBus = 'news_business';
+	$tableNameCom = 'news_company';
+	if($lang == 'cn') {
+		$tableNameBus = 'news_business';
+		$tableNameCom = 'news_company';
+	} elseif($lang == 'en') {
+		$tableNameBus = 'en_news_business';
+		$tableNameCom = 'en_news_company';
+	}
+
 	if($type == 'business') {
 		if($id) {
-			$query = mysql_query("SELECT * FROM news_business WHERE id={$id}");  
+			$query = mysql_query("SELECT * FROM {$tableNameBus} WHERE id={$id}");  
 		} else {
-			$query = mysql_query("SELECT * FROM news_business ORDER BY id DESC LIMIT $startPage,$pageSize"); //查询分页数据 
+			$query = mysql_query("SELECT * FROM {$tableNameBus} ORDER BY id DESC LIMIT $startPage,$pageSize"); //查询分页数据 
 		}
 	} else {
 		if($id) {
-			$query = mysql_query("SELECT * FROM news_company WHERE id={$id}");
+			$query = mysql_query("SELECT * FROM {$tableNameCom} WHERE id={$id}");
 		} else {
-			$query = mysql_query("SELECT * FROM news_company ORDER BY id DESC LIMIT $startPage,$pageSize"); //查询分页数据 
+			$query = mysql_query("SELECT * FROM {$tableNameCom} ORDER BY id DESC LIMIT $startPage,$pageSize"); //查询分页数据 
 		}
 	}
 	while($row=mysql_fetch_array($query)){ 

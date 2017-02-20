@@ -15,7 +15,7 @@ class View extends MultiView {
         this.$newslistTitle=$('#newslistTitle');
         this.$newList=$('#newList');
         this.id = location.hash.match(/id=\d+/).join('').replace('id=', '');
-        this.type = location.hash.replace('#', '');
+        this.type = location.hash.replace(/^\#(\w+)\?id=\d+/, (m,a) => a);
 
         let title = this.type === 'business' ? '行业咨询' : '公司新闻';
         this.$newslistTitle.html(title);

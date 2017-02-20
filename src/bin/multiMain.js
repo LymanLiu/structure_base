@@ -11,6 +11,7 @@ const API = {
     searchOrder: () => `search_order.php`, //post
     signIn: () => `sign_in.php`, //post
     signOut: () => `sign_out.php`, //delete
+    aboutCompany: () => `about_company.php` //get post
 }
 
 window.MultiView = class MultiView {
@@ -144,13 +145,18 @@ class Header extends MultiView {
     }
 
     initEvent() {
+
         this.$navLis = $('.header .wrapper ul .level_1');
+        // this.chooseLang = document.getElementById('chooseLang');
         this.$chooseLang = $('#chooseLang');
         this.$aDom = $('#header a');
 
         let lang = ~location.href.indexOf('cn') ? 'china' : 'russia';
+        let fontSize = ~location.href.indexOf('cn') ? 16 : 12;
+        this.$navLis.css('font-size', fontSize)
         this.$chooseLang.val(lang);
 
+        // console.log(this.chooseLang)
         // this.$navLis.click(function(event) {
         //     $(this).addClass('cur').siblings().removeClass('cur');
         // });
@@ -196,4 +202,8 @@ class Header extends MultiView {
 
 }
 
-new Header();
+
+$(function() {
+    new Header();
+
+});

@@ -37,6 +37,7 @@ class Main extends MultiMain {
             header: header.render({num: 0}).html,
             footer: footer.render().html,
             indexContainer: indexContainer.render().html,
+            SEARCH_BTN_TEXT: '<$- SEARCH_BTN_TEXT $>'
         });
 
         return this;

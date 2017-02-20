@@ -75,7 +75,10 @@ export default class view extends React.Component {
                     errorText={this.state.titleErrorText}
                 />
                 <p className="mb10">新闻内容</p>
-                <MyEditor />
+                <MyEditor 
+                    value={this.state.newsContent}
+                    id="NewsForm"
+                />
             </div>
         )
     }

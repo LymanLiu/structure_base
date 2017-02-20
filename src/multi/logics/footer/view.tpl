@@ -5,7 +5,7 @@
 				<li>
 					<h3><?- item.title ?></h3>
 					<? item.content.forEach((child, i) => { ?>
-						<a href="#"><?- child ?></a>
+						<a href="javascript:;"><?- child ?></a>
 					<?})?>
 				</li>
 			<?})?>
