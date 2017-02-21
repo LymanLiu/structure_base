@@ -27,4 +27,32 @@
 	    opacity: 0;
 	    z-index: 9;
     }
+
+    .banner-list {
+    	width: 600px;
+    	margin-bottom: 20px;
+    	padding-top: 30px;
+    	>li {
+    		overflow: hidden;
+    		border-bottom: 1px solid @borderColor;
+    		>span {
+    			float: left;
+    			width: 400px;
+    			position: relative;
+				text-align: center;
+				line-height: 50px;
+    			&.num {
+    				width: 60px;
+    			}
+    			&.fixe, &.del {
+    				width: 60px;
+    				cursor: pointer;
+    				color: @mainColor;
+    			}
+    			&.del {
+    				color: @errorColor;
+    			}
+    		}
+    	}
+    }
 }

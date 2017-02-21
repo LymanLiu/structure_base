@@ -6,7 +6,8 @@ const self = class Actions {
             'removeEvents', //do not delete;
             'fixed',
             'del',
-            'addPic'
+            'addPic',
+            'initData'
         ];
         return Reflux.createActions(actions);
     }

@@ -43,6 +43,20 @@ const self = class store extends RootStore {
         }
     }
 
+    onInitData() {
+        $$.utils.ajax('get')($$.getApi('bannerImg'), { lang: $$.lang })
+            .then(res => {
+                var { list } = res;
+                this.setState({
+                    bannerList: list
+                });
+
+                console.log(list)
+                
+            })
+            .catch(err => console.log(err, 'err'));
+    }
+
     onFixed(name) {
         console.log(name, 'fixed')
     }
@@ -69,16 +83,12 @@ const self = class store extends RootStore {
           processData: false,
           contentType: false,
           data: formData,
-          success: function(d) {
-            console.log(d);
+          success: function(res) {
+            res = JSON.parse(res);
+            console.log(res);
           }
         });
-        
-       // $$.utils.ajax('post')($$.getApi('uploadImg'), formData)
-       //      .then(res =>  {
-       //          console.log(res, 'ss')
-       //      })
-       //      .catch(err => console.log(err, 'err'));
+
     }
 
     init() {

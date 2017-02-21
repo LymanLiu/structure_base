@@ -44,7 +44,7 @@ export default class view extends React.Component {
     }
 
     componentDidMount() {
-
+        this.actions.initData();
     }
 
     componentWillUnmount() {
@@ -57,15 +57,16 @@ export default class view extends React.Component {
         return (
             <div className="orin-ss-indexbannerform-root" >
                 <ul className="banner-list">
-                    {this.state.bannerList.map( item => {
+                    {this.state.bannerList.map( (item, i) => {
                         return (
-                            <li>
+                            <li key={'item' + i}>
                                 <span className="num">{i + 1}</span>
                                 <span className="name">{item.name}</span>
-                                <span className="fixe" onClick={this.actions.fixed(item.name)}>
-                                    <input type="file"/>
+                                <span className="fixe" onClick={() => this.actions.fixed(item.pic, item.id)}>
+                                    修改
+                                    <input type="file" className="input-file" />
                                 </span>
-                                <span className="del" onClick={this.actions.del(item.name)}>删除</span>
+                                <span className="del" onClick={() => this.actions.del(item.pic, item.id)}>删除</span>
                             </li>
                         )
                     })}
