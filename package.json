@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "gulp clean-dev && gulp dev"
+    "start": "gulp clean-dev && gulp dev",
+    "p": "gulp production"
   },
   "author": "lyman",
   "license": "ISC",
@@ -16,7 +17,11 @@
   "dependencies": {
     "axios": "^0.15.3",
     "bluebird": "^3.4.6",
+    "del": "^2.2.2",
     "ejs": "^2.5.5",
+    "gulp-clean-css": "^3.0.3",
+    "gulp-rev": "^7.1.2",
+    "gulp-rev-collector": "^1.1.1",
     "rc-pagination": "^1.6.9",
     "react": "15.3.2",
     "react-addons": "0.9.1-deprecated",

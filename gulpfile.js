@@ -16,6 +16,7 @@ var replace = require('gulp-replace');
 var buffer = require('gulp-buffer');
 var uglify = require('gulp-uglify');
 var less = require('gulp-less');
+var cleanCss = require('gulp-clean-css');
 var combiner = require('stream-combiner2');
 var autoprefixer = require('gulp-autoprefixer');
 var connect = require('gulp-connect');
@@ -25,9 +26,12 @@ var ejsr = require('ejs');
 var through2 = require('through2');
 var rename = require('gulp-rename');
 var clean = require('gulp-clean');
+var del = require('del');
 var glob = require('glob');
 var path = require('path');
 var browsersync = require('browser-sync').create();
+var rev = require('gulp-rev');
+var revCollector = require('gulp-rev-collector');
 //browserify
 var lessPicker = require('./build/modules/lessPicker.js');
 var argv = require('yargs')
@@ -182,18 +186,67 @@ function other() {
 
 }
 
+//rev
+gulp.task('rev', function(done) {
+    gulp.src([
+            targetDir + '/**/*.json',
+            targetDir + '/**/*.css',
+            targetDir + '/**/*.js',
+            targetDir + '/**/*.jpg',
+            targetDir + '/**/*.png',
+            targetDir + '/**/*.ico',
+        ])
+        .pipe(rev()) //trasfrom file to filename-hash.ext type; but we just want the source file, so can pass it;
+        .pipe(gulp.dest(dest + '/'))
+        .pipe(rev.manifest())
+        .pipe(gulp.dest(dest + '/'))
+        .on('end', done);
+});
+
+gulp.task('revCollector', function(done) {
+    gulp.src([
+            targetDir + '/**/*.css',
+            targetDir + '/**/*.js',
+            targetDir + '/**/*.html',
+            targetDir + '/rev-manifest.json'
+        ])
+        .pipe(revCollector({
+            replaceReved: true,
+        }))
+        .pipe(gulp.dest(dest + '/'))
+        .on('end', done);
+
+});
+
+gulp.task('revCollectorTemplate', function(done) {
+    gulp.src([
+            targetDir + '/../981/**/*.html',
+            targetDir + '/rev-manifest.json'
+        ])
+        .pipe(revCollector({
+            replaceReved: true,
+        }))
+        .pipe(gulp.dest(dest + '/../981'))
+        .on('end', done);
+
+});
 
 // Clean
-gulp.task('clean-dev', function() {
-    gulp.src([
-            targetDir,
-            targetDir + '../981'
-        ], {
-            read: false
-        })
-        .pipe(clean({
-            force: true
-        }));
+// gulp.task('clean-dev', function() {
+//     gulp.src([
+//             targetDir,
+//             targetDir + '../981'
+//         ], {
+//             read: false
+//         })
+//         .pipe(clean({
+//             force: true
+//         }));
+// });
+
+gulp.task('clean-dev', function(done) {
+    del.sync([targetDir, targetDir + '../981'], { force: true });
+    done();
 });
 
 //task
@@ -527,6 +580,17 @@ gulp.task('serve', function() {
 
 // gulp.task('default', ['serve', 'watch']);
 // gulp.task('default', ['lang', 'html']);
+gulp.task('production', function(done) {
+    runSequence(
+        ['clean-dev'],
+        ['lang', 'html', 'images', 'other', 'less', 'common:less'], ['scripts:common', 'multi:scripts', 'scripts:vender'], ['multi:less', 'images'],
+        'rev',
+        'revCollector',
+        'revCollectorTemplate',
+        'serve'
+    );
+});
+
 gulp.task('local', function(done) {
     runSequence(['lang', 'html', 'images', 'other', 'less', 'common:less'], ['scripts:common', 'multi:scripts', 'scripts:vender'], ['multi:less', 'images'], ['serve'], done);
 });
