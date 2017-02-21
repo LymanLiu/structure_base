@@ -1,20 +1,32 @@
 <?php 
 	include 'header.php';
     mysql_query("SET NAMES UTF8");
-    $tableName = 'banner_img';
-	// $action = $_GET['act']; 
-	// if($action=='delimg'){ //删除图片 
-	//     $filename = $_POST['imagename']; 
-	//     if(!empty($filename)){ 
-	//         unlink('files/'.$filename); 
-	//         echo '1'; 
-	//     }else{ 
-	//         echo '删除失败.'; 
-	//     } 
-	// }else{ //上传图片 
-    
-    // print_r($_FILES['file']);
-    	$newname = $_POST['name'];
+
+    $lang = $_POST['lang'];
+    if($lang == 'cn') {
+    	$tableName = 'banner_img';
+    } elseif ($lang == 'en') {
+    	$tableName = 'en_banner_img';
+    }
+
+	$action = $_POST['act']; 
+	if($action=='delimg'){ //删除图片 
+	    $filename = $_POST['imagename']; 
+	    $id = $_POST['id']; 
+	    if(!empty($filename)){ 
+	        unlink('../upload/'.$filename); 
+	        $result = mysql_query("DELETE FROM {$tableName} WHERE id={$id}");
+	        if($result == 1) {
+	        	echo '1'; 
+	        	
+	        } else {
+	        	echo '删除失败'; 
+	        }
+	    }else{ 
+	        echo '删除失败'; 
+	    } 
+	}else{ //上传图片 
+  
 	    $picname = $_FILES['file']['name']; 
 	    $picsize = $_FILES['file']['size']; 
 	    // if ($picname != "") { 
@@ -63,7 +75,7 @@
 			    ); 
 			    echo json_encode($arr);
 	       }
-	// }
+	}
 	//关闭数据库
 	mysql_close($conn);
 

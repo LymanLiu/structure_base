@@ -62,10 +62,10 @@ export default class view extends React.Component {
                             <li key={'item' + i}>
                                 <span className="num">{i + 1}</span>
                                 <span className="name">{item.name}</span>
-                                <span className="fixe" onClick={() => this.actions.fixed(item.pic, item.id)}>
+                                {/*<span className="fixe" onClick={() => this.actions.fixed(item.pic, item.id)}>
                                     修改
                                     <input type="file" className="input-file" />
-                                </span>
+                                </span>*/}
                                 <span className="del" onClick={() => this.actions.del(item.pic, item.id)}>删除</span>
                             </li>
                         )

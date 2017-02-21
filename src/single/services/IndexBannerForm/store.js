@@ -51,7 +51,7 @@ const self = class store extends RootStore {
                     bannerList: list
                 });
 
-                console.log(list)
+                // console.log(list)
                 
             })
             .catch(err => console.log(err, 'err'));
@@ -61,12 +61,24 @@ const self = class store extends RootStore {
         console.log(name, 'fixed')
     }
 
-    onDel(name) {
-        console.log(name, 'del')
+    onDel(imagename, id) {
+        // console.log(name, 'del')
+        $$.utils.ajax('post')($$.getApi('uploadImg'), { lang: $$.lang ,act: 'delimg', imagename, id })
+            .then(res => {
+
+               if(res == 1) {
+                    this.onInitData();
+                    alert('删除成功');
+                } else {
+                    alert('服务器错误');
+                }
+                
+            })
+            .catch(err => console.log(err, 'err'));
     }
 
     onAddPic(files, name) {
-        console.log(files, 'files');
+        // console.log(files, 'files');
 
         if(files[0].size > 512000) { 
             alert('图片大小不能超过500k'); 
@@ -74,7 +86,7 @@ const self = class store extends RootStore {
         }
         name = name || 'index-banner' + this.state.bannerList.length;
         var formData = new FormData();
-        formData.append('name', name);
+        formData.append('lang', $$.lang);
         formData.append('file', files[0]);
 
         $.ajax({
@@ -83,9 +95,15 @@ const self = class store extends RootStore {
           processData: false,
           contentType: false,
           data: formData,
-          success: function(res) {
+          success: (res) => {
             res = JSON.parse(res);
-            console.log(res);
+    //         console.log(res);
+            if(res.isSuccess) {
+                this.onInitData();
+                alert('添加成功');
+            } else {
+                alert('服务器错误');
+            }
           }
         });
 
