@@ -2,7 +2,7 @@
 module.exports = {
     containerList: [
     	{
-    		title: '三大业务',
+    		title: '<$- INDEX_TITLE_ONE $>',
     		subTitle: '981托运，让您高枕无忧的好物流！',
     		content: `
     			<ul class="first-page">

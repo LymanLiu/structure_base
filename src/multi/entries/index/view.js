@@ -29,7 +29,7 @@ class View {
             }
         };
 
-        this.lang = !~location.href.indexOf('cn') ? 'cn' : 'en';
+        this.lang = ~location.href.indexOf('cn') ? 'cn' : 'en';
 
         this.$searchBtn = $('#searchBtn');
         this.$orderID = $('#orderID');

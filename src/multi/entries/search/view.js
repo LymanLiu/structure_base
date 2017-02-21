@@ -50,38 +50,43 @@ class View extends MultiView {
         } else {
             this.loadingEvent(this.$searchBtn[0], 'begin');
             var orderID = _orderID || this.$orderID.val();
+           // this.$orderID.val() && (location.search = '');
             this.ajax('get')(this.getApi('searchOrder'), { orderID, lang: 'both' } )
             .then(res => {
                     this.loadingEvent(this.$searchBtn[0], 'done');
                     // res = JSON.parse(res);
-                    console.log(res, 'search');
+                    // console.log(res, 'search');
+                    
                     if (res === 0) {
                         this.$searchResult.html('<p style="color:red; text-align:center">没有该订单</p>');
                     } else {
                         var { list_cn, list_en } = res;
                         this.tpl = '';
                        if(list_cn) {
+                        let info = list_cn[0].logisticsInfo.replace(/\n/g, '<br />');
+
                             this.tplCN = `
-                            <ul>
-                                <li>订单号：${list_cn[0].orderID}</li>
-                                <li>收件人: ${list_cn[0].consignee}</li>
-                                <li>收件地址：${list_cn[0].address}</li>
-                                <li>物流信息：${list_cn[0].logisticsInfo}</li>
-                                <li>录入时间：${list_cn[0].inputTime}</li>
-                            </ul> `;
+                            <table>
+                                <tr><td>订单号：</td><td>${list_cn[0].orderID}</td></tr>
+                                <tr><td>收件人：</td><td>${list_cn[0].consignee}</td></tr>
+                                <tr><td>收件地址：</td><td>${list_cn[0].address}</td></tr>
+                                <tr><td>物流信息：</td><td>${info}</td></tr>
+                                <tr><td>录入时间：</td><td>${list_cn[0].inputTime}</td></tr>
+                            </table> `;
 
                             this.tpl += this.tplCN;
                        }
                        if(list_en) {
+                         let info = list_en[0].logisticsInfo.replace(/\n/g, '<br />');
+
                             this.tplEN = `
-                                <ul>
-                                    <li>订单号：${list_en[0].orderID}</li>
-                                    <li>收件人: ${list_en[0].consignee}</li>
-                                    <li>收件地址：${list_en[0].address}</li>
-                                    <li>物流信息：${list_en[0].logisticsInfo}</li>
-                                    <li>录入时间：${list_en[0].inputTime}</li>
-                                </ul>
-                            `;
+                            <table>
+                                <tr><td>订单号：</td><td>${list_en[0].orderID}</td></tr>
+                                <tr><td>收件人：</td><td>${list_en[0].consignee}</td></tr>
+                                <tr><td>收件地址：</td><td>${list_en[0].address}</td></tr>
+                                <tr><td>物流信息：</td><td>${info}</td></tr>
+                                <tr><td>录入时间：</td><td>${list_en[0].inputTime}</td></tr>
+                            </table> `;
 
                             this.tpl += this.tplEN;
 
