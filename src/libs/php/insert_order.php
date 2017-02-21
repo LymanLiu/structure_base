@@ -19,10 +19,10 @@
 		$tableName = 'en_orders';
 	}
 	if ($type == 'update') {
-		mysql_query("UPDATE {$tableName} SET orderID={$orderID}, consignee='{$consignee}', address='{$address}',logisticsInfo='{$logisticsInfo}' WHERE id=${id}");
+		mysql_query("UPDATE {$tableName} SET orderID='{$orderID}', consignee='{$consignee}', address='{$address}',logisticsInfo='{$logisticsInfo}' WHERE id=${id}");
 		$result = mysql_affected_rows();
 	} else {
-		$result = mysql_query("INSERT INTO {$tableName} ( orderID, consignee, address, logisticsInfo,inputTime) VALUES ({$orderID},'{$consignee}','{$address}','{$logisticsInfo}','{$time}')");
+		$result = mysql_query("INSERT INTO {$tableName} ( orderID, consignee, address, logisticsInfo,inputTime) VALUES ('{$orderID}','{$consignee}','{$address}','{$logisticsInfo}','{$time}')");
 	}
 
 	if($result == 1){
