@@ -28,6 +28,11 @@ export default class view extends React.Component {
                     type: 'company',
                     isActive: false
                 },
+                {
+                    title: '首页banner',
+                    type: 'indexBanner',
+                    isActive: false
+                },
                  {
                     title: '公司简介',
                     type: 'aboutCompany',

@@ -15,6 +15,7 @@ import BusinessNews from '../BusinessNews';
 import CompanyNews from '../CompanyNews';
 import MyEditor from '../MyEditor';
 import AboutCompanyForm from '../AboutCompanyForm';
+import IndexBannerForm from '../IndexBannerForm';
 import Slider from '../../widgets/Slider';
 
 export default class view extends React.Component {
@@ -51,6 +52,8 @@ export default class view extends React.Component {
             return (<CompanyNews />);
         } else if( this.state.type === 'aboutCompany') {
             return (<AboutCompanyForm />);
+        } else if( this.state.type === 'indexBanner') {
+            return (<IndexBannerForm />);
         }
     }
 

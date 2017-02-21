@@ -1,0 +1,30 @@
+@import '../../../core/less/variables.less';
+.orin-ss-indexbannerform-root {
+    .re-btn {
+    	width: 120 / @remScale;
+	    height: 42/ @remScale;
+	    line-height: 100%;
+	    border-radius: 4/ @remScale;
+	    color: #fff;
+	    font-size: 16/ @remScale;
+	    text-align: center;
+	    -webkit-appearance: none;
+	    background: @mainColor;
+	    cursor: pointer;
+	    position: relative;
+	    
+	    &:active {
+	        background: radial-gradient(rgba(0, 157, 174, .8), rgba(0, 157, 174, 1))
+	    }
+    }
+    .input-file {
+	    position: absolute;
+	    left: 0;
+	    top: 0;
+	    width: 100%;
+	    height: 100%;
+	    cursor: pointer;
+	    opacity: 0;
+	    z-index: 9;
+    }
+}
