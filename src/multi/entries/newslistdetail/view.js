@@ -16,11 +16,12 @@ class View extends MultiView {
         this.$newList=$('#newList');
         this.id = location.hash.match(/id=\d+/).join('').replace('id=', '');
         this.type = location.hash.replace(/^\#(\w+)\?id=\d+/, (m,a) => a);
+        this.lang = ~location.href.indexOf('cn') ? 'cn' : 'en';
 
         let title = this.type === 'business' ? '行业咨询' : '公司新闻';
         this.$newslistTitle.html(title);
 
-        $.get(this.getApi('getNews'), {page: 1, pageSize: 1, type: this.type, id: this.id }, (res) => {
+        $.get(this.getApi('getNews'), {page: 1, pageSize: 1, type: this.type, id: this.id, lang: this.lang }, (res) => {
             res = JSON.parse(res);
             this.$newList.html(this.initNews(res.list));
         });

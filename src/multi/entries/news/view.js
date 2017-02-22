@@ -18,14 +18,14 @@ class View extends MultiView {
         this.$businessMore = $('#businessMore');
         this.$companyMore = $('#companyMore');
 
-        this.lang = !~location.href.indexOf('cn') ? 'cn' : 'en';
+        this.lang = ~location.href.indexOf('cn') ? 'cn' : 'en';
 
-        $.get(this.getApi('getNews'), {page: 1, pageSize: 3, type: 'business'}, (res) => {
+        $.get(this.getApi('getNews'), {page: 1, pageSize: 3, type: 'business',lang: this.lang}, (res) => {
             res = JSON.parse(res);
             this.$businessNews.html(this.initNews(res.list, 'business'));
         });
 
-        $.get(this.getApi('getNews'), {page: 1, pageSize: 3, type: 'company'}, (res) => {
+        $.get(this.getApi('getNews'), {page: 1, pageSize: 3, type: 'company',lang: this.lang}, (res) => {
             res = JSON.parse(res);
             this.$companyNews.html(this.initNews(res.list, 'company'));
         });

@@ -182,7 +182,12 @@ const self = class store extends RootStore {
                         // var { list } = res;
                         var reslist = [];
                         this.state.thData.forEach(k => {
-                            reslist.push(res['list_' + $$.lang][0][k]);
+                            if(k === 'logisticsInfo') {
+                                let val = res['list'][0][k].replace(/\n/g, '<br />');
+                                reslist.push(val);
+                            } else {
+                                reslist.push(res['list'][0][k]);
+                            }
                         })
                         this.setState({ isResult: true, reslist })
                     }

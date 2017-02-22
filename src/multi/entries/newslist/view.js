@@ -15,12 +15,12 @@ class View extends MultiView {
         this.$newslistTitle=$('#newslistTitle');
         this.$newList=$('#newList');
         this.type = location.hash.replace('#', '');
-        this.lang = !~location.href.indexOf('cn') ? 'cn' : 'en';
+        this.lang = ~location.href.indexOf('cn') ? 'cn' : 'en';
 
         let title = this.type === 'business' ? '行业咨询' : '公司新闻';
         this.$newslistTitle.html(title);
 
-        $.get(this.getApi('getNews'), {page: 1, pageSize: 6, type: this.type}, (res) => {
+        $.get(this.getApi('getNews'), {page: 1, pageSize: 6, type: this.type, lang: this.lang}, (res) => {
             res = JSON.parse(res);
             this.$newList.html(this.initNews(res.list, this.type));
         });

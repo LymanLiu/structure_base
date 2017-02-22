@@ -127,19 +127,20 @@ export default class view extends React.Component {
                 </div>
                 {!this.state.isResult ? <div className="result-box">
                    <b> {this.state.resText} </b>
-                </div> :  <ul className="result-box">
+                </div> :  <table className="result-box">
+                            <tbody>
                    {    
                         this.state.reslist.map((v, i) => {
                             return (
-                                <li
+                                <tr
                                     key={"s" + i}
                                 >
-                                    {this.thData.cn[i]} : {v}
-                                </li>
+                                    <td>{this.thData.cn[i]}</td> <td  dangerouslySetInnerHTML={{ __html: v }}></td>
+                                </tr>
                             );
                         })
                    }
-               </ul>}
+              </tbody> </table>}
             </div>
         )
     }

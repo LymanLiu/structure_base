@@ -93,8 +93,7 @@ module.exports = {
     			<div class="third-page">
     				<div class="up-box">
     				    <img src="/static/images/multi/entries/index/images/index-bg-2.png" alt="">
-                        <$- ABOUT_CONTENT_ONE_1 $>
-    				    <$- ABOUT_CONTENT_ONE_2 $>
+                        <$- INDEX_ABOUT_CONTENT $>
                     </div>
     				<div class="sub-banner-box" id="imageslist">
     					<ul>

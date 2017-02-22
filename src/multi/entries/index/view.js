@@ -43,6 +43,11 @@ class View {
             }
         });
 
+        $.get(this.getApi('bannerImg'), {page: 1, pageSize: 3, lang: this.lang}, (res) => {
+            res = JSON.parse(res);
+            console.log(res, 'banner')
+        });
+
         return this;
     }
 

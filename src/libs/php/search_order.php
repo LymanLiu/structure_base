@@ -1,11 +1,11 @@
 <?php
 	include 'header.php';
 	mysql_query("set character set 'utf8'");
-	$lang = intval($_GET['lang']); 
-	$orderID = intval($_GET['orderID']); 
+	$lang = $_GET['lang']; 
+	$orderID = $_GET['orderID']; 
 	if($lang == 'both') {
-		$query1 = mysql_query("SELECT * FROM orders WHERE orderID=$orderID"); 
-		$query2 = mysql_query("SELECT * FROM en_orders WHERE orderID=$orderID"); 
+		$query1 = mysql_query("SELECT * FROM orders WHERE orderID='{$orderID}'"); 
+		$query2 = mysql_query("SELECT * FROM en_orders WHERE orderID='{$orderID}'"); 
 		if(mysql_num_rows($query1) > 0 || mysql_num_rows($query2) > 0 ){ 
 		 	if(mysql_num_rows($query1) > 0) {
 		 		while($row=mysql_fetch_array($query1)){ 
@@ -45,7 +45,7 @@
 			$tableName = 'en_orders';
 		} 
 
-		$query = mysql_query("SELECT * FROM {$tableName} WHERE orderID=$orderID"); 
+		$query = mysql_query("SELECT * FROM {$tableName} WHERE orderID='{$orderID}'"); 
 	
 		if(mysql_num_rows($query) > 0){ 
 		 	while($row=mysql_fetch_array($query)){ 
