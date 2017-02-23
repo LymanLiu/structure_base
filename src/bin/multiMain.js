@@ -1,6 +1,6 @@
 const config = {
     apiHost: () => 'http://www.981cargo.com/static/libs/php/',
-
+    bannerHost: () => 'http://www.981cargo.com/static/libs/upload/'
 }
 
 const API = {
@@ -19,6 +19,7 @@ window.MultiView = class MultiView {
     constructor() {
     	this.api = API;
     	this.config = config;
+        this.bannerHost = config.bannerHost();
     }
 
     getApi(name) {

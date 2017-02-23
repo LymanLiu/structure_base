@@ -9,7 +9,6 @@
 	
 
     <script type="text/javascript"  src="/static/libs/jquery/jquery-1.12.3.min.js" ></script>
-    <script type="text/javascript"  src="/static/libs/jquery/jquery.form.js" ></script>
     <script type="text/javascript"  src="/static/libs/ueditor/ueditor.config.js" ></script>
     <script type="text/javascript"  src="/static/libs/ueditor/ueditor.all.min.js" ></script>
     <script type="text/javascript"  src="/static/libs/ueditor/lang/zh-cn/zh-cn.js" ></script>

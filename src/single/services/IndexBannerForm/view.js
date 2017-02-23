@@ -9,6 +9,7 @@ import Actions from './actions.js';
 
 //component
 import ReButton from '../../widgets/ReButton';
+import ReDialog from '../../widgets/ReDialog';
 
 
 export default class view extends React.Component {
@@ -80,7 +81,13 @@ export default class view extends React.Component {
                     />
                     添加
                 </button>
-                
+                <span className="text">建议尺寸：1200 * 560</span>
+                <ReDialog 
+                    dialogPending={this.state.pending}
+                    isShow={this.state.isShow}
+                    successText={this.state.successText}
+                    errorText={this.state.errorText}
+                />
             </div>
         );
     }

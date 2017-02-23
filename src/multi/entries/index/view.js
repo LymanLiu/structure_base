@@ -3,12 +3,12 @@
 // import Header from '../../logics/header/view.js';
 // import Footer from '../../logics/footer/view.js';
 // console.log(MultiView)
-class View {
+class View extends MultiView {
     constructor() {
-        // super();
+        super();
         // this.comModel = model;
-        this.initModel()
-            .banner();
+        this.initModel();
+            // .banner();
     }
 
     say() {
@@ -45,7 +45,17 @@ class View {
 
         $.get(this.getApi('bannerImg'), {page: 1, pageSize: 3, lang: this.lang}, (res) => {
             res = JSON.parse(res);
-            console.log(res, 'banner')
+            // console.log(res, 'banner')
+
+            var tpl = '';
+            res.list.forEach((item, i) => {
+                tpl += `
+                    <li><img src="${this.bannerHost}${item.pic}" alt="" /></li>
+                `;
+            });
+            $("#imageslist ul").html(tpl);
+            this.banner();
+
         });
 
         return this;

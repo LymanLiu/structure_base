@@ -46,6 +46,7 @@ const self = class store extends RootStore {
     onInitData() {
         $$.utils.ajax('get')($$.getApi('bannerImg'), { lang: $$.lang })
             .then(res => {
+                if(!res) return;
                 var { list } = res;
                 this.setState({
                     bannerList: list
@@ -88,7 +89,9 @@ const self = class store extends RootStore {
         var formData = new FormData();
         formData.append('lang', $$.lang);
         formData.append('file', files[0]);
-
+        this.setState({
+            isShow: true
+        });
         $.ajax({
           url: $$.getApi('uploadImg'),
           type: "POST",
@@ -98,11 +101,14 @@ const self = class store extends RootStore {
           success: (res) => {
             res = JSON.parse(res);
     //         console.log(res);
+            this.setState({
+                isShow: false
+            });
             if(res.isSuccess) {
                 this.onInitData();
-                alert('添加成功');
+               setTimeout(()=> alert('添加成功'), 100); 
             } else {
-                alert('服务器错误');
+                setTimeout(()=> alert('添加成功'), 100);
             }
           }
         });
@@ -111,7 +117,11 @@ const self = class store extends RootStore {
 
     init() {
         this.state = {
-            bannerList: []
+            bannerList: [],
+            pending: 'loading',
+            isShow: false,
+            successText: '上传成功',
+            errorText: '服务器错误, 上传失败'
         };
     }
 
