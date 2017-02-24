@@ -6,6 +6,6 @@
 	<?- specialLineBanner ?>
 	<?- sliderContainer ?>
 	<?- footer ?>
-	<script type="text/javascript" src="/static/js/multi/russia.js"></script>
+	<script type="text/javascript" src="/static/js/multi/ua.js"></script>
 </body>
 </html> 

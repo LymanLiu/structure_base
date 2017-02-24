@@ -15,7 +15,7 @@
 		<ul class="content">
 			<? sliderData.contentList.forEach((content, i) => { ?>
 				
-				<li class="<?- i === 0 ? "level_1 cur" : "level_1" ?>" >
+				<li id="content<?- i ?>" class="<?- i === 0 ? "level_1 cur" : "level_1" ?>" >
 					<div class="content-page-1">
 						<img src="/static/images/multi/entries/russia/images/main-bg-<?- content.pageOne.img ?>.jpg" alt="">
 						<? content.pageOne.pageText.forEach((text, i) => { ?>

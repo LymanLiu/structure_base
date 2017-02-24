@@ -50,7 +50,7 @@ class View extends MultiView {
             var tpl = '';
             res.list.forEach((item, i) => {
                 tpl += `
-                    <li><img src="${this.bannerHost}${item.pic}" alt="" /></li>
+                    <li><img width="1200" height="560" src="${this.bannerHost}${item.pic}" alt="" /></li>
                 `;
             });
             $("#imageslist ul").html(tpl);

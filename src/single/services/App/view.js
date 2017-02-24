@@ -16,6 +16,9 @@ import CompanyNews from '../CompanyNews';
 import MyEditor from '../MyEditor';
 import AboutCompanyForm from '../AboutCompanyForm';
 import IndexBannerForm from '../IndexBannerForm';
+import Russia from '../Russia';
+import Ua from '../Ua';
+import WhiteRussia from '../WhiteRussia';
 import Slider from '../../widgets/Slider';
 
 export default class view extends React.Component {
@@ -54,7 +57,13 @@ export default class view extends React.Component {
             return (<AboutCompanyForm />);
         } else if( this.state.type === 'indexBanner') {
             return (<IndexBannerForm />);
-        }
+        } else if( this.state.type === 'russia') {
+            return (<Russia />);
+        } else if( this.state.type === 'ua') {
+            return (<Ua />);
+        } else if( this.state.type === 'whiteRussia') {
+            return (<WhiteRussia />);
+        } 
     }
 
     render() {

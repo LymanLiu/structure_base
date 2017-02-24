@@ -1,0 +1,30 @@
+@import '../../../core/less/variables.less';
+.orin-ss-russia-root {
+	padding-top: 20px;
+    .tabs {
+    	overflow: hidden;
+    	border-bottom: 1px solid @borderColor;
+    	>li {
+    		float: left;
+    		width: 100px;
+    		text-align: center;
+    		line-height: 40px;
+    		text-align: center;
+    		border-bottom: 2px solid transparent;
+    		cursor: pointer;
+    		&.cur {
+    			border-color: @mainColor;
+    		}
+    	}
+    }
+    >.btn-box{
+    	text-align: right;
+		margin-top: -47px;
+		padding-bottom: 5px;
+    }
+    >.tab-content {
+    	padding: 20px;
+    	border: 1px solid @borderColor;
+    	border-top: 0;
+    }
+}

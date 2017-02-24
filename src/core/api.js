@@ -8,6 +8,7 @@ export default {
     signOut: () => `sign_out.php`, //delete
     deleteData: () => `delete_data.php`, //post
     aboutCompany: () => `about_company.php`, // get post
+    russia: () => `russia.php`, // get post
     uploadImg: () => `upload_img.php`, // get post
     bannerImg: () => `banner_img.php` // get post
 }

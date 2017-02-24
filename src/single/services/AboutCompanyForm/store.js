@@ -47,7 +47,7 @@ const self = class store extends RootStore {
 
     onSave(data, rest) {
 
-        console.log(data, rest, 'ccc');
+        // console.log(data, rest, 'ccc');
             var params = {
                content: data.content,
                lang: $$.lang,

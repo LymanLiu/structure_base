@@ -37,6 +37,21 @@ export default class view extends React.Component {
                     title: '公司简介',
                     type: 'aboutCompany',
                     isActive: false
+                },
+                {
+                    title: '俄罗斯专线',
+                    type: 'russia',
+                    isActive: false
+                },
+                {
+                    title: '乌克兰专线',
+                    type: 'ua',
+                    isActive: false
+                },
+                {
+                    title: '白俄罗斯专线',
+                    type: 'whiteRussia',
+                    isActive: false
                 }
             ],
             type: 'order',

@@ -12,6 +12,7 @@ const API = {
     signIn: () => `sign_in.php`, //post
     signOut: () => `sign_out.php`, //delete
     aboutCompany: () => `about_company.php`, //get post
+     russia: () => `russia.php`, // get post
     bannerImg: () => `banner_img.php` // get post
 }
 

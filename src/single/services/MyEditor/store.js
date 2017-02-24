@@ -45,7 +45,7 @@ const self = class store extends RootStore {
 
     onResult() {
 
-        if(this.state.isShowTitle) {
+        if(this.state.dialogTitle === '添加新闻') {
 
             if (this.state.newsTitle === '') {
                 this.setState({ titleErrorText: '请输入标题' });
@@ -62,11 +62,19 @@ const self = class store extends RootStore {
 
             }
             
-        } else {
+        } else if(this.state.dialogTitle === '公司简介') {
              this.setState({ sureBtnDisabled: true });
                  let content =  this.myEditor.getContent();
                 this.emit('publishGet', '/components/MyEditor/:viewData', {
                     viewData: 'aboutCompany'
+                }).with({
+                    content
+                });
+        } else if(this.state.dialogTitle === '专线内容') {
+             this.setState({ sureBtnDisabled: true });
+                 let content =  this.myEditor.getContent();
+                this.emit('publishGet', '/components/MyEditor/:viewData', {
+                    viewData: 'russia'
                 }).with({
                     content
                 });
@@ -88,32 +96,38 @@ const self = class store extends RootStore {
 
     strategy(name) {
         return {
-            getNews(data,rest) {
+            handleGet(data,rest) {
 
-                if(rest.viewData !== 'news') return;
-                console.log(data, rest, 11)
-                this.setState({
-                    dialogShow: true,
-                    newsTitle: data.newsTitle,
-                    newsContent: data.newsContent
-                });
+                if(rest.viewData === 'news') {
+                    // console.log(data, rest, 11)
+                    this.setState({
+                        dialogShow: true,
+                        dialogTitle: '添加新闻',
+                        newsTitle: data.newsTitle,
+                        newsContent: data.newsContent
+                    });
+                    
+                } else if(rest.viewData == 'aboutCompany' ) {
+                    this.setState({
+                         dialogShow: true,
+                         isShowTitle: false,
+                         dialogTitle: '公司简介',
+                         newsContent: data.content
+                     });
+                } else if(rest.viewData == 'russia' ) {
+                    this.setState({
+                         dialogShow: true,
+                         isShowTitle: false,
+                         dialogTitle: '专线内容',
+                         newsContent: data.content
+                     });
+                }
 
-                this.myEditor.setContent(data.newsContent);
+                this.myEditor.setContent(this.state.newsContent);
 
-            },
-            getAboutCompany(data,rest) {
-                 if(rest.viewData !== 'aboutCompany') return;
-                 console.log(data, rest, 'aaa');
-                 this.setState({
-                     dialogShow: true,
-                     isShowTitle: false,
-                     dialogTitle: '公司简介',
-                     newsContent: data.content
-                 });
-                 this.myEditor.setContent(data.content);
             },
             dialogHidden(data,rest) {
-                console.log(data,rest, 22)
+                // console.log(data,rest, 22)
                 this.onDialogClose();
             }
         }[name].bind(this);
@@ -129,11 +143,7 @@ const self = class store extends RootStore {
 
         this.emit('handleGet', '/components/MyEditor/:viewData', {
             viewData: 'news',
-        }).with([(data,rest) => this.strategy('getNews')(data,rest)]);
-
-        this.emit('handleGet', '/components/MyEditor/:viewData', {
-            viewData: 'aboutCompany',
-        }).with([(data,rest) => this.strategy('getAboutCompany')(data,rest)]);
+        }).with([(data,rest) => this.strategy('handleGet')(data,rest)]);
 
         this.emit('handleUpd', '/components/MyEditor/:close', {
             close: 'close',
