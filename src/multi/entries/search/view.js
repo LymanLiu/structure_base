@@ -71,8 +71,8 @@ class View extends MultiView {
                                 <tr><td>收件人：</td><td>${list_cn[0].consignee}</td></tr>
                                 <tr><td>收件地址：</td><td>${list_cn[0].address}</td></tr>
                                 <tr><td>物流信息：</td><td>${info}</td></tr>
-                                <tr><td>录入时间：</td><td>${list_cn[0].inputTime}</td></tr>
                             </table> `;
+                                // <tr><td>录入时间：</td><td>${list_cn[0].inputTime}</td></tr>
 
                             this.tpl += this.tplCN;
                        }
@@ -85,8 +85,8 @@ class View extends MultiView {
                                 <tr><td>收件人：</td><td>${list_en[0].consignee}</td></tr>
                                 <tr><td>收件地址：</td><td>${list_en[0].address}</td></tr>
                                 <tr><td>物流信息：</td><td>${info}</td></tr>
-                                <tr><td>录入时间：</td><td>${list_en[0].inputTime}</td></tr>
                             </table> `;
+                                // <tr><td>录入时间：</td><td>${list_en[0].inputTime}</td></tr>
 
                             this.tpl += this.tplEN;
 
